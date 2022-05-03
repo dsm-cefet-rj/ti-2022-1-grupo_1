@@ -5,6 +5,7 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
 }
 
 a {
@@ -23,7 +24,7 @@ nav {
     justify-content: space-around;
     align-items: center;
     height: 12vh;
-    border-bottom: 3px solid #ddd;
+    border-bottom: 2px solid #ddd;
 }
 
 .nav-list {
@@ -33,16 +34,17 @@ nav {
 
 .nav-list li {
     letter-spacing: 2px;
-    margin-left: 32px;
+    margin-left: 12px;
+    font-size: 14px;
 }
 
 main {
-    padding: 50px;
+    padding: 30px;
     height: 80vh;
 }
 
 main h1 {
-    border-bottom: 3px solid #ddd;
+    border-bottom: 2px solid #ddd;
 }
 
 main img {
@@ -50,10 +52,7 @@ main img {
 }
 
 .content {
-    display: grid;
-    grid-template-columns: 3fr 1fr 1fr 1fr;
-    margin-top: 20px;
-    border-bottom: 3px solid #ddd;
+    margin-top: 6px;
 }
 
 .content span {
@@ -65,11 +64,42 @@ main img {
     grid-template-columns: 1fr 2fr;
     text-transform: uppercase;
     margin-top: 20px;
+    padding: 10px;
+}
+
+.productLabel {
+    background-color: #000;
+    font-weight: 400;
+    color: #fff;
+    display: flex;
+    justify-content: center;
+}
+
+.productContent img {
+    height: 70px;
+    border: 2px solid #000;
+    margin-right: 10px;
+}
+
+.productInfo {
+    padding: 10px;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin-top: 10px;
+    border-bottom: 2px solid #ddd;
 }
 
 .productPrice {
     text-transform: uppercase;
     margin-top: 20px;
+    display: flex;
+    align-items: center;
+}
+
+.productPrice img {
+    height: 20px;
+    margin-left: 6px;
+    margin-right: 6px;
 }
 
 .productQtt {
@@ -77,11 +107,44 @@ main img {
     margin-top: 20px;
 }
 
+.productQtt img{
+    height: 12px;
+    margin-left: 6px;
+    margin-right: 6px;
+}
+
 .qualityBadge p {
     position: absolute;
     width: 2fr;
     font-style: italic;
     font-size: 10px;
+}
+
+.generalContent {
+    margin-top: 30px;
+}
+
+.subtotal {
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.delivery {
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.allProductPrice {
+    padding: 6px;
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    justify-content: space-between;
 }
 
 .confirm {
@@ -97,8 +160,8 @@ main img {
     border: 1px solid #d02718;
     cursor: pointer;
     color: #ffffff;
-    font-size: 17px;
-    padding: 12px 20px;
+    font-size: 8px;
+    padding: 6px 14px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #810e05;
 }
@@ -112,10 +175,8 @@ main img {
     top: 1px;
 }
 
-
-
 footer {
-    font-size: 8px;
+    font-size: 6px;
     border-top: 3px solid #ddd;
     width: 100%;
     display: flex;
