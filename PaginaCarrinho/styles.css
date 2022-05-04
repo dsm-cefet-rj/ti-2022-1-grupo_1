@@ -23,7 +23,7 @@ nav {
     display: flex;
     justify-content: space-around;
     align-items: center;
-    height: 12vh;
+    min-height: 12vh;
     border-bottom: 2px solid #ddd;
 }
 
@@ -40,7 +40,7 @@ nav {
 
 main {
     padding: 30px;
-    height: 80vh;
+    min-height: 80vh;
 }
 
 main h1 {
@@ -61,7 +61,7 @@ main img {
 
 .productContent {
     display: grid;
-    grid-template-columns: 1fr 2fr;
+    grid-template-columns: 1fr 1fr;
     text-transform: uppercase;
     margin-top: 20px;
     padding: 10px;
@@ -107,7 +107,7 @@ main img {
     margin-top: 20px;
 }
 
-.productQtt img{
+.productQtt img {
     height: 12px;
     margin-left: 6px;
     margin-right: 6px;
@@ -182,7 +182,7 @@ footer {
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 8vh;
+    min-height: 8vh;
     color: #ffffff;
     background: #000;
 }
