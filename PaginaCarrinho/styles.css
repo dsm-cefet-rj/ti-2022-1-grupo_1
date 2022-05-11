@@ -5,7 +5,10 @@
     margin: 0;
     box-sizing: border-box;
     font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+}
+
+html {
+    font-size: 62.5%;
 }
 
 a {
@@ -34,8 +37,8 @@ nav {
 
 .nav-list li {
     letter-spacing: 2px;
-    margin-left: 12px;
-    font-size: 14px;
+    margin-left: 1.6rem;
+    font-size: 1.8rem;
 }
 
 main {
@@ -45,6 +48,7 @@ main {
 
 main h1 {
     border-bottom: 2px solid #ddd;
+    font-size: 1.6rem;
 }
 
 main img {
@@ -57,6 +61,7 @@ main img {
 
 .content span {
     font-weight: bold;
+    font-size: 1.6rem;
 }
 
 .productContent {
@@ -117,7 +122,7 @@ main img {
     position: absolute;
     width: 2fr;
     font-style: italic;
-    font-size: 10px;
+    font-size: 1.0rem;
 }
 
 .generalContent {
@@ -129,6 +134,7 @@ main img {
     display: flex;
     justify-content: space-between;
     border-bottom: 1px solid #ddd;
+    font-size: 1.4rem;
 }
 
 .delivery {
@@ -140,7 +146,7 @@ main img {
 
 .allProductPrice {
     padding: 6px;
-    font-size: 30px;
+    font-size: 3.0rem;
     font-weight: bold;
     border-bottom: 2px solid #ddd;
     display: flex;
@@ -160,14 +166,10 @@ main img {
     border: 1px solid #d02718;
     cursor: pointer;
     color: #ffffff;
-    font-size: 8px;
+    font-size: 1.4rem;
     padding: 6px 14px;
     text-decoration: none;
     text-shadow: 0px 1px 0px #810e05;
-}
-
-.myButton:hover {
-    text-decoration: underline;
 }
 
 .myButton:active {
@@ -176,7 +178,7 @@ main img {
 }
 
 footer {
-    font-size: 6px;
+    font-size: 0.8rem;
     border-top: 3px solid #ddd;
     width: 100%;
     display: flex;
@@ -185,4 +187,31 @@ footer {
     min-height: 8vh;
     color: #ffffff;
     background: #000;
+}
+
+@media (max-width: 375px) {
+    html {
+        font-size: 30%;
+    }
+
+    .myButton {
+        font-size: 90%;
+    }
+
+    footer {
+        font-size: 60%;
+    }
+
+}
+
+@media (max-width: 425px) {
+    html {
+        font-size: 50%;
+    }
+}
+
+@media (max-width: 768px) {
+    html {
+        font-size: 60%;
+    }
 }
