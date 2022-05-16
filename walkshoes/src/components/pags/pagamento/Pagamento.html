@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagamento</title>
+    <link rel="stylesheet" href="./styles.css">
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico">
+</head>
+
+<body>
+    
+    <!-- nav bar -->
+    <header>
+        <nav>
+            <a href="#"><img src="../assets/logo.png" alt="Walk Logo" class="logo"></a>
+            <ul class="nav-list">
+                <li><a href="#">Home</a></li>
+                <li><a href="#">Minha conta</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- main -->
+    <main>
+        <div>
+            <h2> FINALIZAR COMPRA</h2>
+            <div class="div-etapa-pessoal"> 
+                <span> DADOS PESSOAIS</span>
+            </div>
+            <div >
+                <form class="dados">
+                    <div>
+                        <label> Email </label>
+                        <input type="text" placeholder="Digite seu Email" name="email" required/> 
+
+                        <label> Nome </label>
+                        <input type="text" placeholder="Digite seu nome" name="nome" required/>
+
+                        <label> CPF </label>
+                        <input type="number" placeholder="Digite seu CPF" name="CPF" required/>
+
+                        <label> Telefone </label>
+                        <input type="number" placeholder="Digite seu telefone" name="telefone" required/>
+                    </div>
+                </form>
+            </div>
+            
+            <div class="div-etapa-entrega"> 
+                <span> ENTREGA</span>
+            </div>
+            <div>
+                <form>
+                    <div class="dados">
+                        <label> CEP </label>
+                        <input type="text" placeholder="Digite seu CEP" name="cep" required/> 
+
+                        <label> Rua </label>
+                        <input type="text" placeholder="Digite sua Rua" name="rua" required/> 
+
+                        <label> Complemento </label>
+                        <input type="text" placeholder="Digite o Complemento" name="Complemento" required/> 
+                    </div>
+                </form>
+            </div>
+
+            <div class="div-etapa-pagamento"> 
+                <span>PAGAMENTO</span>
+            </div>
+            <div class="pagamento">   
+                <label>Selecione a forma de pagamento</label> 
+                
+                <button class="boleto"> Boleto Bancário</button>
+                <button class="pix" > Pix</button>
+                <button class="cartao"> Cartão de crédito</button>
+
+                <div>
+                    <form class="dados-cartao">
+                        <div>
+                            <label> Número do cartão </label>
+                            <input type="number" placeholder="Digite o número do cartão" name="cartao" required/>
+
+                            <label> Nome impresso no cartão </label>
+                            <input type="text" placeholder="Digite o nome impresso no cartão" name="nomeCartao" required/>
+
+                            <select class="parcela" form="parcela">
+                                <option >Em quantas parcelas deseja pagar?</option>
+                                <option >Pagamento a vista R$2.599,98</option>
+                                <option >Pagar em 2x R$1299,99</option>
+                                <option >Pagar em 3x R$866,66</option>
+                            </select>
+                        </div>    
+                    </form>
+                </div>  
+
+                <div class="generalContent">
+                    <div class="subtotal">
+                        <span>Subtotal</span>
+                        <span>+ 2.599,98</span>
+                    </div>
+            
+                    <div class="delivery">
+                        <span>Taxa de Entrega</span>
+                        <span>+ Grátis</span>
+                    </div>
+            
+                    <div class="allProductPrice">
+                        <span>Total</span>
+                        <span>2.599,98</span>
+                    </div>
+                </div>
+            </div>      
+        </div>
+
+        <div class="finalizar-compra">
+            <button class="btn-finalizar"> Finalizar compra</button>
+        </div>
+
+    </main>
+
+    <!-- footer -->
+    <footer>
+        <h1>Todos os Direitos Reservados ao Grupo 1 - PSW</h1>
+    </footer>
+</body>
+</html>

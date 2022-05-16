@@ -1,0 +1,243 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap');
+
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+    font-size: 14px;
+}
+
+a {
+    font-weight: bold;
+    color: #f24f00;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+a:hover {
+    opacity: 0.7;
+}
+
+nav {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    height: 12vh;
+    border-bottom: 2px solid #ddd;
+}
+
+.nav-list {
+    list-style: none;
+    display: flex;
+}
+
+.nav-list li {
+    letter-spacing: 2px;
+    margin-left: 12px;
+    font-size: 14px;
+}
+
+h2{
+    margin: 15px 0 0 10px;
+   
+}
+
+.div-etapa-pessoal{
+    font-weight: bold;
+    margin: 20px 0 2px 10px;
+}
+
+.div-etapa-entrega{
+    font-weight: bold;
+    margin: 30px 0 2px 10px;
+}
+
+.div-etapa-pagamento{
+    font-weight: bold;
+    margin: 30px 0 8px 10px;
+}
+
+.dados{
+    flex-direction: column;
+    margin-left: 10px;
+    border-radius: 10px;
+}
+
+.dados label{
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    font-weight: bold;
+    display: flex;
+}
+
+.dados input{
+    border: solid #999;
+    border-width: 1px;
+    color: #444;
+    border-radius: 3px;
+    height: auto;
+    padding: 4px;
+    flex-direction: column;
+    display: flex;
+    margin-top: 10px;
+}
+
+.pagamento{
+    margin-left: 10px;
+}
+
+.boleto{
+    border: solid #999;
+    border-width: 1px;
+    color: #444;
+    border-radius: 3px;
+    height: auto;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    padding: 10px 15px 10px 10px;
+    font-weight: bold;
+    display: flex;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255);   
+}
+
+.pix{
+    border: solid #999;
+    border-width: 1px;
+    color: #444;
+    border-radius: 3px;
+    height: auto;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    padding: 10px 105px 10px 10px;
+    font-weight: bold;
+    display: flex;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255); 
+}
+
+.cartao{
+    border: solid #999;
+    border-width: 1px;
+    color: #444;
+    border-radius: 3px;
+    height: auto;
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    padding: 10px 5px 10px 10px;
+    font-weight: bold;
+    display: flex;
+    cursor: pointer;
+    background-color: rgb(255, 255, 255); 
+}
+
+.dados-cartao{
+    flex-direction: column;
+    display: flex;
+    border-radius: 10px;
+}
+
+.dados-cartao label{
+    margin-top: 0.6em;
+    margin-bottom: 0.6em;
+    font-weight: bold;
+    display: flex;
+}
+
+.dados-cartao input{
+    border: solid #999;
+    border-width: 1px;
+    width: 265px;
+    color: #444;
+    border-radius: 3px;
+    height: auto;
+    padding: 4px;
+    display: flex;
+}
+
+.parcela{
+    border: solid #999;
+    border-width: 1px;
+    width: 265px;
+    color: #444;
+    border-radius: 3px;
+    height: auto;
+    padding: 4px;
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.generalContent {
+    margin-top: 30px;
+}
+
+.subtotal {
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.delivery {
+    padding: 6px;
+    display: flex;
+    justify-content: space-between;
+    border-bottom: 1px solid #ddd;
+}
+
+.allProductPrice {
+    padding: 6px;
+    font-size: 30px;
+    font-weight: bold;
+    border-bottom: 2px solid #ddd;
+    display: flex;
+    justify-content: space-between;
+}
+
+.finalizar-compra{
+    margin-top: 0.6em;
+    display: flex;
+    padding: 15px;
+    text-align: center;
+    justify-content: center;
+}
+
+.btn-finalizar{
+    padding: 10px;
+    background-color: #f24f00;
+    border: solid rgb(0, 0, 0);
+    border-width: 1px;
+    color: rgb(0, 0, 0);
+    border-radius: 3px;
+    font-weight: bold;
+    cursor: pointer;
+   
+}
+
+footer {
+    font-size: 6px;
+    border-top: 3px solid #ddd;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 8vh;
+    color: #ffffff;
+    background: #000;
+}
+
+
+@media (max-width: 1600px) {
+    *{
+        font-size: 16px;
+    }
+}
+
+@media (max-width: 415px){
+    
+    .pix{
+        padding-left: 22px;
+    }
+
+}

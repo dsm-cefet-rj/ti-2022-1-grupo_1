@@ -1,0 +1,310 @@
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;500;700&display=swap");
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+}
+
+a {
+  font-weight: bold;
+  color: #f24f00;
+  text-decoration: none;
+  transition: 0.3s;
+}
+
+a:hover {
+  opacity: 0.7;
+}
+
+nav {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  height: 12vh;
+  border-bottom: 2px solid #ddd;
+}
+
+.nav-list {
+  list-style: none;
+  display: flex;
+}
+
+.nav-list li {
+  letter-spacing: 2px;
+  margin-left: 12px;
+  font-size: 14px;
+}
+
+.options {
+  display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.options .icon {
+  width: 28px;
+}
+
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.content-menu {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+  border: 1px solid #ddd;
+}
+
+.content-menu .lista {
+  display: flex;
+  list-style-type: none;
+  gap: 15px;
+}
+
+.lista li {
+  font-family: didot;
+  font-weight: 500;
+  font-size: 17px;
+}
+
+.content-research {
+  align-self: center;
+  margin-bottom: 15px;
+  position: relative;
+}
+
+.content-research input {
+  width: 300px;
+  height: 30px;
+  border-radius: 16px;
+}
+
+.content-research .icon {
+  width: 14px;
+  position: absolute;
+  right: 7px;
+  top: 8px;
+}
+
+.primary {
+  margin-bottom: 20px;
+  align-self: center;
+}
+
+.primary-picture-mobile {
+  width: 375px;
+}
+
+.primary-picture-desk {
+  display: none;
+}
+
+.img-logo {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  margin-bottom: 12px;
+}
+
+.img-logo img {
+  width: 55px;
+}
+
+.content-grid {
+  display: grid;
+  grid-template-columns: auto auto;
+  justify-content: center;
+  margin-bottom: 20px;
+  gap: 5px;
+}
+
+.card {
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  border: 2px solid #000;
+  border-radius: 8px;
+  width: 170px;
+  height: 210px;
+}
+
+.card-picture{
+  display: flex;
+  align-self: center;
+}
+
+.picture {
+  width: 140px;
+  height: auto;
+}
+
+.card-text {
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  width: 160px;
+  align-self: center;
+}
+
+.title {
+  font-size: 12px;
+}
+
+.value {
+  font-size: 12px;
+  font-weight: 600;
+  color: #f24f00;
+}
+
+footer {
+  font-size: 6px;
+  border-top: 3px solid #ddd;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 8vh;
+  color: #ffffff;
+  background: #000;
+}
+
+@media (min-width: 768px){
+  .card {
+    width: 200px;
+    height: 220px;
+}
+.picture {
+  width: 147px;
+}
+.title {
+  font-size: 14px;
+}
+.value {
+  font-size: 14px;
+}
+.img-logo img {
+  width: 70px;
+}
+.img-logo {
+  gap: 55px;
+}
+.primary-picture-mobile {
+  width: 402px;
+}
+.content-grid {
+  gap: 10px;
+}
+}
+
+@media (min-width: 1024px){
+  .content-grid {
+    grid-template-columns: auto auto auto;
+    gap: 10px;
+  }
+
+  .card{
+    width: 276px;
+    height: 304px;
+  }
+
+.picture {
+    width: 190px;
+}
+.title {
+  font-size: 18px;
+}
+.value {
+  font-size: 16px;
+}
+.img-logo {
+  gap: 80px;
+}
+.img-logo img {
+  width: 100px;
+}
+
+.lista li {
+  font-size: 24px;
+}
+
+.content-menu .lista {
+  gap: 80px;
+}
+
+.content-research .icon {
+  width: 28px;
+}
+
+.content-research input {
+  width: 400px;
+  height: 46px;
+}
+.options .icon {
+  width: 33px;
+}
+
+a {
+  font-size: 20px;
+}
+
+.content-research {
+  align-self: flex-end;
+  margin-right: 35px;
+}
+.primary-picture-mobile {
+  display: none;
+}
+.primary-picture-desk {
+  display: block;
+  width: 100%;
+}
+
+.primary{
+  width: 100%;
+}
+}
+
+@media (min-width: 1280px){
+  .card {
+    width: 300px;
+    height: 315px;
+}
+.picture {
+  width: 203px;
+}
+
+.title {
+  font-size: 21px;
+}
+
+.value {
+  font-size: 18px;
+}
+
+.card-text {
+  width: 240px;
+}
+.img-logo img {
+  width: 110px;
+}
+
+.img-logo {
+  gap: 115px;
+}
+
+nav {
+  justify-content: space-between;
+  padding: 0 47px;
+}
+
+.lista li {
+  font-size: 26px;
+}
+}
