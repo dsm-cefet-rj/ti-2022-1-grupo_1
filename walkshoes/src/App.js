@@ -5,6 +5,7 @@ import Menu from "./components/header/menu/Menu";
 import Footer from "./components/footer/Footer";
 import DadosPessoais from "./components/pags/pagamento/DadosPessoais";
 import Home from "./components/pags/home/Home";
+import Carrinho from "./components/pags/carrinho/Carrinho";
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
       <Routes>
         <Route path="/" exact  element={<Home />} />
         <Route path="/dadospessoais" element={<DadosPessoais />} />
+        <Route path="/carrinho" element={<Carrinho />} />
       </Routes>
       <Footer />
     </Router>

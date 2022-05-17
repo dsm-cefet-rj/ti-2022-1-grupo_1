@@ -1,0 +1,10 @@
+.cardContent {
+  margin-top: 20px;
+  padding: 20px;
+  width: 100%;
+  border-bottom: 2px solid #ddd;
+}
+
+.cardContent img {
+  border: 2px solid #000;
+}
