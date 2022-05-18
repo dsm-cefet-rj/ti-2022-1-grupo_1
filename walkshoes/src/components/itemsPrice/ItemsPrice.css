@@ -1,0 +1,28 @@
+.generalContent {
+  margin-top: 30px;
+  padding: 20px;
+}
+
+.subtotal {
+  font-size: 12px;
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.delivery {
+  font-size: 12px;
+  padding: 6px;
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px solid #ddd;
+}
+
+.allProductPrice {
+  font-size: 24px;
+  padding: 6px;
+  border-bottom: 2px solid #ddd;
+  display: flex;
+  justify-content: space-between;
+}

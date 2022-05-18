@@ -1,12 +1,13 @@
-import React from "react";
-import CardCarrinho from "../../card/cardCarrinho/CardCarrinho";
-
+import React from 'react'
+import ItemsPrice from '../../itemsPrice/ItemsPrice'
+import CarrinhoWrapper from '../../carrinhoWrapper/CarrinhoWrapper'
 const Carrinho = () => {
   return (
-      <>
-      <CardCarrinho></CardCarrinho>
-      </>
-  );
+    <>
+      <CarrinhoWrapper></CarrinhoWrapper>
+      <ItemsPrice></ItemsPrice>
+    </>
+  )
 }
 
-export default Carrinho;
+export default Carrinho
