@@ -1,17 +1,24 @@
 import React from 'react'
-import Menu from '../../header/menu/Menu'
-import Footer from '../../footer/Footer'
+import { useNavigate } from 'react-router-dom'
 import "./styles.css"
 
 const DadosPessoais = () => {
+
+    const navigate = useNavigate();
+
+    function handleEntrega  ()  {
+        navigate('/dadosentrega');
+    };
+
+
   return (
     <>
         <h2> FINALIZAR COMPRA</h2>
-            <div class="div-etapa-pessoal"> 
+            <div className="div-etapa-pessoal"> 
                 <span> DADOS PESSOAIS</span>
             </div>
             <div >
-                <form class="dados">
+                <form className="dados">
                     <div>
                         <label> Email </label>
                         <input type="text" placeholder="Digite seu Email" name="email" required/> 
@@ -25,7 +32,7 @@ const DadosPessoais = () => {
                         <label> Telefone </label>
                         <input type="number" placeholder="Digite seu telefone" name="telefone" required/>
 
-                        <button>IR PARA A ENTREGA</button>
+                        <button onClick={handleEntrega}>IR PARA A ENTREGA</button>
                     </div>
                 </form>
             </div>
