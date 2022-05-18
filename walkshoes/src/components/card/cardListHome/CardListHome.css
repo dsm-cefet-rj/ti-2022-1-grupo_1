@@ -1,8 +1,26 @@
 .list {
   display: grid;
-  grid-template-columns: repeat(2, 0fr);
+  grid-template: auto / repeat(auto-fill, minmax(239px, 1fr)) ;
   gap: 10px;
   justify-content: center;
+  margin: 0 20px;
+}
+
+.contentlist{
+  display: flex;
+  flex-direction: column;
+}
+
+.titlelist{
+  margin-bottom: 10px;
+  font-family: system-ui;
+  font-weight: 200;
+  font-size: 43px;
 }
 
 
+@media(min-width:1280px){
+  .list{
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+}
+}

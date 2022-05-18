@@ -7,7 +7,7 @@ import Footer from "../../footer/Footer";
 const Home = () => {
     return (
         <>
-        <Menu></Menu>
+       <Menu></Menu>
         <HeaderList></HeaderList>
         <CardListHome></CardListHome>
         <Footer></Footer>
@@ -16,3 +16,4 @@ const Home = () => {
   }
 
 export default Home;
+

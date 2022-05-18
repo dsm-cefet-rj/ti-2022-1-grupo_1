@@ -1,9 +1,6 @@
 .card{
-  width: 150px;
-  height: 195px;
   border: 1px solid #6666;
   border-radius: 15px;
-  background-color: #FFEFD5;
 }
 
 .product {
@@ -28,10 +25,6 @@
 }
 
 @media (min-width: 768px) {
-  .card {
-    width: 160px;
-    height: 205px;
-  }
 
   .title {
     font-size: 15px;
@@ -43,11 +36,6 @@
 }
 
 @media (min-width: 1024px) {
-  .card{
-    width: 230px;
-    height: 303px;
-  }
-
   .content {
     margin: 25px 0 0 8px;
   }
