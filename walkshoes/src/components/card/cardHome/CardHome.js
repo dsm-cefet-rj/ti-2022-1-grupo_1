@@ -11,7 +11,7 @@ function CardHome (props) {
           <img className="product" src={tenis} />
         </div>
         <div className="content">
-          <p className="title">{props.info.title}</p>
+          <p className="titlehome">{props.info.title}</p>
           <p className="type">{props.info.type}</p>
         </div>
         <OfferHome></OfferHome>

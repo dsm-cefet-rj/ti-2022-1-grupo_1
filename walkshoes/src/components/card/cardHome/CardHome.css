@@ -13,7 +13,7 @@
   flex-direction: column;
 }
 
-.title {
+.titlehome {
   font-size: 14px;
   margin: 0;
 }
@@ -40,7 +40,7 @@
     margin: 25px 0 0 8px;
   }
 
-  .title {
+  .titlehome {
     font-size: 20px;
   }
 
