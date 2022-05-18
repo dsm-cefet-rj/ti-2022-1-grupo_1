@@ -1,10 +1,41 @@
 .cardContent {
   margin-top: 20px;
   padding: 20px;
-  width: 100%;
   border-bottom: 2px solid #ddd;
+  font-weight: bold;
 }
 
-.cardContent img {
+.shoeContent {
+  display: flex;
+  font-size: 14px;
+}
+
+.shoeContent img {
   border: 2px solid #000;
+  margin-right: 10px;
+}
+
+.utilityContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.utilityContent img {
+  width: 15px;
+  height: auto;
+  margin: 0px  4px 0px 4px;
+}
+
+.quantidade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.valor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }

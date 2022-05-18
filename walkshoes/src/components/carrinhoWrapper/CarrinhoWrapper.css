@@ -1,0 +1,19 @@
+.contentWrapper {
+  padding: 20px;
+}
+
+.title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #000;
+  border-bottom: 2px solid #ddd;
+}
+
+.titleLabel {
+  display: flex;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  color: white;
+  background-color: #000;
+}
