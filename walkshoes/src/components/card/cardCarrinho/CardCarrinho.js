@@ -17,10 +17,12 @@ const CardCarrinho = props => {
       </div>
       <div className="utilityContent">
         <div className="valor">
+          <span className="textoResponsivo">Preço:</span>
           <img src={priceIcon}></img>
           <span>{props.information.preco}</span> 
         </div>
         <div className="quantidade">
+          <span className="textoResponsivo">Quantidade:</span>
           <img src={minusIcon} />
           <span>1</span> 
           <img src={plusIcon} />
