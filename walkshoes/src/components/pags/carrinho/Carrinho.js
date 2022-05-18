@@ -1,5 +1,5 @@
 import React from "react";
-import CardCarrinho from "../../cardCarrinho/CardCarrinho";
+import CardCarrinho from "../../card/cardCarrinho/CardCarrinho";
 
 const Carrinho = () => {
   return (

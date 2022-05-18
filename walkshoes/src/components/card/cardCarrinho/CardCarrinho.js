@@ -1,6 +1,6 @@
 import React from 'react'
 import './CardCarrinho.css'
-import imagemTenis from '../../assets/nike-dunk.png'
+import imagemTenis from '../../../assets/nike-dunk.png'
 
 const CardCarrinho = () => {
   return (

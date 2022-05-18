@@ -10,13 +10,11 @@ import Carrinho from "./components/pags/carrinho/Carrinho";
 function App() {
   return (
     <Router>
-      <Menu />
       <Routes>
         <Route path="/" exact  element={<Home />} />
         <Route path="/dadospessoais" element={<DadosPessoais />} />
         <Route path="/carrinho" element={<Carrinho />} />
       </Routes>
-      <Footer />
     </Router>
   );
 }
