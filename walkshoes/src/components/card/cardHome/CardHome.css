@@ -1,0 +1,62 @@
+.card{
+  width: 150px;
+  height: 195px;
+  border: 1px solid #6666;
+  border-radius: 15px;
+  background-color: #FFEFD5;
+}
+
+.product {
+  width: 100%;
+}
+
+.content {
+  margin: 13px 0 0 8px;
+  display: flex;
+  flex-direction: column;
+}
+
+.title {
+  font-size: 14px;
+  margin: 0;
+}
+
+.type {
+  font-family: unset;
+  font-size: 11px;
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .card {
+    width: 160px;
+    height: 205px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .type {
+    font-size: 12px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .card{
+    width: 230px;
+    height: 303px;
+  }
+
+  .content {
+    margin: 25px 0 0 8px;
+  }
+
+  .title {
+    font-size: 20px;
+  }
+
+  .type {
+    font-size: 18px;
+  }
+}

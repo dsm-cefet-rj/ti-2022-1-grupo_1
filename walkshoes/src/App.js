@@ -13,7 +13,6 @@ import Carrinho from "./components/pags/carrinho/Carrinho";
 function App() {
   return (
     <Router>
-      <Menu />
       <Routes>
         <Route path="/" exact  element={<Home />} />
         <Route path="/dadospessoais" element={<DadosPessoais />} />
@@ -21,7 +20,6 @@ function App() {
         <Route path="/tipopagamento" element={<TipoPagamento />} />
         <Route path="/carrinho" element={<Carrinho />} />
       </Routes>
-      <Footer />
     </Router>
   );
 }

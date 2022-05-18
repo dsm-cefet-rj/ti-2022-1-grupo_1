@@ -1,0 +1,95 @@
+.cardContent {
+  margin-top: 20px;
+  padding: 20px;
+  border-bottom: 2px solid #ddd;
+  font-weight: bold;
+}
+
+.shoeContent {
+  display: flex;
+  font-size: 14px;
+}
+
+.shoeContent img {
+  border: 2px solid #000;
+  margin-right: 10px;
+}
+
+.utilityContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 20px;
+  font-size: 14px;
+}
+
+.utilityContent img {
+  width: 15px;
+  height: auto;
+  margin: 0px  4px 0px 4px;
+}
+
+.quantidade {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.valor {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+@media (max-width: 425px) {
+  .textoResponsivo{
+    display: none;
+  }
+}
+
+@media (min-width: 768px) {
+  .shoeContent {
+    font-size: 16px;
+    margin-right: 60px;
+  }
+
+  .valor {
+    margin-right: 60px;
+  }
+
+  .cardContent {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .utilityContent {
+    margin-top: 0px;
+    font-size: 16px;
+  }
+
+  .textoResponsivo{
+    margin-right: 10px;
+  }
+  
+}
+
+@media (min-width: 1024px) {
+  .shoeContent {
+    font-size: 18px;
+    margin-right: 100px;
+  }
+
+  .valor {
+    margin-right: 100px;
+  }
+
+  .cardContent {
+    display: flex;
+    align-items: flex-start;
+  }
+
+  .utilityContent {
+    margin-top: 0px;
+    font-size: 18px;
+  }
+  
+}

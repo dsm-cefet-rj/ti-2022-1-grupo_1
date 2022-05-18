@@ -13,6 +13,7 @@ const DadosPessoais = () => {
 
   return (
     <>
+    <Menu></Menu>
         <h2> FINALIZAR COMPRA</h2>
             <div className="div-etapa-pessoal"> 
                 <span> DADOS PESSOAIS</span>
@@ -36,6 +37,7 @@ const DadosPessoais = () => {
                     </div>
                 </form>
             </div>
+            <Footer></Footer>
     </>
     
   )
