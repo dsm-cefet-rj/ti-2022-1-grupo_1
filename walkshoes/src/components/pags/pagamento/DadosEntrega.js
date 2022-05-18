@@ -1,6 +1,8 @@
 import React, { useState } from 'react'
 import "./styles.css"
 import { useNavigate } from 'react-router-dom'
+import Menu from '../../header/menu/Menu'
+import Footer from '../../footer/Footer'
 
 function DadosEntrega() {
     // gerenciamento de dados
@@ -32,9 +34,11 @@ function DadosEntrega() {
 
   return (
       <>
+        <Menu/>
+        <h2> FINALIZAR COMPRA</h2>
         <div className="div-etapa-entrega"> 
-                <span> ENTREGA</span>
-            </div>
+            <span> ENTREGA</span>
+        </div>
             <div>
                 <form onSubmit={handleSubmit}>
                     <div className="dados">
@@ -47,10 +51,11 @@ function DadosEntrega() {
                         <label> Complemento </label>
                         <input type="text" placeholder="Digite o Complemento" name="Complemento" onChange={(event) => setComplemento(event.target.value)}/> 
 
-                        <button type="submit" value="pagamento">IR PARA PAGAMENTO</button>
+                        <button className="btn-proxima" type="submit" value="pagamento">IR PARA PAGAMENTO</button>
                     </div>
                 </form>
             </div>
+        <Footer/>    
       </>
   )
 }
