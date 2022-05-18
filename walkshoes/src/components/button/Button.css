@@ -1,0 +1,42 @@
+.confirmButton {
+  padding: 20px;
+  margin-top: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.myButton {
+  background-color: rgb(249, 109, 22);
+  border-radius: 10px;
+  border: 1px solid #f24f00;
+  cursor: pointer;
+  color: #ffffff;
+  font-size: 10px;
+  padding: 6px 14px;
+  text-decoration: none;
+  text-shadow: 0px 1px 0px #961007;
+}
+
+.myButton:active {
+  position: relative;
+  top: 1px;
+}
+
+@media (min-width: 768px) {
+  .confirmButton{
+    padding: 40px;
+  }
+
+  .myButton {
+    font-size: 18px;
+    padding: 10px 16px;
+  }
+}
+
+@media (min-width: 375px) {
+  .myButton {
+    font-size: 14px;
+    padding: 6px 12px;
+  }
+}
