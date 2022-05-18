@@ -1,0 +1,26 @@
+.listWrapper {
+    display: flex;
+    flex-direction: column;
+}
+
+.favLabel {
+    background-color: #000;
+    font-weight: 400;
+    color: #fff;
+    display: flex;
+    justify-content: space-between;
+    padding: 5px;
+}
+
+.productLabel {
+    display: flex;
+    justify-content: space-between;
+
+    padding-top: 10px;
+    margin-bottom: 10px;
+}
+
+.f1 {
+    font-size: 14px;
+}
+

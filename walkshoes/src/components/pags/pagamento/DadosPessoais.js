@@ -1,36 +1,61 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { useNavigate } from 'react-router-dom'
 import Menu from '../../header/menu/Menu'
 import Footer from '../../footer/Footer'
 import "./styles.css"
 
 const DadosPessoais = () => {
+
+    const[email, setEmail] = useState();
+    const[nome, setNome] = useState();
+    const[cpf, setCpf] = useState();
+    const[telefone, setTelefone] = useState();
+
+    const navigate = useNavigate();
+
+    function handleSubmit(event){
+        event.preventDefault();
+
+        if(!email || !nome || !cpf || !telefone ){
+            alert("preencha todos os campos!")
+        }
+        else{
+            handleEntrega();
+        }
+    }
+
+    function handleEntrega(){
+        navigate('/dadosentrega');
+    };
+
+
   return (
     <>
-    <Menu></Menu>
+    <Menu/>
         <h2> FINALIZAR COMPRA</h2>
-            <div class="div-etapa-pessoal"> 
+            <div className="div-etapa-pessoal"> 
                 <span> DADOS PESSOAIS</span>
             </div>
             <div >
-                <form class="dados">
+                <form className="dados" onSubmit={handleSubmit}>
                     <div>
                         <label> Email </label>
-                        <input type="text" placeholder="Digite seu Email" name="email" required/> 
+                        <input type="text" placeholder="Digite seu Email" name="email" onChange={(event) => setEmail(event.target.value)}/> 
 
                         <label> Nome </label>
-                        <input type="text" placeholder="Digite seu nome" name="nome" required/>
+                        <input type="text" placeholder="Digite seu nome" name="nome" onChange={(event) => setNome(event.target.value)}/>
 
                         <label> CPF </label>
-                        <input type="number" placeholder="Digite seu CPF" name="CPF" required/>
+                        <input type="number" placeholder="Digite seu CPF" name="CPF" onChange={(event) => setCpf(event.target.value)}/>
 
                         <label> Telefone </label>
-                        <input type="number" placeholder="Digite seu telefone" name="telefone" required/>
+                        <input type="number" placeholder="Digite seu telefone" name="telefone" onChange={(event) => setTelefone(event.target.value)}/>
 
-                        <button>IR PARA A ENTREGA</button>
+                        <button className="btn-proxima" type="submit" value="entrega">IR PARA A ENTREGA</button>
                     </div>
                 </form>
             </div>
-            <Footer></Footer>
+            <Footer/>
     </>
     
   )

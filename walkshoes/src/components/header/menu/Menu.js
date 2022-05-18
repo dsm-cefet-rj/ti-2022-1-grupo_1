@@ -1,4 +1,5 @@
 import React from "react";
+import { Link } from "react-router-dom";
 import logo from "./../../../assets/logo.png";
 import "./Menu.css";
 
@@ -7,7 +8,7 @@ export default class Menu extends React.Component {
     return (
       <header>
         <div className="logo">
-          <img src={logo} alt="logo" />
+          <Link to="/"><img src={logo} alt="logo" /> </Link>
         </div>
         <div className="options">
           <ul>
