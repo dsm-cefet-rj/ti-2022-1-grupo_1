@@ -1,5 +1,5 @@
 import React from 'react'
-import CardCarrinho from '../cardCarrinho/CardCarrinho'
+import CardCarrinho from '../card/cardCarrinho/CardCarrinho'
 import './CarrinhoWrapper.css'
 
 const CarrinhoWrapper = () => {
@@ -13,7 +13,7 @@ const CarrinhoWrapper = () => {
   return (
     <>
       <div className="contentWrapper">
-        <h1 className="title">Meu Carrinho</h1>
+        <h1 className="titleCarrinho">Meu Carrinho</h1>
         <div>
           <span className="titleLabel">Produtos</span>
           <CardCarrinho information={information}></CardCarrinho>

@@ -8,7 +8,7 @@ function CardHome (props) {
     return (
       <div className="card">
         <div className="picture">
-          <img src={tenis} />
+          <img className="product" src={tenis} />
         </div>
         <div className="content">
           <p className="title">{props.info.title}</p>

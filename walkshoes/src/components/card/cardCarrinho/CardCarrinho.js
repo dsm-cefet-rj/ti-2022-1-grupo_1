@@ -1,9 +1,9 @@
 import React from 'react'
 import './CardCarrinho.css'
-import imagemTenis from '../../assets/nike-dunk.png'
-import priceIcon from '../../assets/real-icon.png'
-import plusIcon from '../../assets/plus.png'
-import minusIcon from '../../assets/minus.png'
+import imagemTenis from '../../../assets/nike-dunk.png'
+import priceIcon from '../../../assets/real-icon.png'
+import plusIcon from '../../../assets/plus.png'
+import minusIcon from '../../../assets/minus.png'
 
 const CardCarrinho = props => {
   return (
