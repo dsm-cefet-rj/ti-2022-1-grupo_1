@@ -6,6 +6,7 @@ import Footer from "./components/footer/Footer";
 import DadosPessoais from "./components/pags/pagamento/DadosPessoais";
 import DadosEntrega from "./components/pags/pagamento/DadosEntrega";
 import TipoPagamento from "./components/pags/pagamento/TipoPagamento";
+import Pagamento from "./components/pags/pagamento/Pagamento";
 import Home from "./components/pags/home/Home";
 import Carrinho from "./components/pags/carrinho/Carrinho";
 
@@ -18,6 +19,7 @@ function App() {
         <Route path="/dadospessoais" element={<DadosPessoais />} />
         <Route path="/dadosentrega" element={<DadosEntrega />} />
         <Route path="/tipopagamento" element={<TipoPagamento />} />
+        <Route path="/pagamento" element={<Pagamento/>} />
         <Route path="/carrinho" element={<Carrinho />} />
       </Routes>
     </Router>
