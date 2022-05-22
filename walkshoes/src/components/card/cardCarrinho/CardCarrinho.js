@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import './CardCarrinho.css'
 import imagemTenis from '../../../assets/nike-dunk.png'
 import priceIcon from '../../../assets/real-icon.png'
@@ -6,6 +6,20 @@ import plusIcon from '../../../assets/plus.png'
 import minusIcon from '../../../assets/minus.png'
 
 const CardCarrinho = props => {
+  const [counter, setCounter] = useState(1)
+
+  //Incrementa counter
+  const increase = () => {
+    setCounter(count => count + 1)
+  }
+
+  //Decrementa counter
+  const decrease = () => {
+    if (counter > 1) {
+      setCounter(count => count - 1)
+    }
+  }
+
   return (
     <div className="cardContent">
       <div className="shoeContent">
@@ -19,13 +33,13 @@ const CardCarrinho = props => {
         <div className="valor">
           <span className="textoResponsivo">Preço:</span>
           <img src={priceIcon}></img>
-          <span>{props.information.preco}</span> 
+          <span>{props.information.preco}</span>
         </div>
         <div className="quantidade">
           <span className="textoResponsivo">Quantidade:</span>
-          <img src={minusIcon} />
-          <span>1</span> 
-          <img src={plusIcon} />
+          <img src={minusIcon} onClick={decrease} />
+          <span>{counter}</span>
+          <img src={plusIcon} onClick={increase} />
         </div>
       </div>
     </div>

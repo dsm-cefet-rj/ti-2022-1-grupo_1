@@ -1,12 +1,13 @@
 import React from 'react'
 import './ItemsPrice.css'
 
-const ItemsPrice = () => {
+const ItemsPrice = (props) => {
+
   return (
     <div className="generalContent">
       <div className="subtotal">
         <span>Subtotal</span>
-        <span>+ 2.599,98</span>
+        <span>+ {props.prices.precoTotal}</span>
       </div>
 
       <div className="delivery">
@@ -16,7 +17,7 @@ const ItemsPrice = () => {
 
       <div className="allProductPrice">
         <span>Total</span>
-        <span>2.599,98</span>
+        <span>{props.prices.precoTotal}</span>
       </div>
     </div>
   )
