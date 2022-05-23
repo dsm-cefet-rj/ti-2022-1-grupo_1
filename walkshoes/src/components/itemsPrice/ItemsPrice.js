@@ -7,7 +7,7 @@ const ItemsPrice = (props) => {
     <div className="generalContent">
       <div className="subtotal">
         <span>Subtotal</span>
-        <span>+ {props.prices.precoTotal}</span>
+        <span>+ {props.precoTotalItems.toLocaleString("pt-BR", {minimumFractionDigits: 2})}</span>
       </div>
 
       <div className="delivery">
@@ -17,7 +17,7 @@ const ItemsPrice = (props) => {
 
       <div className="allProductPrice">
         <span>Total</span>
-        <span>{props.prices.precoTotal}</span>
+        <span>{props.precoTotalItems.toLocaleString("pt-BR", {minimumFractionDigits: 2})}</span>
       </div>
     </div>
   )

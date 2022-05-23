@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import './CardCarrinho.css'
 import imagemTenis from '../../../assets/nike-dunk.png'
 import priceIcon from '../../../assets/real-icon.png'
@@ -7,18 +7,30 @@ import minusIcon from '../../../assets/minus.png'
 import lixeira from '../../../assets/lixeira.png'
 
 const CardCarrinho = props => {
-  const [counter, setCounter] = useState(1)
+  const [counter, setCounter] = useState(props.information.quantidade)
+  console.log(counter)
+  console.log(props)
+  const [shoeValue, setShoeValue] = useState(props.information.preco)
+
 
   //Incrementa counter
   const increase = () => {
-    setCounter(count => count + 1)
+    setCounter(counter + 1)
+    modificaQuantidade()
   }
 
   //Decrementa counter
   const decrease = () => {
     if (counter > 1) {
-      setCounter(count => count - 1)
+      setCounter(counter - 1)
+      console.log(counter)
     }
+    modificaQuantidade()
+  }
+
+  function modificaQuantidade() {
+    setShoeValue(counter * props.information.preco)
+    props.handleChangeQty(counter, props.information.nome)
   }
 
   return (
@@ -35,7 +47,7 @@ const CardCarrinho = props => {
         <div className="valor">
           <span className="textoResponsivo">Preço:</span>
           <img src={priceIcon}></img>
-          <span>{props.information.preco}</span>
+          <span>{shoeValue.toLocaleString("pt-BR", {minimumFractionDigits: 2})}</span>
         </div>
         <div className="quantidade">
           <span className="textoResponsivo">Quantidade:</span>

@@ -10,10 +10,7 @@ const CarrinhoWrapper = (props) => {
         <h1 className="titleCarrinho">Meu Carrinho</h1>
         <div>
           <span className="titleLabel">Produtos</span>
-          <CardCarrinho information={props.information}></CardCarrinho>
-          <CardCarrinho information={props.information2}></CardCarrinho>    
-          <CardCarrinho information={props.information3}></CardCarrinho> 
-          <CardCarrinho information={props.information4}></CardCarrinho>
+          {props.items.map(shoe => <CardCarrinho information={shoe} handleChangeQty={props.handleChangeQty}></CardCarrinho>)}
         </div>
       </div>
     </>
