@@ -4,6 +4,7 @@ import imagemTenis from '../../../assets/nike-dunk.png'
 import priceIcon from '../../../assets/real-icon.png'
 import plusIcon from '../../../assets/plus.png'
 import minusIcon from '../../../assets/minus.png'
+import lixeira from '../../../assets/lixeira.png'
 
 const CardCarrinho = props => {
   const [counter, setCounter] = useState(1)
@@ -22,6 +23,7 @@ const CardCarrinho = props => {
 
   return (
     <div className="cardContent">
+      <div className="lixeiraLabel"><img src={lixeira}></img></div>
       <div className="shoeContent">
         <img src={imagemTenis} />
         <span className="shoeTitle">

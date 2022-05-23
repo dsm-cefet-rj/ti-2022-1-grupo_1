@@ -1,10 +1,22 @@
 .cardContent {
-  margin-top: 20px;
   padding: 20px;
   border-bottom: 2px solid #ddd;
   font-weight: bold;
 }
 
+.lixeiraLabel {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 10px;
+}
+.lixeiraLabel img {
+  width: 20px;
+  height: auto;
+}
+
+.lixeiraLabel img:hover{
+  cursor: pointer;
+}
 .shoeContent {
   display: flex;
   font-size: 14px;
@@ -59,6 +71,10 @@
   .cardContent {
     display: flex;
     align-items: flex-start;
+  }
+
+  .lixeiraLabel{
+    margin-right: 20px;
   }
 
   .utilityContent {
