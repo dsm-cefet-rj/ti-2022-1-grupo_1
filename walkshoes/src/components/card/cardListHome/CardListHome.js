@@ -31,3 +31,4 @@ export default class CardListHome extends React.Component {
     );
   }
 }
+
