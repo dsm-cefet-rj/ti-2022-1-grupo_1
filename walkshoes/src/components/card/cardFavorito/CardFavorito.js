@@ -1,14 +1,18 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 import './CardFavorito.css'
 import imagemTenis from '../../../assets/nike-dunk.png'
 import priceIcon from '../../../assets/real-icon.png'
 
 const CardFavorito = (props) => {
+
+    const navigate = useNavigate();
+
   return (
     <>
-        <div>
+        <div className="cardHand" onClick={() => navigate("/pagamento")}>
             <div className="productItem f1">
-                <div style={{marginLeft: "10px"}}>
+                <div className="checkw">
                     <input type="checkbox" />
                 </div>
 
