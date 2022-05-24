@@ -8,7 +8,7 @@ const FavoritosWrapper = () => {
   return (
     <>
         <div className="contentWrapper">
-            <Title t="Favoritos"/>
+            <Title t="Meus Favoritos"/>
             <List />
         </div>
     </>
