@@ -18,9 +18,30 @@
 
     padding-top: 10px;
     margin-bottom: 10px;
+
+    padding: 5px;
 }
 
 .f1 {
     font-size: 14px;
 }
 
+.stack {
+    display: flex;
+    flex-direction: column-reverse;
+}
+
+.mid {
+    display: flex;
+    align-items: center;
+}
+
+.checkw {
+    width: 40px;
+}
+
+.listy {
+    display: flex;
+    flex-direction: column;
+    row-gap: 5px;
+}

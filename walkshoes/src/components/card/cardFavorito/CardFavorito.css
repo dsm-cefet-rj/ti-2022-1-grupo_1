@@ -4,7 +4,6 @@
 
 .productContent img {
     height: 70px;
-    border: 2px solid #000;
     margin-right: 10px;
     width: auto;
 }
@@ -20,13 +19,13 @@
 .productItem {
     display: flex;
     align-items: center;
-
     border-bottom: 2px solid #ddd;
+    padding: 5px;
 }
 
 .productContentInfo {
     display: flex;
-    width: 100%;
+    width: 75%;
     
     margin-top: 10px;
     margin-bottom: 10px;
@@ -66,4 +65,22 @@
 
 .f1 {
     font-size: 14px;
+}
+
+.checkw {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    width: 40px;
+}
+
+.cardHand {
+    background-color: white;
+    border-radius: 8px;
+}
+
+.cardHand:hover {
+    background-color: whitesmoke;
+    border: 1px solid black;
+    cursor: pointer;
 }
