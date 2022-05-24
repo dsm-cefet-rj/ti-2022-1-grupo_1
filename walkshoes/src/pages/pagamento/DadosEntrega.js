@@ -1,8 +1,8 @@
 import React, { useState } from 'react'
 import "./styles.css"
 import { useNavigate } from 'react-router-dom'
-import Menu from '../../header/menu/Menu'
-import Footer from '../../footer/Footer'
+import Menu from '../../components/header/menu/Menu'
+import Footer from '../../components/footer/Footer'
 
 function DadosEntrega() {
     // gerenciamento de dados
