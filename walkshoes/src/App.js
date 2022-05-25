@@ -1,11 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-<<<<<<< HEAD
 import React, { useState } from "react";
-=======
-import React from "react";
 import "./components/FontawsomeIcons";
->>>>>>> 83ed8117ce196577a88cde237a734280dd5cecb8
 import DadosPessoais from "./components/pags/pagamento/DadosPessoais";
 import DadosEntrega from "./components/pags/pagamento/DadosEntrega";
 import TipoPagamento from "./components/pags/pagamento/TipoPagamento";
