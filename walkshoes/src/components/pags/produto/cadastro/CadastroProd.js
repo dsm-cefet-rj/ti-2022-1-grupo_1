@@ -4,10 +4,11 @@ import Footer from "../../../footer/Footer";
 import Form from "../../../formProduto/form/Form";
 
 const CadastroProd = (props) => {
+  
   return (
     <>
       <Menu name="Carrinho"></Menu>
-      <Form></Form>
+      <Form cards={props.cards} setCards={props.setCards}></Form>
       <Footer></Footer>
     </>
   );

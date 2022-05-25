@@ -14,7 +14,7 @@ const Chat = () => {
   return (
     <>
       <input type="checkbox" id="click"/>
-              <label for="click" onClick={scrollUp}>
+              <label className="chat-label" for="click" onClick={scrollUp}>
                   <i> <FontAwesomeIcon icon="fa-solid fa-message" /></i>
                   <i class="fas fa-times"></i>
               </label>

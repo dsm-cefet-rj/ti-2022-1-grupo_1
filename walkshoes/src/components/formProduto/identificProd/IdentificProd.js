@@ -1,13 +1,7 @@
-import React, { useState } from "react";
 import "./IdentificProd.css";
 
-export default function IdentificProd(props){
 
-  const [card, setCard] = useState ({});
-
-  function handleUpdatedStatus(e){
-  setCard({...card, [e.target.name]: e.target.value});
-  }
+const IdentificProd = (props) => {
  
   return (
     <div className="ident">
@@ -16,44 +10,41 @@ export default function IdentificProd(props){
       <form className="ident_form">
 
         <div className="ident_content">
-          <label className="ident_label" for="title">
+          <label className="ident_label">
             Título:
           </label>
           <input
             className="ident_input"
             type="text"
-            id="title"
             name="title"
-            value={card.title}
-            onChange={handleUpdatedStatus}
+            value={props.card.title}
+            onChange={props.handleUpdatedStatus}
           ></input>
         </div>
 
         <div className="ident_content">
-          <label className="ident_label" for="cod">
+          <label className="ident_label">
             Código:
           </label>
           <input
             className="ident_input"
             type="text"
-            id="cod"
             name="cod"
-            value={card.cod}
-            onChange={handleUpdatedStatus}
+            value={props.card.cod}
+            onChange={props.handleUpdatedStatus}
           ></input>
         </div>
 
         <div className="ident_content">
-          <label className="ident_label" for="brand">
+          <label className="ident_label">
             Marca:
           </label>
           <input
             className="ident_input"
             type="text"
-            id="brand"
             name="brand"
-            value={card.value}
-            onChange={handleUpdatedStatus}
+            value={props.card.brand}
+            onChange={props.handleUpdatedStatus}
           ></input>
         </div>
 
@@ -61,4 +52,6 @@ export default function IdentificProd(props){
     </div>
   );
 };
+
+export default IdentificProd;
 

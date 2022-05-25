@@ -5,13 +5,13 @@ import HeaderList from "../../header/headerList/HeaderList";
 import Menu from "../../header/menu/Menu";
 import Footer from "../../footer/Footer";
 
-const Home = () => {
+const Home = (props) => {
 
     return (
         <>
        <Menu name="Carrinho"  navigate="/carrinho"></Menu>
         <HeaderList></HeaderList>
-        <CardListHome></CardListHome>
+        <CardListHome card={props.cards}></CardListHome>
         <Footer></Footer>
         <Chat></Chat>
         </>
