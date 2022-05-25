@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import React from "react";
+import "./components/FontawsomeIcons";
 import DadosPessoais from "./components/pags/pagamento/DadosPessoais";
 import DadosEntrega from "./components/pags/pagamento/DadosEntrega";
 import TipoPagamento from "./components/pags/pagamento/TipoPagamento";
