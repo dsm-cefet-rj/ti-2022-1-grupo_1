@@ -31,7 +31,7 @@ function DadosEntrega() {
   return (
     <>
       <Menu name="Carrinho"></Menu>
-
+      <div className="div-pagamento">
       <h2> FINALIZAR COMPRA</h2>
       <div className="div-etapa-entrega">
         <span> ENTREGA</span>
@@ -68,6 +68,7 @@ function DadosEntrega() {
             </button>
           </div>
         </form>
+      </div>
       </div>
       <Footer />
     </>

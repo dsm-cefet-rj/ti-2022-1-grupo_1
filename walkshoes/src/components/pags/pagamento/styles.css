@@ -4,6 +4,12 @@ h2 {
   margin: 15px 0 0 10px;
 }
 
+.div-pagamento{
+  display: flex;
+  min-height: 80vh;
+  flex-direction: column;
+}
+
 .div-etapa-pessoal {
   font-size: 20px;
   font-weight: bold;
