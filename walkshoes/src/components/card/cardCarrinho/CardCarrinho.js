@@ -8,34 +8,34 @@ import lixeira from '../../../assets/lixeira.png'
 
 const CardCarrinho = props => {
   const [counter, setCounter] = useState(props.information.quantidade)
-  console.log(counter)
-  console.log(props)
   const [shoeValue, setShoeValue] = useState(props.information.preco)
-
 
   //Incrementa counter
   const increase = () => {
     setCounter(counter + 1)
-    modificaQuantidade()
+    modificaQuantidade(counter + 1)
   }
 
   //Decrementa counter
   const decrease = () => {
     if (counter > 1) {
       setCounter(counter - 1)
-      console.log(counter)
+      modificaQuantidade(counter - 1)
+      return
     }
-    modificaQuantidade()
+    modificaQuantidade(counter)
   }
 
-  function modificaQuantidade() {
-    setShoeValue(counter * props.information.preco)
-    props.handleChangeQty(counter, props.information.nome)
+  function modificaQuantidade(contador) {
+    setShoeValue(contador * props.information.preco)
+    props.handleChangeQty(contador, props.information.nome)
   }
 
   return (
     <div className="cardContent">
-      <div className="lixeiraLabel"><img src={lixeira}></img></div>
+      <div className="lixeiraLabel">
+        <img src={lixeira}></img>
+      </div>
       <div className="shoeContent">
         <img src={imagemTenis} />
         <span className="shoeTitle">
@@ -47,7 +47,9 @@ const CardCarrinho = props => {
         <div className="valor">
           <span className="textoResponsivo">Preço:</span>
           <img src={priceIcon}></img>
-          <span>{shoeValue.toLocaleString("pt-BR", {minimumFractionDigits: 2})}</span>
+          <span>
+            {shoeValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+          </span>
         </div>
         <div className="quantidade">
           <span className="textoResponsivo">Quantidade:</span>
