@@ -2,11 +2,19 @@ import React from "react";
 import './Chat.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
+    const scrollUp = () =>{
+        window.scrollTo({
+            top: 0,
+            behavior: "smooth"
+        })
+    };
+
+
 const Chat = () => {
   return (
     <>
       <input type="checkbox" id="click"/>
-              <label for="click">
+              <label for="click" onClick={scrollUp}>
                   <i> <FontAwesomeIcon icon="fa-solid fa-message" /></i>
                   <i class="fas fa-times"></i>
               </label>
