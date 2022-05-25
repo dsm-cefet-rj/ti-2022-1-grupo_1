@@ -1,0 +1,54 @@
+.ident{
+    padding: 0 10px 10px 10px;
+    border: 1px solid #6666;
+    margin-bottom: 10px;
+}
+
+.ident_title{
+    display: flex;
+    margin: 12px 0 10px 0;
+    font-family: system-ui;
+    font-weight: 200;
+    font-size: 25px;
+}
+
+.ident_content{
+    display: flex;
+}
+
+.ident_label{
+    width: 80px;
+    font-family: system-ui;
+    font-size: 15px;
+}
+
+.ident_input{
+    width: 100%;
+    margin-bottom: 3px;
+}
+
+@media(min-width: 768px){
+    .ident_form{
+        display: flex;
+    }
+
+    .ident_label{
+        width: initial;
+        margin-left: 7px;
+    }
+
+    .ident_content{
+        width: 100%;
+        gap: 3px;
+    }
+}
+
+@media(min-width: 1024px){
+    .ident_title{
+        font-size: 27px;
+    }
+
+    .ident_label{
+        font-size: 17px;
+    }
+}

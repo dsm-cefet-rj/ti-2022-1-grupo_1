@@ -6,9 +6,10 @@ import Menu from "../../header/menu/Menu";
 import Footer from "../../footer/Footer";
 
 const Home = () => {
+
     return (
         <>
-       <Menu></Menu>
+       <Menu name="Carrinho"  navigate="/carrinho"></Menu>
         <HeaderList></HeaderList>
         <CardListHome></CardListHome>
         <Footer></Footer>

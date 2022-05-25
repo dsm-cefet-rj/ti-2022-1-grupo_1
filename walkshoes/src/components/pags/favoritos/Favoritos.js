@@ -7,12 +7,11 @@ import Chat from "../../chat/Chat";
 const Favoritos = () => {
   return (
     <>
-        <Menu />
-        <Wrapper />
-        <Footer />
-        <Chat></Chat>
+      <Menu name="Carrinho"></Menu>
+      <Wrapper />
+      <Footer />
     </>
-  )
-}
+  );
+};
 
-export default Favoritos
+export default Favoritos;
