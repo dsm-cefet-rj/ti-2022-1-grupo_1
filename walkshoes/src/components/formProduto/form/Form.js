@@ -3,7 +3,8 @@ import IdentificProd from "../identificProd/IdentificProd";
 import InfoProd from "../infoProd/InfoProd";
 import "./Form.css";
 
-const Form = () => {
+export default function Form(props){
+
   return (
     <div className="formgeral">
         <h3 className="form_title">Cadastro de Produto</h3>
@@ -18,4 +19,4 @@ const Form = () => {
   );
 };
 
-export default Form;
+

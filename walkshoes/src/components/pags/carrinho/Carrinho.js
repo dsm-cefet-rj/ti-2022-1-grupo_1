@@ -58,7 +58,7 @@ const Carrinho = () => {
 
   return (
     <>
-      <Menu></Menu>
+      <Menu name="Home"></Menu>
       <CarrinhoWrapper
         items={items}
         handleChangeQty={handleChangeQty}

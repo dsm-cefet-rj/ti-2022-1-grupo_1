@@ -3,15 +3,15 @@ import "./OfferHome.css";
 import money from "../../assets/real-icon.png";
 
 
-export default class OfferHome extends React.Component {
-  render() {
+export default function OfferHome(props){
+
     return (
       <div className="offer">
           <img className="money" src={money} />
         <p className="value">
-          200,00
+          {props.card}
         </p>
       </div>
     );
   }
-}
+

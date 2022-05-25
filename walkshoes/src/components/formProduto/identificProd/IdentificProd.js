@@ -1,7 +1,14 @@
-import React from "react";
+import React, { useState } from "react";
 import "./IdentificProd.css";
 
-const IdentificProd = () => {
+export default function IdentificProd(props){
+
+  const [card, setCard] = useState ({});
+
+  function handleUpdatedStatus(e){
+  setCard({...card, [e.target.name]: e.target.value});
+  }
+ 
   return (
     <div className="ident">
       <h3 className="ident_title">Identificação do produto</h3>
@@ -17,6 +24,8 @@ const IdentificProd = () => {
             type="text"
             id="title"
             name="title"
+            value={card.title}
+            onChange={handleUpdatedStatus}
           ></input>
         </div>
 
@@ -28,7 +37,9 @@ const IdentificProd = () => {
             className="ident_input"
             type="text"
             id="cod"
-            name="title"
+            name="cod"
+            value={card.cod}
+            onChange={handleUpdatedStatus}
           ></input>
         </div>
 
@@ -40,7 +51,9 @@ const IdentificProd = () => {
             className="ident_input"
             type="text"
             id="brand"
-            name="title"
+            name="brand"
+            value={card.value}
+            onChange={handleUpdatedStatus}
           ></input>
         </div>
 
@@ -49,4 +62,3 @@ const IdentificProd = () => {
   );
 };
 
-export default IdentificProd;

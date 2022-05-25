@@ -3,10 +3,10 @@ import Menu from "../../../header/menu/Menu";
 import Footer from "../../../footer/Footer";
 import Form from "../../../formProduto/form/Form";
 
-const CadastroProd = () => {
+const CadastroProd = (props) => {
   return (
     <>
-      <Menu></Menu>
+      <Menu name="Carrinho"></Menu>
       <Form></Form>
       <Footer></Footer>
     </>

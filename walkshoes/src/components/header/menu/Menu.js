@@ -2,9 +2,17 @@ import React from "react";
 import { Link } from "react-router-dom";
 import logo from "./../../../assets/logo.png";
 import "./Menu.css";
+import { useNavigate } from 'react-router-dom'
 
-export default class Menu extends React.Component {
-  render() {
+
+export default function Menu(props) {
+
+  const navigate = useNavigate();
+
+    function handleNavigate(){
+        navigate('/carrinho');
+    };
+  
     return (
       <header>
         <div className="logo">
@@ -12,8 +20,8 @@ export default class Menu extends React.Component {
         </div>
         <div className="options">
           <ul>
-            <li>
-              Carrinho
+            <li onClick={handleNavigate}>
+              {props.name}
               <hr />
             </li>
             <li>Login</li>
@@ -22,4 +30,4 @@ export default class Menu extends React.Component {
       </header>
     );
   }
-}
+
