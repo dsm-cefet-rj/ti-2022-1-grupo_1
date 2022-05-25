@@ -10,6 +10,7 @@ export const data = [
         type: "Masculino",
         value: "650,00",
         situation: "Disponivel",
+        selected: false,
       },
       {
         id: 1,
@@ -19,6 +20,7 @@ export const data = [
         type: "Feminino",
         value: "950,00",
         situation: "Disponivel",
+        selected: false,
       },
       {
         id: 2,
@@ -28,6 +30,7 @@ export const data = [
         type: "Esportivo",
         value: "349,00",
         situation: "Disponivel",
+        selected: false,
       },
       {
         id: 3,
@@ -37,6 +40,7 @@ export const data = [
         type: "Feminino",
         value: "260,00",
         situation: "Disponivel",
+        selected: false,
       },
       {
         id: 4,
@@ -46,6 +50,7 @@ export const data = [
         type: "Feminino",
         value: "570,00",
         situation: "Disponivel",
+        selected: false,
       },
       {
         id: 5,
@@ -55,6 +60,7 @@ export const data = [
         type: "Masculino",
         value: "450,00",
         situation: "Disponivel",
+        selected: false,
       },
       {
         id: 6,
@@ -64,6 +70,7 @@ export const data = [
         type: "Esportivo",
         value: "600,00",
         situation: "Disponivel",
+        selected: false,
       },
       {
         id: 7,
@@ -73,5 +80,6 @@ export const data = [
         type: "Feminino",
         value: "950,00",
         situation: "Disponivel",
+        selected: false,
       },
 ];

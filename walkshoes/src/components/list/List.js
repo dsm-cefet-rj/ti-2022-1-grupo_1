@@ -7,11 +7,27 @@ import { data } from '../pags/favoritos/data/data.js'
 const List = () => {
 
     //State para usar como 'pesquisa'
-    const [search, setSearch] = useState("");
+    const [ search, setSearch ] = useState("");
     const toSearch = (s) => {
         setSearch(s);
         console.log("Pesquisando: " + s);
     };
+
+    //State para guardar os dados
+    const [ favData, setFavData ] = useState(data);
+    const [ selected, setSelect ] = useState(false);
+
+    function handleSelectAll(e) {
+        const novoArray = favData.map(item => 
+            {
+                return { ...item, selected: selected}
+            }
+        );
+
+        console.log(novoArray)
+        setSelect(!selected);
+        setFavData(novoArray);
+    }
 
     //Efeito Colateral para filtrar card (WIP)
     useEffect(() => {
@@ -39,19 +55,17 @@ const List = () => {
                         <input 
                             type="checkbox" 
                             name="select-all"
+                            checked={selected}
+                            onChange={handleSelectAll}
                         />
-                        <label htmlFor="select-all">Todos</label>
+                        <label htmlFor="select-all" className='f1'>Todos</label>
                     </div>
                     <button style={{display: "flex", alignSelf: "center", alignItems: "center", height: "25px"}} disabled>Excluir</button>
                 </div>
             </div>
 
             <div className='listy'>
-                {/* <Card name="Nike Air-Max Axis Premium" price="200,00" situacao="Em estoque" />
-                <Card name="Nike Air-Max Axis Premium" price="200,00" situacao="Em estoque" />
-                <Card name="Nike Air-Max Axis Premium" price="200,00" situacao="Em estoque" /> */}
-
-                {data.map(
+                {favData.map(
                     (item) => <Card
                         key={item.id}
                         id={item.id}
