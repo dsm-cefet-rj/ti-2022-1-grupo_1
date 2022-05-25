@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from 'react'
-import ItemsPrice from '../../itemsPrice/ItemsPrice'
-import CarrinhoWrapper from '../../carrinhoWrapper/CarrinhoWrapper'
-import Menu from '../../../components/header/menu/Menu'
-import Button from '../../button/Button'
+import ItemsPrice from '../../components/itemsPrice/ItemsPrice'
+import CarrinhoWrapper from '../../components/carrinhoWrapper/CarrinhoWrapper'
+import Menu from '../../components/header/menu/Menu'
+import Button from '../../components/button/Button'
 
 const Carrinho = () => {
   const [totalValue, setTotalValue] = useState(0)
