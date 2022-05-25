@@ -1,13 +1,13 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import React from "react";
-import DadosPessoais from "./pages/pagamento/DadosPessoais";
-import DadosEntrega from "./pages/pagamento/DadosEntrega";
-import TipoPagamento from "./pages/pagamento/TipoPagamento";
-import Pagamento from "./pages/pagamento/Pagamento";
-import Home from "./pages/home/Home";
-import Carrinho from "./pages/carrinho/Carrinho";
-import Favoritos from "./pages/favoritos/Favoritos";
+import DadosPessoais from "./components/pags/pagamento/DadosPessoais";
+import DadosEntrega from "./components/pags/pagamento/DadosEntrega";
+import TipoPagamento from "./components/pags/pagamento/TipoPagamento";
+import Pagamento from "./components/pags/pagamento/Pagamento";
+import Home from "./components/pags/home/Home";
+import Carrinho from "./components/pags/carrinho/Carrinho";
+import Favoritos from "./components/pags/favoritos/Favoritos";
 
 
 function App() {

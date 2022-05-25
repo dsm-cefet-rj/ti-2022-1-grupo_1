@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
-import Menu from '../../components/header/menu/Menu'
-import Footer from '../../components/footer/Footer'
+import Menu from '../../header/menu/Menu'
+import Footer from '../../footer/Footer'
 import "./styles.css"
 
 function Pagamento() {

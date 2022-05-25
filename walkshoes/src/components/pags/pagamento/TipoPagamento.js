@@ -1,7 +1,7 @@
 import React from 'react'
 import "./styles.css"
-import Menu from '../../components/header/menu/Menu'
-import Footer from '../../components/footer/Footer'
+import Menu from '../../header/menu/Menu'
+import Footer from '../../footer/Footer'
 import { useNavigate } from 'react-router-dom'
 
 

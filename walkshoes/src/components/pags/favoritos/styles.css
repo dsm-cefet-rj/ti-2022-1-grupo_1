@@ -204,6 +204,18 @@ main img {
     top: 1px;
 }
 
+footer {
+    font-size: 0.8rem;
+    border-top: 3px solid #ddd;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 8vh;
+    color: #ffffff;
+    background: #000;
+}
+
 @media (max-width: 375px) {
     html {
         font-size: 30%;
