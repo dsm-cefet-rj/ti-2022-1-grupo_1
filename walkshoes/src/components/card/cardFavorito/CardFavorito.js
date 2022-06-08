@@ -11,15 +11,10 @@ const CardFavorito = (props) => {
     //States de propriedades do card
     const [ selected, setSelect ] = useState(data.selected);
     const [ img, setImage ] = useState(data.img);
-    const [ nome, setNome ] = useState(data.title);
+    const [ nome, setNome ] = useState(data.nome);
     const [ icon, setIcon ] = useState(data.icon);
-    const [ price, setPrice ] = useState(data.value);
+    const [ price, setPrice ] = useState(data.preco);
     const [ situation, setSituation ] = useState(data.situation);
-
-    //Efeito Colateral para atualizar estados (WIP)
-    useEffect(() => {
-        
-    }, []);
 
     function handleSelect(e) {
         setSelect(!selected);
