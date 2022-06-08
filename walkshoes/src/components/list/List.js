@@ -1,5 +1,9 @@
 import React, { useState, useEffect } from 'react'
 import Card from '../../components/card/cardFavorito/CardFavorito'
+import { useDispatch } from 'react-redux';
+import { createCard } from '../../store/favSlice.js';
+import { useSelector } from 'react-redux';
+import { selectCards } from '../../store/favSlice.js';
 import './List.css'
 
 import { data } from '../pags/favoritos/data/data.js'
@@ -14,20 +18,23 @@ const List = () => {
     };
 
     //State para guardar os dados
-    const [ favData, setFavData ] = useState(data);
+    const favData = useSelector(selectCards);
+    
     const [ selected, setSelect ] = useState(false);
 
-    function handleSelectAll(e) {
-        const novoArray = favData.map(item => 
-            {
-                return { ...item, selected: selected}
-            }
-        );
+    const dispatch = useDispatch();
 
-        console.log(novoArray)
-        setSelect(!selected);
-        setFavData(novoArray);
-    }
+    // function handleSelectAll(e) {
+    //     const novoArray = favData.map(item => 
+    //         {
+    //             return { ...item, selected: selected}
+    //         }
+    //     );
+
+    //     console.log(novoArray)
+    //     setSelect(!selected);
+    //     setFavData(novoArray);
+    // }
 
     //Efeito Colateral para filtrar card (WIP)
     useEffect(() => {
@@ -45,7 +52,7 @@ const List = () => {
                         placeholder="Pesquisar"
                         onChange={(e) => toSearch(e.target.value)} 
                     />
-                    <button>Ordenar</button>
+                    <button onClick={handleNew}>Ordenar</button>
                 </div>
             </div>
 
@@ -56,7 +63,7 @@ const List = () => {
                             type="checkbox" 
                             name="select-all"
                             checked={selected}
-                            onChange={handleSelectAll}
+                            // onChange={handleSelectAll}
                         />
                         <label htmlFor="select-all" className='f1'>Todos</label>
                     </div>
@@ -76,7 +83,19 @@ const List = () => {
             
         </div>
     </>
-  )
+  );
+
+  function handleNew () {
+      dispatch(createCard({
+        id: 0,
+        nome: "Dunk low",
+        preco: 799.99,
+        tamanho: 42,
+        estado: "usado",
+        quantidade: 1,
+        img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
+      }));
+  }
 }
 
 export default List
