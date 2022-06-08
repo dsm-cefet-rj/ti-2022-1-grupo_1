@@ -11,12 +11,12 @@ import Home from "./components/pags/home/Home";
 import Carrinho from "./components/pags/carrinho/Carrinho";
 import Favoritos from "./components/pags/favoritos/Favoritos";
 import CadastroProd from "./components/pags/produto/cadastro/CadastroProd";
-import tenis1 from "./assets/adidas1.jpeg"
-import tenis2 from "./assets/nike2.jpg"
-import tenis3 from "./assets/nike3.jpg"
-import tenis4 from "./assets/nike4.jpg"
-import tenis5 from "./assets/puma1.jpg"
-import footer from "./components/footer/Footer";
+// import tenis1 from "./assets/adidas1.jpeg"
+// import tenis2 from "./assets/nike2.jpg"
+// import tenis3 from "./assets/nike3.jpg"
+// import tenis4 from "./assets/nike4.jpg"
+// import tenis5 from "./assets/puma1.jpg"
+// import footer from "./components/footer/Footer";
 import InfoProd from "./components/pags/infoProd/InfoProd";
 
 
@@ -25,13 +25,18 @@ function App() {
   const [cards, setCards] = useState([]);
 
   useEffect(() => {
-    fetch('http://localhost:3000/tenis')
+    fetch('http://localhost:3000/api/db.json')
     .then(res=>{
       return res.json();
     })
     .then((data)=>{
+      console.log(data);
       setCards(data);
     })
+    .catch((err)=>{
+      console.log(err, 'error');
+    })
+    console.log('Done');
   }, []);
 
 
