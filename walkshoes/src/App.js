@@ -1,6 +1,7 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import React, {useState, useEffect} from "react";
+import { Provider } from 'react-redux';
 import "./components/FontawsomeIcons";
 import DadosPessoais from "./components/pags/pagamento/DadosPessoais";
 import DadosEntrega from "./components/pags/pagamento/DadosEntrega";
@@ -19,6 +20,9 @@ import tenis5 from "./assets/puma1.jpg"
 import footer from "./components/footer/Footer";
 import InfoProd from "./components/pags/infoProd/InfoProd";
 
+import { saveState } from './store/localStorage.js';
+import debounce from 'lodash.debounce';
+import store from './store/store.js';
 
 function App() {
 
@@ -34,22 +38,29 @@ function App() {
     })
   }, []);
 
+  store.subscribe(
+    debounce(() => {
+      saveState(store.getState());
+    }, 1000)
+  );
 
   return (
-    <Router>
-      <Routes>
-        <Route path="/" exact  element={<Home cards={cards}/>}/>
-        <Route path="/dadospessoais" element={<DadosPessoais />} />
-        <Route path="/dadosentrega" element={<DadosEntrega />} />
-        <Route path="/tipopagamento" element={<TipoPagamento />} />
-        <Route path="/pagamento" element={<Pagamento/>} />
-        <Route path="/carrinho" element={<Carrinho />} />
-        <Route path="/favoritos" element={<Favoritos />}/>
-        <Route path="/cadastroprod" element={<CadastroProd cards={cards} setCards={setCards}/>}/>
-        <Route path="/infoprod" element={<InfoProd cards={cards}/>}/>
-        {/* <Footer></Footer> */}
-      </Routes>
-    </Router>
+    <Provider store={store}>
+      <Router>
+        <Routes>
+          <Route path="/" exact  element={<Home cards={cards}/>}/>
+          <Route path="/dadospessoais" element={<DadosPessoais />} />
+          <Route path="/dadosentrega" element={<DadosEntrega />} />
+          <Route path="/tipopagamento" element={<TipoPagamento />} />
+          <Route path="/pagamento" element={<Pagamento/>} />
+          <Route path="/carrinho" element={<Carrinho />} />
+          <Route path="/favoritos" element={<Favoritos />}/>
+          <Route path="/cadastroprod" element={<CadastroProd cards={cards} setCards={setCards}/>}/>
+          <Route path="/infoprod" element={<InfoProd cards={cards}/>}/>
+          {/* <Footer></Footer> */}
+        </Routes>
+      </Router>
+    </Provider>
   );
 }
 
