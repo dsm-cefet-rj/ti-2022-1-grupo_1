@@ -1,6 +1,6 @@
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 import "./components/FontawsomeIcons";
 import DadosPessoais from "./components/pags/pagamento/DadosPessoais";
 import DadosEntrega from "./components/pags/pagamento/DadosEntrega";
@@ -22,56 +22,17 @@ import InfoProd from "./components/pags/infoProd/InfoProd";
 
 function App() {
 
-  const [cards, setCards] = useState([
-    {
-      img: tenis5,
-      title: "Puma Runner BDP Masculino",
-      type: "Masculino",
-      value: "650,00",
-    },
-    {
-      img: tenis1,
-      title: "Adidas Solar Blaze Masculino",
-      type: "Feminino",
-      value: "950,00",
-    },
-    {
-      img: tenis4,
-      title: "Tênis Nike Flex 2016 RN Masculino",
-      type: "Esportivo",
-      value: "349,00",
-    },
-    {
-      img: tenis3,
-      title: "Nike Air-Max Axis Premium",
-      type: "Feminino",
-      value: "260,00",
-    },
-    {
-      img: tenis4,
-      title: "Tênis Nike Flex 2016 RN Masculino",
-      type: "Feminino",
-      value: "570,00",
-    },
-    {
-      img:tenis5,
-      title: "Puma Runner BDP Masculino",
-      type: "Masculino",
-      value: "450,00",
-    },
-    {
-      img:tenis2,
-      title: "Nike Air Max Axis Boys",
-      type: "Esportivo",
-      value: "600,00",
-    },
-    {
-      img:tenis3,
-      title: "Nike Air-Max Axis Premium",
-      type: "Feminino",
-      value: "950,00",
-    },
-  ]);
+  const [cards, setCards] = useState([]);
+
+  useEffect(() => {
+    fetch('http://localhost:3000/tenis')
+    .then(res=>{
+      return res.json();
+    })
+    .then((data)=>{
+      setCards(data);
+    })
+  }, []);
 
 
   return (
