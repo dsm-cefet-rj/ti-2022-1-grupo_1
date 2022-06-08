@@ -4,14 +4,13 @@ import Footer from "../../footer/Footer";
 import HeaderList from "../../header/headerList/HeaderList";
 import ContentInfo from "../../product/contentInfo/ContentInfo";
 
-const InfoProd = (props) => {
+const InfoProd = () => {
   
   return (
     <>
       <Menu name="Carrinho"></Menu>
       <HeaderList></HeaderList>
-      <ContentInfo cards={props.cards}></ContentInfo>
-      <Footer></Footer>
+      <ContentInfo></ContentInfo>
     </>
   );
 };

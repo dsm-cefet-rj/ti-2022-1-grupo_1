@@ -1,7 +1,36 @@
-.prodimgs{
-   display: flex;
+.prodimgs {
+  display: flex;
+  justify-content: center;
+  width: 80%;
+  margin-left: 60px;
+  border: solid 1px #6666;
 }
 
-.shoes{
-    width: 100%;
+.shoes {
+  width: 350px;
+  height: auto;
+}
+
+@media (min-width: 1280px) {
+    .prodimgs {
+        width: 35em;
+      }
+  }
+  
+
+@media (max-width: 768px) {
+  .prodimgs {
+    margin-left: 20px;
+  }
+
+  .shoes{
+      width: 100%;
+  }
+}
+
+@media(max-width: 475px){
+    .prodimgs{
+        justify-self: center;
+        margin: 0 0 5px;
+    }
 }
