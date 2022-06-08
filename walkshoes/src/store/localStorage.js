@@ -17,3 +17,17 @@ export const saveState = (state) => {
         // ignore write errors
     }
 };
+
+window.onbeforeunload = function (e) {
+    window.localStorage.unloadTime = JSON.stringify(new Date());
+};
+    
+window.onload = function () {
+    let loadTime = new Date();
+    let unloadTime = new Date(JSON.parse(window.localStorage.unloadTime));
+    let refresh = loadTime.getTime() - unloadTime.getTime();
+    
+    if(refresh>5000){
+        window.localStorage.removeItem("state");
+    }
+};
