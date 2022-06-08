@@ -1,0 +1,33 @@
+.infoprodct {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+
+.infoprodct2{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+}
+
+.titleproduct {
+ 
+}
+
+.categoryproduct {
+ 
+}
+
+.valueproduct {
+ 
+}
+
+.descriptionproduct {
+  
+}
+
+.tamproduct {
+ 
+}

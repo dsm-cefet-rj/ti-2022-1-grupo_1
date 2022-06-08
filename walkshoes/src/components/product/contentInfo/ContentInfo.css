@@ -1,0 +1,17 @@
+.contentinfo {
+  display: grid;
+  grid-template-areas:
+    "img info"
+    "img info"
+    "img info";
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+}
+
+.prodimg {
+  grid-area: img;
+}
+
+.prodinfo {
+  grid-area: info;
+}

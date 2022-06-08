@@ -4,6 +4,7 @@ import React, {useState} from "react";
 import "./components/FontawsomeIcons";
 import DadosPessoais from "./components/pags/pagamento/DadosPessoais";
 import DadosEntrega from "./components/pags/pagamento/DadosEntrega";
+import Footer from "./components/footer/Footer";
 import TipoPagamento from "./components/pags/pagamento/TipoPagamento";
 import Pagamento from "./components/pags/pagamento/Pagamento";
 import Home from "./components/pags/home/Home";
@@ -15,6 +16,8 @@ import tenis2 from "./assets/nike2.jpg"
 import tenis3 from "./assets/nike3.jpg"
 import tenis4 from "./assets/nike4.jpg"
 import tenis5 from "./assets/puma1.jpg"
+import footer from "./components/footer/Footer";
+import InfoProd from "./components/pags/infoProd/InfoProd";
 
 
 function App() {
@@ -82,6 +85,8 @@ function App() {
         <Route path="/carrinho" element={<Carrinho />} />
         <Route path="/favoritos" element={<Favoritos />}/>
         <Route path="/cadastroprod" element={<CadastroProd cards={cards} setCards={setCards}/>}/>
+        <Route path="/infoprod" element={<InfoProd cards={cards}/>}/>
+        {/* <Footer></Footer> */}
       </Routes>
     </Router>
   );
