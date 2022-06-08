@@ -26,8 +26,8 @@ export default function Form(props){
     e.preventDefault();
     dispatch(createCard({
         id: 0,
-        nome: "Dunk low",
-        preco: 799.99,
+        nome: card.title,
+        preco: card.value,
         tamanho: 42,
         estado: "usado",
         quantidade: 1,
