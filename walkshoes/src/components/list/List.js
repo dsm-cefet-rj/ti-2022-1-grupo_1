@@ -6,40 +6,46 @@ import { useSelector } from 'react-redux';
 import { selectCards } from '../../store/favSlice.js';
 import './List.css'
 
-import { data } from '../pags/favoritos/data/data.js'
-
 const List = () => {
+
+    //State para guardar os dados
+    const favData = useSelector(selectCards);
+
+    const [ selected, setSelect ] = useState(false);
+    const [ data, setData ] = useState();
+    const [ filteredData, setFilteredData ] = useState();
 
     //State para usar como 'pesquisa'
     const [ search, setSearch ] = useState("");
     const toSearch = (s) => {
         setSearch(s);
-        console.log("Pesquisando: " + s);
+        if(s != '') {
+            const fdata = data.filter((item) => {
+                return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
+            })
+            setFilteredData(fdata);
+        }
+        else {
+            setFilteredData(data);
+        }
     };
 
-    //State para guardar os dados
-    const favData = useSelector(selectCards);
-    
-    const [ selected, setSelect ] = useState(false);
-
     const dispatch = useDispatch();
-
-    // function handleSelectAll(e) {
-    //     const novoArray = favData.map(item => 
-    //         {
-    //             return { ...item, selected: selected}
-    //         }
-    //     );
-
-    //     console.log(novoArray)
-    //     setSelect(!selected);
-    //     setFavData(novoArray);
-    // }
 
     //Efeito Colateral para filtrar card (WIP)
     useEffect(() => {
         
     }, []);
+
+    useEffect(() => {
+        fetch('http://localhost:3000/tenis')
+        .then(res=>{
+          return res.json();
+        })
+        .then((data)=>{
+          setData(data);
+        })
+      }, []);
 
   return (
     <>
@@ -62,8 +68,6 @@ const List = () => {
                         <input 
                             type="checkbox" 
                             name="select-all"
-                            checked={selected}
-                            // onChange={handleSelectAll}
                         />
                         <label htmlFor="select-all" className='f1'>Todos</label>
                     </div>
@@ -85,17 +89,25 @@ const List = () => {
     </>
   );
 
-  function handleNew () {
-      dispatch(createCard({
-        id: 0,
-        nome: "Dunk low",
-        preco: 799.99,
-        tamanho: 42,
-        estado: "usado",
-        quantidade: 1,
-        img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
-      }));
-  }
+//   function handleNew () {
+//     const random_id = Math.floor(Math.random() * 5) + 1;
+
+//     dispatch(createCard(
+//             data.find((item) => (item.id === random_id))
+//         )
+//     );
+//   }
+    function handleNew () {
+        dispatch(createCard({
+            id: 0,
+            nome: "Dunk low",
+            preco: 799.99,
+            tamanho: 42,
+            estado: "usado",
+            quantidade: 1,
+            img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
+            }));
+    }
 }
 
 export default List
