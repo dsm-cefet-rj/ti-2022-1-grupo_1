@@ -1,33 +1,144 @@
-.infoprodct {
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
+.columns {
+  display: flex;
+  flex-direction: column;
 }
 
-.infoprodct2{
-    display: flex;
-    flex-direction: column;
-    text-align: center;
-    width: 100%;
+.infoprodct {
+  height: 30%;
+}
+
+.infoprodct2 {
+  height: 45%;
+}
+
+.buttonprodct {
+  height: 35%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  gap: 5px;
+}
+
+.productbutton {
+  height: 40px;
+  width: 200px;
+  background-color: rgb(249, 109, 22);
+  border: 0;
+  color: white;
+  border-radius: 10px;
+  font-family: open sans-serif;
+  font-size: 14px;
 }
 
 .titleproduct {
- 
+  font-size: 30px;
+  margin: 0;
+  width: 100%;
 }
 
 .categoryproduct {
- 
+  font-size: 20px;
+  margin: 0;
+  width: 100%;
 }
 
 .valueproduct {
- 
+  font-size: 18px;
+  margin: 0;
+  width: 100%;
 }
 
 .descriptionproduct {
-  
+  font-size: 16px;
+  margin: 0;
+  width: 100%;
 }
 
 .tamproduct {
- 
+  font-size: 16px;
+  margin: 0;
+  width: 100%;
 }
+
+@media (max-width: 768px) {
+    .columns {
+      width: 100%;
+    }
+  
+    .infoprodct {
+    margin-bottom: 20px;
+    }
+  
+    .infoprodct2 {
+      margin-bottom: 20px;
+    }
+  
+    .titleproduct {
+      font-size: 25px;
+      width: 100%;
+    }
+  
+    .categoryproduct {
+      font-size: 15px;
+      width: 100%;
+    }
+  
+    .valueproduct {
+      font-size: 14px;
+      width: 100%;
+    }
+  
+    .descriptionproduct {
+      font-size: 14px;
+      width: 100%;
+    }
+  
+    .tamproduct {
+      font-size: 14px;
+      width: 100%;
+    }
+    .productbutton {
+      align-self: center;
+    }
+  }
+  
+  @media (max-width: 475px) {
+    .columns {
+      width: 100%;
+    }
+  
+    .infoprodct {
+      margin-bottom: 15px;
+      margin-left: 40px;
+    }
+  
+    .infoprodct2 {
+      margin-left: 40px;
+      margin-bottom: 20px;
+    }
+  
+    .titleproduct {
+      font-size: 25px;
+    }
+  
+    .categoryproduct {
+      font-size: 15px;
+    }
+  
+    .valueproduct {
+      font-size: 14px;
+    }
+  
+    .descriptionproduct {
+      font-size: 14px;
+    }
+  
+    .tamproduct {
+      font-size: 14px;
+      
+    }
+    .productbutton {
+      align-self: center;
+    }
+  }
+  

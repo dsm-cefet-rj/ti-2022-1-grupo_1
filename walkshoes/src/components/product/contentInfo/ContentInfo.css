@@ -2,10 +2,9 @@
   display: grid;
   grid-template-areas:
     "img info"
-    "img info"
     "img info";
-    grid-template-columns: 2fr 1fr;
-    grid-template-rows: 1fr 1fr 1fr;
+  grid-template-columns: 2fr 1fr;
+  padding: 0 0 10px 0;
 }
 
 .prodimg {
@@ -15,3 +14,19 @@
 .prodinfo {
   grid-area: info;
 }
+
+@media (min-width: 1280px) {
+  .contentinfo {
+    grid-template-columns: 1fr 1fr;
+  }
+}
+
+@media (max-width: 475px) {
+  .contentinfo {
+    grid-template-columns: initial;
+    grid-template-areas: initial;
+  }
+}
+
+
+

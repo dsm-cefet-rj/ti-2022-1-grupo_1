@@ -10,7 +10,7 @@ function CardHome (props) {
         </div>
         <div className="content">
           <p className="titlehome">{props.card.nome}</p>
-          <p className="type">{props.card.tamanho}</p>
+          <p className="type">{props.card.categoria}</p>
         </div>
         <OfferHome card={props.card.preco}></OfferHome>
         </div>
