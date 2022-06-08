@@ -1,14 +1,17 @@
 import CardHome from "../cardHome/CardHome";
 import "./CardListHome.css";
 import Search from "../../search/Search";
+import { useSelector } from 'react-redux';
+import { selectCards } from '../../../store/formSlice.js';
 
-export default function CardListHome(props) {
+export default function CardListHome() {
+  const data = useSelector(selectCards);
   
   return (
     <div className="contentlist">
       <Search></Search>
       <div className="list">
-        {props.card.map((shoe) => (
+        {data.map((shoe) => (
           <CardHome card={shoe}></CardHome>
         ))}
       </div>

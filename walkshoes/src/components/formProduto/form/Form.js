@@ -4,18 +4,36 @@ import IdentificProd from "../identificProd/IdentificProd";
 import InfoProd from "../infoProd/InfoProd";
 import "./Form.css";
 
+import { useDispatch } from 'react-redux';
+import { createCard } from '../../../store/formSlice.js';
+
 export default function Form(props){
 
   const [card, setCard] = useState ({});
+  const dispatch = useDispatch();
 
   function handleUpdatedStatus(e){
-  setCard({...card, [e.target.name]: e.target.value});
+    setCard({...card, [e.target.name]: e.target.value});
   }
 
-  function handleSubmit(e){
+  // function handleSubmit(e){
+  //   e.preventDefault();
+  //   props.setCards(props.cards.concat(card));
+  //   navigate('/')
+  // }
+
+  function handleSubmit (e) {
     e.preventDefault();
-    props.setCards(props.cards.concat(card));
-    navigate('/')
+    dispatch(createCard({
+        id: 0,
+        nome: "Dunk low",
+        preco: 799.99,
+        tamanho: 42,
+        estado: "usado",
+        quantidade: 1,
+        img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
+    }));
+    navigate('/');
   }
 
 const navigate= useNavigate();
