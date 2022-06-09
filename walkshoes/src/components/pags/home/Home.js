@@ -11,7 +11,7 @@ const Home = (props) => {
         <>
        <Menu name="Carrinho"  navigate="/carrinho"></Menu>
         <HeaderList></HeaderList>
-        <CardListHome></CardListHome>
+        <CardListHome card={props.cards}></CardListHome>
         <Footer></Footer>
         <Chat></Chat>
         </>

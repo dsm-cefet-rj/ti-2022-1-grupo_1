@@ -4,8 +4,8 @@ import Search from "../../search/Search";
 import { useSelector } from 'react-redux';
 import { selectCards } from '../../../store/formSlice.js';
 
-export default function CardListHome() {
-  const data = useSelector(selectCards);
+export default function CardListHome(props) {
+  const data = props.card;
   
   return (
     <div className="contentlist">
