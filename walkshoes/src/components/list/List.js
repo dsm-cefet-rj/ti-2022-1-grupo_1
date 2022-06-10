@@ -3,7 +3,7 @@ import Card from '../../components/card/cardFavorito/CardFavorito'
 import { useDispatch } from 'react-redux';
 import { createCard } from '../../store/favSlice.js';
 import { useSelector } from 'react-redux';
-import { selectCards } from '../../store/favSlice.js';
+import { selectCards, selectSize } from '../../store/favSlice.js';
 import './List.css'
 
 const List = () => {
@@ -11,22 +11,23 @@ const List = () => {
     //State para guardar os dados
     const favData = useSelector(selectCards);
 
-    const [ selected, setSelect ] = useState(false);
+    // const [ selected, setSelect ] = useState(false);
     const [ data, setData ] = useState();
     const [ filteredData, setFilteredData ] = useState();
 
     //State para usar como 'pesquisa'
-    const [ search, setSearch ] = useState("");
+    const [ search, setSearch ] = useState('');
     const toSearch = (s) => {
         setSearch(s);
-        if(s != '') {
-            const fdata = data.filter((item) => {
-                return Object.values(item).join('').toLowerCase().includes(searchInput.toLowerCase());
+        if(s !== '') {
+            const fdata = favData.filter((item) => {
+                return Object.values(item.nome).join('').toLowerCase().includes(s.toLowerCase());
             })
             setFilteredData(fdata);
+            console.log(s, fdata);
         }
         else {
-            setFilteredData(data);
+            setFilteredData(favData);
         }
     };
 
@@ -58,7 +59,7 @@ const List = () => {
                         placeholder="Pesquisar"
                         onChange={(e) => toSearch(e.target.value)} 
                     />
-                    <button onClick={handleNew}>Ordenar</button>
+                    <button onClick={handleNew}>+</button>
                 </div>
             </div>
 
@@ -76,37 +77,36 @@ const List = () => {
             </div>
 
             <div className='listy'>
-                {favData.map(
-                    (item) => <Card
-                        key={item.id}
-                        id={item.id}
-                        item={item}
-                    />)
+                {search.length > 0 ? (
+                    filteredData.map(
+                        (item) => <Card
+                            key={item.id}
+                            id={item.id}
+                            item={item}
+                        />)
+                    ) : (
+                        favData.map(
+                            (item) => <Card
+                                key={item.id}
+                                id={item.id}
+                                item={item}
+                            />)
+                    )
                 }
             </div>
-            
         </div>
     </>
   );
 
-//   function handleNew () {
-//     const random_id = Math.floor(Math.random() * 5) + 1;
-
-//     dispatch(createCard(
-//             data.find((item) => (item.id === random_id))
-//         )
-//     );
-//   }
     function handleNew () {
-        dispatch(createCard({
-            id: 0,
-            nome: "Dunk low",
-            preco: 799.99,
-            tamanho: 42,
-            estado: "usado",
-            quantidade: 1,
-            img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
-            }));
+        if(favData.length >= data.length) {
+            alert("Limite máximo alcançado");
+        }
+        else {
+            dispatch(createCard(
+                data.find((item) => (item.id === favData.length+1))
+            ));
+        }
     }
 }
 
