@@ -12,7 +12,7 @@ export default function CardListHome(props) {
       <Search></Search>
       <div className="list">
         {data.map((shoe) => (
-          <CardHome card={shoe}></CardHome>
+          <CardHome key={shoe.id} card={shoe}></CardHome>
         ))}
       </div>
     </div>
