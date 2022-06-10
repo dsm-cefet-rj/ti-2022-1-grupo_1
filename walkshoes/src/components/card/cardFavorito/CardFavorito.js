@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import icon from "../../../assets/real-icon.png";
 import { useNavigate } from 'react-router-dom'
 import './CardFavorito.css'
 
@@ -12,7 +13,6 @@ const CardFavorito = (props) => {
     const [ selected, setSelect ] = useState(data.selected);
     const [ img, setImage ] = useState(data.img);
     const [ nome, setNome ] = useState(data.nome);
-    const [ icon, setIcon ] = useState(data.icon);
     const [ price, setPrice ] = useState(data.preco);
     const [ situation, setSituation ] = useState(data.situation);
 
