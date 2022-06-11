@@ -74,7 +74,7 @@ const List = () => {
                         placeholder="Pesquisar"
                         onChange={(e) => toSearch(e.target.value)} 
                     />
-                    <button onClick={handleNew}>+</button>
+                    <button disabled onClick={handleNew}>+</button>
                 </div>
             </div>
 
