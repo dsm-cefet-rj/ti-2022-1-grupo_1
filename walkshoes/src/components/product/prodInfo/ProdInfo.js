@@ -1,6 +1,20 @@
 import "./prodInfo.css";
+import { useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
+import { createCard } from "../../../store/favSlice.js";
 
 export default function ProdInfo(props) {
+  const navigate = useNavigate();
+  const dispatch = useDispatch();
+
+  function handleNew () {
+    dispatch(createCard({
+      nome: "Novo",
+    }));
+
+    navigate("/favoritos");
+  }
+
   return (
     <div className="columns">
       <div className="infoprodct">
@@ -14,7 +28,7 @@ export default function ProdInfo(props) {
       </div>
       <div className="buttonprodct">
         <button className="productbutton">Adicionar ao carrinho</button>
-        <button className="productbutton">Favoritos</button>
+        <button className="productbutton" onClick={handleNew}>Favoritos</button>
       </div>
     </div>
   );
