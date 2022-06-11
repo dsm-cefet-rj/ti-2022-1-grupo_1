@@ -10,7 +10,7 @@ import { createCard } from '../../../store/formSlice.js';
 export default function Form(props){
 
   const [card, setCard] = useState ({});
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
 
   function handleUpdatedStatus(e){
     setCard({...card, [e.target.name]: e.target.value});
@@ -22,9 +22,29 @@ export default function Form(props){
   //   navigate('/')
   // }
 
+  // function handleSubmit (e) {
+  //   e.preventDefault();
+  //   dispatch(createCard({
+  //       id: 0,
+  //       nome: card.title,
+  //       preco: card.value,
+  //       tamanho: 42,
+  //       estado: "usado",
+  //       quantidade: 1,
+  //       img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
+  //   }));
+  //   navigate('/');
+  // }
+
   function handleSubmit (e) {
     e.preventDefault();
-    dispatch(createCard({
+    
+    fetch('http://localhost:3000/tenis', {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
         id: 0,
         nome: card.title,
         preco: card.value,
@@ -32,7 +52,9 @@ export default function Form(props){
         estado: "usado",
         quantidade: 1,
         img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
-    }));
+      })
+    })
+
     navigate('/');
   }
 
