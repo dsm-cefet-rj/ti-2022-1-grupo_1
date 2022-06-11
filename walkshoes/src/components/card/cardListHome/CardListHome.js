@@ -11,7 +11,7 @@ export default function CardListHome(props) {
     <div className="contentlist">
       <Search></Search>
       <div className="list">
-        {data.map((shoe) => (
+        {data.slice(0).reverse().map((shoe) => (
           <CardHome key={shoe.id} card={shoe}></CardHome>
         ))}
       </div>
