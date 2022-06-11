@@ -1,31 +1,37 @@
+// [React]
 import React from "react";
-import { Link } from "react-router-dom";
+
+// [Router]
+import { Link, useNavigate } from "react-router-dom";
+
+// [Assets]
 import logo from "./../../../assets/logo.png";
+
+// [CSS]
 import "./Menu.css";
-import { useNavigate } from 'react-router-dom'
 
-export default function Menu(props) {
-
-  const navigate = useNavigate();
-
-    function handleNavigate(){
-        navigate('/carrinho');
-    };
-  
-    return (
-      <header>
-        <div className="logo">
-          <Link to="/"><img src={logo} alt="logo" /> </Link>
-        </div>
-        <div className="options">
-          <ul>
-            <li onClick={handleNavigate}>
-              {props.name}
-              <hr />
-            </li>
-            <li>Login</li>
-          </ul>
-        </div>
-      </header>
-    );
-  }
+export default function Menu() {
+  // [HTML]
+  return (
+    <header>
+      <div className="logo">
+        <Link to="/">
+          <img src={logo} alt="logo" />
+        </Link>
+      </div>
+      <div className="options">
+        <ul>
+          <li>
+            <Link to="/carrinho">Carrinho</Link>
+          </li>
+        <hr/>
+          <li>
+            <Link to="/favoritos">Favoritos</Link>
+          </li>
+        <hr/>
+          <li>Login</li>
+        </ul>
+      </div>
+    </header>
+  );
+}
