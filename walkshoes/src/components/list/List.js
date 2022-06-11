@@ -1,23 +1,42 @@
+// [React]
 import React, { useState, useEffect } from 'react'
+import { useDispatch, useSelector } from 'react-redux';
+
+// [Components]
 import Card from '../../components/card/cardFavorito/CardFavorito'
-import { useDispatch } from 'react-redux';
-import { createCard } from '../../store/favSlice.js';
-import { useSelector } from 'react-redux';
-import { selectCards, selectSize } from '../../store/favSlice.js';
+
+// [Redux]
+import { createCard, selectCards } from '../../store/favSlice.js';
+
+// [CSS]
 import './List.css'
 
 const List = () => {
 
-    //State para guardar os dados
+    // Redux
     const favData = useSelector(selectCards);
+    const dispatch = useDispatch();
 
-    // const [ selected, setSelect ] = useState(false);
+    // States
     const [ data, setData ] = useState();
     const [ filteredData, setFilteredData ] = useState();
 
-    //State para usar como 'pesquisa'
+    // State para usar como 'pesquisa'
     const [ search, setSearch ] = useState('');
-    const toSearch = (s) => {
+
+    // Fetch do bd mockado
+    useEffect(() => {
+        fetch('http://localhost:3000/tenis')
+        .then(res=>{
+          return res.json();
+        })
+        .then((data)=>{
+          setData(data);
+        })
+    }, []);
+
+    // Funcao de filtro dos itens salvos na store (fav)
+    function toSearch(s) {
         setSearch(s);
         if(s !== '') {
             const fdata = favData.filter((item) => {
@@ -31,24 +50,20 @@ const List = () => {
         }
     };
 
-    const dispatch = useDispatch();
+    // Funcao que adiciona novo item na store (fav)
+    function handleNew () {
+        if(favData.length >= data.length) {
+            alert("Limite máximo alcançado");
+        }
+        else {
+            dispatch(createCard(
+                data.find((item) => (item.id === favData.length+1))
+            ));
+        }
+    }
 
-    //Efeito Colateral para filtrar card (WIP)
-    useEffect(() => {
-        
-    }, []);
-
-    useEffect(() => {
-        fetch('http://localhost:3000/tenis')
-        .then(res=>{
-          return res.json();
-        })
-        .then((data)=>{
-          setData(data);
-        })
-      }, []);
-
-  return (
+    // HTML
+    return (
     <>
         <div className="listWrapper">
             <div>
@@ -96,18 +111,7 @@ const List = () => {
             </div>
         </div>
     </>
-  );
-
-    function handleNew () {
-        if(favData.length >= data.length) {
-            alert("Limite máximo alcançado");
-        }
-        else {
-            dispatch(createCard(
-                data.find((item) => (item.id === favData.length+1))
-            ));
-        }
-    }
+    );
 }
 
 export default List
