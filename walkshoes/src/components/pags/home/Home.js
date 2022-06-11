@@ -8,13 +8,13 @@ import Footer from "../../footer/Footer";
 const Home = (props) => {
 
     return (
-        <>
-       <Menu name="Carrinho"  navigate="/carrinho"></Menu>
+      <>
+        <Menu></Menu>
         <HeaderList></HeaderList>
         <CardListHome card={props.cards}></CardListHome>
         <Footer></Footer>
         <Chat></Chat>
-        </>
+      </>
     );
   }
 
