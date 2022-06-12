@@ -1,44 +1,35 @@
-import "./IdentificProd.css";
+import './IdentificProd.css'
 
-
-const IdentificProd = (props) => {
- 
+const IdentificProd = props => {
   return (
     <div className="ident">
       <h3 className="ident_title">Identificação do produto</h3>
 
       <form className="ident_form">
-
         <div className="ident_content">
-          <label className="ident_label">
-            Título:
-          </label>
+          <label className="ident_label">Título:</label>
           <input
             className="ident_input"
             type="text"
-            name="title"
-            value={props.card.title}
+            name="nome"
+            value={props.card.nome}
             onChange={props.handleUpdatedStatus}
           ></input>
         </div>
 
         <div className="ident_content">
-          <label className="ident_label">
-            Código:
-          </label>
+          <label className="ident_label">Código:</label>
           <input
             className="ident_input"
             type="text"
-            name="cod"
-            value={props.card.cod}
+            name="id"
+            value={props.card.id}
             onChange={props.handleUpdatedStatus}
           ></input>
         </div>
 
         <div className="ident_content">
-          <label className="ident_label">
-            Marca:
-          </label>
+          <label className="ident_label">Marca:</label>
           <input
             className="ident_input"
             type="text"
@@ -47,11 +38,9 @@ const IdentificProd = (props) => {
             onChange={props.handleUpdatedStatus}
           ></input>
         </div>
-
       </form>
     </div>
-  );
-};
+  )
+}
 
-export default IdentificProd;
-
+export default IdentificProd

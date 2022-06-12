@@ -76,7 +76,7 @@ const InfoProd = (props) => {
         <div className="info_value">
           <label className="info_subtitle">
             Preço Venda:
-            <input className="input_text" type="text" name="value" value={props.card.value} onChange={props.handleUpdatedStatus} ></input>
+            <input className="input_text" type="text" name="valor" value={props.card.valor} onChange={props.handleUpdatedStatus} ></input>
           </label>
         </div>
       </form>
