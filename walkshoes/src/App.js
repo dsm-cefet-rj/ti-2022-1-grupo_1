@@ -2,23 +2,21 @@ import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 import "./App.css";
 import React, {useState, useEffect} from "react";
 import { Provider } from 'react-redux';
-import "./components/FontawsomeIcons";
-import DadosPessoais from "./components/pags/pagamento/DadosPessoais";
-import DadosEntrega from "./components/pags/pagamento/DadosEntrega";
-import Footer from "./components/footer/Footer";
-import TipoPagamento from "./components/pags/pagamento/TipoPagamento";
-import Pagamento from "./components/pags/pagamento/Pagamento";
-import Home from "./components/pags/home/Home";
-import Carrinho from "./components/pags/carrinho/Carrinho";
-import Favoritos from "./components/pags/favoritos/Favoritos";
-import CadastroProd from "./components/pags/produto/cadastro/CadastroProd";
+import "./FontawsomeIcons";
+import DadosPessoais from "./pags/pagamento/DadosPessoais";
+import DadosEntrega from "./pags/pagamento/DadosEntrega";
+import TipoPagamento from "./pags/pagamento/TipoPagamento";
+import Pagamento from "./pags/pagamento/Pagamento";
+import Home from "./pags/home/Home";
+import Carrinho from "./pags/carrinho/Carrinho";
+import Favoritos from "./pags/favoritos/Favoritos";
+import CadastroProd from "./pags/produto/cadastro/CadastroProd";
 import tenis1 from "./assets/adidas1.jpeg"
 import tenis2 from "./assets/nike2.jpg"
 import tenis3 from "./assets/nike3.jpg"
 import tenis4 from "./assets/nike4.jpg"
 import tenis5 from "./assets/puma1.jpg"
-import footer from "./components/footer/Footer";
-import InfoProd from "./components/pags/infoProd/InfoProd";
+import InfoProd from "./pags/infoProd/InfoProd";
 
 import { saveState } from './store/localStorage.js';
 import debounce from 'lodash.debounce';
