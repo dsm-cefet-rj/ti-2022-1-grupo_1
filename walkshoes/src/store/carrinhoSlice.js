@@ -1,12 +1,12 @@
 import { createSlice } from '@reduxjs/toolkit';
 
 export const slice = createSlice({
-    name: 'fav',
+    name: 'carrinho',
     initialState: {
         data: [],
     },
     reducers: {
-        createCardFav: (state, action) => {
+        createCardCar: (state, action) => {
             state.data = [action.payload].concat(state.data)
         },
         deleteCard: (state, action) => {
@@ -15,7 +15,7 @@ export const slice = createSlice({
     },
 })
 
-export const { createCardFav, deleteCard } = slice.actions;
-export const selectCards = state => state.fav.data;
+export const { createCardCar, deleteCard } = slice.actions;
+export const selectCards = state => state.carrinho.data;
 
 export default slice.reducer;

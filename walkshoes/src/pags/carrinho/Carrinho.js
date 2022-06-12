@@ -3,40 +3,16 @@ import ItemsPrice from './components/itemsPrice/ItemsPrice'
 import CarrinhoWrapper from './components/carrinhoWrapper/CarrinhoWrapper'
 import Menu from '../../componentsGlobal/header/menu/Menu'
 import Button from './components/button/Button'
+// Redux
+import { useSelector } from 'react-redux'
+import { selectCards } from '../../store/carrinhoSlice.js'
 
 const Carrinho = () => {
   const [totalValue, setTotalValue] = useState(0)
   // transformar a lista em um estado para poder alterar o
-
-  const [items, setItems] = useState([
-    {
-      nome: 'NIKE DUNK LOW GREEN',
-      tamanho: '38',
-      preco: 1299.99,
-      quantidade: 1
-    },
-
-    {
-      nome: 'NIKE DUNK LOW GREEN-LEAF',
-      tamanho: '42',
-      preco: 1399.99,
-      quantidade: 1
-    },
-
-    {
-      nome: 'NIKE DUNK LOW GREEN OLIVE',
-      tamanho: '39',
-      preco: 1000.0,
-      quantidade: 1
-    },
-
-    {
-      nome: 'NIKE DUNK LOW GREEN MILITARY',
-      tamanho: '44',
-      preco: 1699.99,
-      quantidade: 1
-    }
-  ])
+  const carrinhoData = useSelector(selectCards)
+  console.log(carrinhoData)
+  const [items, setItems] = useState(carrinhoData)
 
   function handleChangeQty(quantity, name) {
     let valorSomado = 0
