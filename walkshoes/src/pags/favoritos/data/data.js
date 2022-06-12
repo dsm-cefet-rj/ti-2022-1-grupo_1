@@ -1,5 +1,5 @@
-import imagemTenis from '../../../../assets/nike-dunk.png'
-import priceIcon from '../../../../assets/real-icon.png'
+import imagemTenis from '../../../assets/nike-dunk.png'
+import priceIcon from '../../../assets/real-icon.png'
 
 export const data = [
     {
