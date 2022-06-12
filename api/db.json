@@ -3,6 +3,8 @@
         {
             "id": 1,
             "nome": "Dunk low",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "preco": 799.99,
             "tamanho": 42,
             "estado": "usado",
@@ -12,6 +14,8 @@
         {
             "id": 2,
             "nome": "Jordan low",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "preco": 799.99,
             "tamanho": 42,
             "estado": "novo",
@@ -20,6 +24,8 @@
         {
             "id": 3,
             "nome": "Yeezy 350 V2",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "tamanho": 42,
             "preco": 799.99,
             "estado": "usado",
@@ -28,6 +34,8 @@
         {
             "id": 4,
             "nome": "Dunk low",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "preco": 799.99,
             "tamanho": 42,
             "estado": "usado",
@@ -37,6 +45,8 @@
         {
             "id": 5,
             "nome": "Jordan low",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "preco": 799.99,
             "tamanho": 42,
             "estado": "novo",
@@ -45,6 +55,8 @@
         {
             "id": 6,
             "nome": "Yeezy 350 V2",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "tamanho": 42,
             "preco": 799.99,
             "estado": "usado",
@@ -53,6 +65,8 @@
         {
             "id": 7,
             "nome": "Dunk low",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "preco": 799.99,
             "tamanho": 42,
             "estado": "usado",
@@ -62,6 +76,8 @@
         {
             "id": 8,
             "nome": "Jordan low",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "preco": 799.99,
             "tamanho": 42,
             "estado": "novo",
@@ -70,6 +86,8 @@
         {
             "id": 9,
             "nome": "Yeezy 350 V2",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "tamanho": 42,
             "preco": 799.99,
             "estado": "usado",
@@ -78,6 +96,8 @@
         {
             "id": 10,
             "nome": "Dunk low",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "preco": 799.99,
             "tamanho": 42,
             "estado": "usado",
@@ -87,6 +107,8 @@
         {
             "id": 11,
             "nome": "Jordan low",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "preco": 799.99,
             "tamanho": 42,
             "estado": "novo",
@@ -95,6 +117,8 @@
         {
             "id": 12,
             "nome": "Yeezy 350 V2",
+            "categoria": "Masculino",
+            "descrição": "JSJSJS",
             "tamanho": 42,
             "preco": 799.99,
             "estado": "usado",
