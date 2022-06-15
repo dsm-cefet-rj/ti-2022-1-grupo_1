@@ -8,7 +8,7 @@ import lixeira from '../../../../assets/lixeira.png'
 
 const CardCarrinho = props => {
   const [counter, setCounter] = useState(props.information.quantidade)
-  const [shoeValue, setShoeValue] = useState(props.information.preco)
+  const [shoeValue, setShoeValue] = useState(props.information.valor)
 
   //Incrementa counter
   const increase = () => {
@@ -48,7 +48,7 @@ const CardCarrinho = props => {
           <span className="textoResponsivo">Preço:</span>
           <img src={priceIcon}></img>
           <span>
-            {shoeValue.toLocaleString('pt-BR', { minimumFractionDigits: 2 })}
+            {shoeValue}
           </span>
         </div>
         <div className="quantidade">

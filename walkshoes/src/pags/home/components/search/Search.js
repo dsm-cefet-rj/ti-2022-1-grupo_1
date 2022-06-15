@@ -1,7 +1,7 @@
 import React from "react";
 import "./Search.css"
 
-const Home = () => {
+const Search = () => {
     return (
         <div className="search">
        <h2 className="titlelist">Todos os produtos</h2>
@@ -10,5 +10,5 @@ const Home = () => {
     );
   }
 
-export default Home;
+export default Search;
 

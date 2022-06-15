@@ -34,16 +34,16 @@ function App() {
 
   const [cards, setCards] = useState([]);
 
-  // Fetch do bd mockado
-  useEffect(() => {
-    fetch('http://localhost:3000/tenis')
-    .then(res=>{
-      return res.json();
-    })
-    .then((data)=>{
-      setCards(data);
-    })
-  }, []);
+  // // Fetch do bd mockado
+  // useEffect(() => {
+  //   fetch('http://localhost:3000/tenis')
+  //   .then(res=>{
+  //     return res.json();
+  //   })
+  //   .then((data)=>{
+  //     setCards(data);
+  //   })
+  // }, []);
 
   // Parte da implementacao do LocalStorage
   store.subscribe(

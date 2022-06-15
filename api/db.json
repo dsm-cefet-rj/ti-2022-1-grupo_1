@@ -1,128 +1,124 @@
 {
-    "tenis":[
-        {
-            "id": 1,
-            "nome": "Dunk low",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "preco": 799.99,
-            "tamanho": 42,
-            "estado": "usado",
-            "quantidade": 1,
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 2,
-            "nome": "Jordan low",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "preco": 799.99,
-            "tamanho": 42,
-            "estado": "novo",
-            "img": "https://cdn.shopify.com/s/files/1/0321/7362/1384/products/AirJordan1LowUNCObsidian1-219028.jpg?v=1643723764"
-        },
-        {
-            "id": 3,
-            "nome": "Yeezy 350 V2",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "tamanho": 42,
-            "preco": 799.99,
-            "estado": "usado",
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 4,
-            "nome": "Dunk low",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "preco": 799.99,
-            "tamanho": 42,
-            "estado": "usado",
-            "quantidade": 1,
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 5,
-            "nome": "Jordan low",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "preco": 799.99,
-            "tamanho": 42,
-            "estado": "novo",
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 6,
-            "nome": "Yeezy 350 V2",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "tamanho": 42,
-            "preco": 799.99,
-            "estado": "usado",
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 7,
-            "nome": "Dunk low",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "preco": 799.99,
-            "tamanho": 42,
-            "estado": "usado",
-            "quantidade": 1,
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 8,
-            "nome": "Jordan low",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "preco": 799.99,
-            "tamanho": 42,
-            "estado": "novo",
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 9,
-            "nome": "Yeezy 350 V2",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "tamanho": 42,
-            "preco": 799.99,
-            "estado": "usado",
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 10,
-            "nome": "Dunk low",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "preco": 799.99,
-            "tamanho": 42,
-            "estado": "usado",
-            "quantidade": 1,
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 11,
-            "nome": "Jordan low",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "preco": 799.99,
-            "tamanho": 42,
-            "estado": "novo",
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        },
-        {
-            "id": 12,
-            "nome": "Yeezy 350 V2",
-            "categoria": "Masculino",
-            "descrição": "JSJSJS",
-            "tamanho": 42,
-            "preco": 799.99,
-            "estado": "usado",
-            "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
-        }
-    ]
+  "tenis": [
+    {
+      "id": 1,
+      "nome": "Dunk low",
+      "valor": 799.99,
+      "tamanho": 42,
+      "estado": "usado",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 2,
+      "nome": "Jordan low",
+      "valor": 799.99,
+      "tamanho": 42,
+      "estado": "novo",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://cdn.shopify.com/s/files/1/0321/7362/1384/products/AirJordan1LowUNCObsidian1-219028.jpg?v=1643723764"
+    },
+    {
+      "id": 3,
+      "nome": "Yeezy 350 V2",
+      "tamanho": 42,
+      "valor": 799.99,
+      "estado": "usado",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 4,
+      "nome": "Dunk low",
+      "valor": 799.99,
+      "tamanho": 42,
+      "estado": "usado",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 5,
+      "nome": "Jordan low",
+      "valor": 799.99,
+      "tamanho": 42,
+      "estado": "novo",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 6,
+      "nome": "Yeezy 350 V2",
+      "tamanho": 42,
+      "valor": 799.99,
+      "estado": "usado",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 7,
+      "nome": "Dunk low",
+      "valor": 799.99,
+      "tamanho": 42,
+      "estado": "usado",
+      "quantidade": 1,
+      "categoria": "masculino",
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 8,
+      "nome": "Jordan low",
+      "valor": 799.99,
+      "tamanho": 42,
+      "estado": "novo",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 9,
+      "nome": "Yeezy 350 V2",
+      "tamanho": 42,
+      "valor": 799.99,
+      "estado": "usado",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 10,
+      "nome": "Dunk low",
+      "valor": 799.99,
+      "tamanho": 42,
+      "estado": "usado",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 11,
+      "nome": "Jordan low",
+      "valor": 799.99,
+      "tamanho": 42,
+      "estado": "novo",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    },
+    {
+      "id": 12,
+      "nome": "Yeezy 350 V2",
+      "tamanho": 42,
+      "valor": 799.99,
+      "estado": "usado",
+      "categoria": "masculino",
+      "quantidade": 1,
+      "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
+    }
+  ]
 }

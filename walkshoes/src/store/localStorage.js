@@ -28,7 +28,7 @@ window.onload = function () {           //Compara os horarios do fechamento e re
     let unloadTime = new Date(JSON.parse(window.localStorage.unloadTime));
     let refresh = loadTime.getTime() - unloadTime.getTime();
     
-    if(refresh>=2000){
+    if(refresh>=1000){
         window.localStorage.removeItem("state");
     }
 };

@@ -12,7 +12,7 @@ function CardHome (props) {
           <p className="titlehome">{props.card.nome}</p>
           <p className="type">{props.card.categoria}</p>
         </div>
-        <OfferHome card={props.card.preco}></OfferHome>
+        <OfferHome card={props.card.valor}></OfferHome>
         </div>
     );
   }

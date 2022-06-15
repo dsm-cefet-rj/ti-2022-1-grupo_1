@@ -2,7 +2,7 @@
 import React, { useState, useEffect } from 'react';
 import Card from '../cardFavorito/CardFavorito';
 import { useDispatch } from 'react-redux';
-import { createCard } from '../../../../store/favSlice.js';
+import { createCardFav } from '../../../../store/favSlice.js';
 import { useSelector } from 'react-redux';
 import { selectCards } from '../../../../store/favSlice.js';
 import './List.css'
@@ -52,7 +52,7 @@ const List = () => {
             alert("Limite máximo alcançado");
         }
         else {
-            dispatch(createCard(
+            dispatch(createCardFav(
                 data.find((item) => (item.id === favData.length+1))
             ));
         }
