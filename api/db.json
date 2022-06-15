@@ -120,5 +120,55 @@
       "quantidade": 1,
       "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
     }
+  ],
+  "chat": [
+    {
+      "id": 1,
+      "nome": "teste",
+      "idUsuario": "1",
+      "email": "lucccas,joeurejr",
+      "text": "fdkfskdljflskdjfkldsjflksdjfklds"
+    },
+    [
+      "Lucas ",
+      "lucccas.jorge@gmail.com",
+      "testeeee\n"
+    ],
+    [
+      {
+        "nome": "Lucas ",
+        "email": "lucccas.jorge@gmail.com",
+        "text": "testeeee\n",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "teste",
+        "email": "lyucsjdhasj",
+        "text": "dsadasdasds",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "teste",
+        "email": "lyucsjdhasj",
+        "text": "dsadasdasds",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "teste",
+        "email": "lyucsjdhasj",
+        "text": "dsadasdasds",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ]
   ]
 }
