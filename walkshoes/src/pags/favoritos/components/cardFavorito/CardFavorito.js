@@ -59,7 +59,7 @@ const CardFavorito = (props) => {
                         </div>
 
                         <div className="productInfo">
-                            <div>
+                            <div className="distancee">
                                 <span style={{textTransform: "uppercase", fontWeight: "bold"}}>{nome}</span>
                                 <button disabled>Add Carrinho</button>
                             </div>
