@@ -36,6 +36,12 @@
     align-items: center;
 }
 
+.centre {
+    display: flex;
+    max-width: 100%;
+    align-self: center;
+}
+
 .checkw {
     width: 40px;
 }
