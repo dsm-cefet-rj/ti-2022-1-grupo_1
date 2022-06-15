@@ -18,12 +18,31 @@ const DadosPessoais = () => {
   const navigate = useNavigate();
 
   function handleSubmit(event) {
+    const pessoais = [];
     event.preventDefault();
+    debugger;
+    pessoais.push({
+      email,
+      nome,
+      cpf,
+      telefone,
+      id:1
+    });
 
+    console.log(pessoais);
     if (!email || !nome || !cpf || !telefone) {
       alert("preencha todos os campos!");
-    } else {
-      handleEntrega();
+    } else{
+
+      fetch('http://localhost:3000/pessoais', {
+           method: 'POST',
+           headers: { "Content-Type": "application/json"},
+           body: JSON.stringify(pessoais)
+       }).then(() =>{
+            console.log("Sucess");
+            handleEntrega();
+       })
+
     }
   }
 

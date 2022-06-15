@@ -169,6 +169,97 @@
         "id": 1,
         "idUsuario": 1
       }
+    ],
+    [
+      {
+        "nome": "rodrigo",
+        "email": "rodrigo@gmail.com",
+        "text": "tenis bonito",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "rodrigo",
+        "email": "",
+        "text": "242424",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "teste",
+        "email": "teste",
+        "text": "teste",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ]
+  ],
+  "pessoais": [
+    [
+      {
+        "email": "rodrigomb013@gmail.com",
+        "nome": "rodrigo moreira braz",
+        "cpf": "14991838797",
+        "telefone": "977777"
+      }
+    ],
+    [
+      {
+        "email": "rodrigomb013@gmail.com",
+        "nome": "rodrigo teste 3",
+        "cpf": "4343434",
+        "telefone": "34343"
+      }
+    ],
+    [
+      {
+        "email": "rodrigomb013@gmail.com",
+        "nome": "rodrigo moreira braz",
+        "cpf": "14991838797",
+        "telefone": "9"
+      }
+    ],
+    [
+      {
+        "email": "teste",
+        "nome": "teste",
+        "cpf": "232323",
+        "telefone": "235345"
+      }
+    ]
+  ],
+  "entrega": [
+    [
+      {
+        "cep": "20785-030",
+        "rua": "sdfsf",
+        "complemento": "bloco 1, apt 101"
+      }
+    ],
+    [
+      {
+        "cep": "20785-030",
+        "rua": "sdfsf",
+        "complemento": "bloco 1, apt 101"
+      }
+    ],
+    [
+      {
+        "cep": "20785-030",
+        "rua": "sdfsf",
+        "complemento": "bloco 1, apt 101"
+      }
+    ],
+    [
+      {
+        "cep": "20785-030",
+        "rua": "sdfsf",
+        "complemento": "sfsfd"
+      }
     ]
   ]
 }
