@@ -11,5 +11,5 @@ export default configureStore({
         form: formReducer,
         carrinho: carrinhoReducer,
     },
-    preloadedState: loadState(),
+    // preloadedState: loadState(),
 });
