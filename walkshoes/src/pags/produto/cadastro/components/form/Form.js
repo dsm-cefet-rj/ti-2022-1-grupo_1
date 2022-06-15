@@ -5,7 +5,7 @@ import InfoProd from '../infoProd/InfoProd'
 import './Form.css'
 
 //import { useDispatch } from 'react-redux';
-//import { createCard } from './../../../store/formSlice.js';
+import { postData } from '../../../../../store/dataSlice';
 
 export default function Form(props) {
   const [card, setCard] = useState({})

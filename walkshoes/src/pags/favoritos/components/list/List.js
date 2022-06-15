@@ -1,10 +1,11 @@
 // [React]
 import React, { useState, useEffect } from 'react';
 import Card from '../cardFavorito/CardFavorito';
-import { useDispatch } from 'react-redux';
-import { createCardFav } from '../../../../store/favSlice.js';
-import { useSelector } from 'react-redux';
 import { selectCards } from '../../../../store/favSlice.js';
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    createCardFav,
+} from '../../../../store/favSlice.js';
 import './List.css'
 
 const List = () => {

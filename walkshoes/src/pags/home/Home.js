@@ -1,4 +1,3 @@
-import React, {useState, useEffect} from "react";
 import CardListHome from "./components/card/cardListHome/CardListHome";
 import Chat from "../../componentsGlobal/chat/Chat";
 import HeaderList from "../../componentsGlobal/header/headerList/HeaderList";
