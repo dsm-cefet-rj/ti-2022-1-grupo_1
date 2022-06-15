@@ -121,5 +121,176 @@
       "quantidade": 1,
       "img": "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg"
     }
+  ],
+  "chat": [
+    {
+      "id": 1,
+      "nome": "teste",
+      "idUsuario": "1",
+      "email": "lucccas,joeurejr",
+      "text": "fdkfskdljflskdjfkldsjflksdjfklds"
+    },
+    [
+      "Lucas ",
+      "lucccas.jorge@gmail.com",
+      "testeeee\n"
+    ],
+    [
+      {
+        "nome": "Lucas ",
+        "email": "lucccas.jorge@gmail.com",
+        "text": "testeeee\n",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "teste",
+        "email": "lyucsjdhasj",
+        "text": "dsadasdasds",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "teste",
+        "email": "lyucsjdhasj",
+        "text": "dsadasdasds",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "teste",
+        "email": "lyucsjdhasj",
+        "text": "dsadasdasds",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "rodrigo",
+        "email": "rodrigo@gmail.com",
+        "text": "tenis bonito",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "rodrigo",
+        "email": "",
+        "text": "242424",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "nome": "teste",
+        "email": "teste",
+        "text": "teste",
+        "id": 1,
+        "idUsuario": 1
+      }
+    ],
+    [
+      {
+        "email": "sdasdsads",
+        "nome": "dsadads",
+        "cpf": "554545",
+        "telefone": "54545445"
+      }
+    ]
+  ],
+  "dadosPessoais": [
+    [
+      {
+        "email": "dsdsadsa",
+        "nome": "sdsdsadsd",
+        "cpf": "5454545",
+        "telefone": "6986866"
+      }
+    ],
+    [
+      {
+        "email": "sdsadsd",
+        "nome": "dsadsadas",
+        "cpf": "5545545",
+        "telefone": "6565566"
+      }
+    ],
+    [
+      {
+        "email": "sdasdjsadjkasd",
+        "nome": "sdasdsadas",
+        "cpf": "4564545",
+        "telefone": "5454554"
+      }
+    ],
+    [
+      {
+        "email": "dasdsadsadsa",
+        "nome": "sadsadsads",
+        "cpf": "65465656",
+        "telefone": "545454"
+      }
+    ],
+    [
+      {
+        "email": "sdsdasdsad",
+        "nome": "sadasdsadsa",
+        "cpf": "655656",
+        "telefone": "6565"
+      }
+    ]
+  ],
+  "dadosDeEntrega": [
+    [
+      {
+        "cep": "54455445",
+        "rua": "dsdasdasds",
+        "complemento": "sdadsad"
+      }
+    ],
+    [
+      {
+        "cep": "dfsdfdf",
+        "rua": "dsfsdfd",
+        "complemento": "65656"
+      }
+    ],
+    [
+      {
+        "cep": "fdsfsdfd",
+        "rua": "dsfsdfdsf",
+        "complemento": "5565656"
+      }
+    ],
+    [
+      {
+        "cep": "dsfdsfsdf",
+        "rua": "fdsfdsf",
+        "complemento": "dsfsdfd"
+      }
+    ],
+    [
+      {
+        "cep": "fsdfdsf",
+        "rua": "dsfdsfdsf",
+        "complemento": "dfsdfdsf"
+      }
+    ],
+    [
+      {
+        "cep": "lucas",
+        "rua": "sdsdasd",
+        "complemento": "dsadsad"
+      }
+    ]
   ]
 }

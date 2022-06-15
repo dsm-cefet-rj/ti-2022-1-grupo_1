@@ -14,37 +14,42 @@ const Carrinho = () => {
   console.log(carrinhoData)
   const [items, setItems] = useState(carrinhoData)
 
-  function handleChangeQty(quantity, name) {
-    let valorSomado = 0
-    const novoArray = items.map(item => {
-      if (item.nome === name) {
-        valorSomado += item.preco * quantity
-        return { ...item, quantidade: quantity }
-      }
-      valorSomado += item.preco * item.quantidade
-      return item
-    })
+  // function handleChangeQty(quantity, name) {
+  //   let valorSomado = 0
+  //   const novoArray = items.map(item => {
+  //     if (item.nome === name) {
+  //       valorSomado += item.preco * quantity
+  //       return { ...item, quantidade: quantity }
+  //     }
+  //     valorSomado += item.preco * item.quantidade
+  //     return item
+  //   })
 
-    setTotalValue(valorSomado)
-    setItems(novoArray)
-  }
+  //   setTotalValue(valorSomado)
+  //   setItems(novoArray)
+  // }
 
-  useEffect(() => {
-    let valorSomado = 0
-    items.forEach(item => {
-      valorSomado += item.preco * item.quantidade
-    })
-    setTotalValue(valorSomado)
-  }, [])
+  const sumall = carrinhoData
+    .map(item => item.valor)
+    .reduce((prev, curr) => prev + curr, 0)
+  console.log(sumall)
+
+  // useEffect(() => {
+  //   let valorSomado = 0
+  //   items.forEach(item => {
+  //     valorSomado += item.preco * item.quantidade
+  //   })
+  //   setTotalValue(valorSomado)
+  // }, [])
 
   return (
     <>
       <Menu name="Home"></Menu>
       <CarrinhoWrapper
         items={items}
-        handleChangeQty={handleChangeQty}
+        // handleChangeQty={handleChangeQty}
       ></CarrinhoWrapper>
-      <ItemsPrice precoTotalItems={totalValue}></ItemsPrice>
+      <ItemsPrice precoTotalItems={sumall}></ItemsPrice>
       <Button></Button>
     </>
   )

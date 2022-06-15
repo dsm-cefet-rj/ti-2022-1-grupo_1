@@ -236,7 +236,7 @@ h2 {
 @media (max-width: 1024px){
   .div-pagamento{
     display: flex;
-    min-height: 81vh;
+    min-height: 82vh;
     flex-direction: column;
   }
 }
