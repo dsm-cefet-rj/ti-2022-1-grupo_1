@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { createCardFav } from '../../../../store/favSlice.js'
 import { createCardCar } from '../../../../store/carrinhoSlice'
+import { postData } from '../../../../store/favSlice'
 
 export default function ProdInfo(props) {
   const navigate = useNavigate()
@@ -12,7 +13,7 @@ export default function ProdInfo(props) {
     switch (t) {
       case 'Fav':
         dispatch(
-          createCardFav({
+          postData({
             id: 12,
             nome: 'Yeezy 350 V2',
             tamanho: 42,
