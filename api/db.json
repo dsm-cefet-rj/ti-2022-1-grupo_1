@@ -196,69 +196,99 @@
         "id": 1,
         "idUsuario": 1
       }
-    ]
-  ],
-  "pessoais": [
-    [
-      {
-        "email": "rodrigomb013@gmail.com",
-        "nome": "rodrigo moreira braz",
-        "cpf": "14991838797",
-        "telefone": "977777"
-      }
     ],
     [
       {
-        "email": "rodrigomb013@gmail.com",
-        "nome": "rodrigo teste 3",
-        "cpf": "4343434",
-        "telefone": "34343"
-      }
-    ],
-    [
-      {
-        "email": "rodrigomb013@gmail.com",
-        "nome": "rodrigo moreira braz",
-        "cpf": "14991838797",
-        "telefone": "9"
-      }
-    ],
-    [
-      {
-        "email": "teste",
-        "nome": "teste",
-        "cpf": "232323",
-        "telefone": "235345"
+        "email": "sdasdsads",
+        "nome": "dsadads",
+        "cpf": "554545",
+        "telefone": "54545445"
       }
     ]
   ],
-  "entrega": [
+  "dadosPessoais": [
     [
       {
-        "cep": "20785-030",
-        "rua": "sdfsf",
-        "complemento": "bloco 1, apt 101"
+        "email": "dsdsadsa",
+        "nome": "sdsdsadsd",
+        "cpf": "5454545",
+        "telefone": "6986866"
       }
     ],
     [
       {
-        "cep": "20785-030",
-        "rua": "sdfsf",
-        "complemento": "bloco 1, apt 101"
+        "email": "sdsadsd",
+        "nome": "dsadsadas",
+        "cpf": "5545545",
+        "telefone": "6565566"
       }
     ],
     [
       {
-        "cep": "20785-030",
-        "rua": "sdfsf",
-        "complemento": "bloco 1, apt 101"
+        "email": "sdasdjsadjkasd",
+        "nome": "sdasdsadas",
+        "cpf": "4564545",
+        "telefone": "5454554"
       }
     ],
     [
       {
-        "cep": "20785-030",
-        "rua": "sdfsf",
-        "complemento": "sfsfd"
+        "email": "dasdsadsadsa",
+        "nome": "sadsadsads",
+        "cpf": "65465656",
+        "telefone": "545454"
+      }
+    ],
+    [
+      {
+        "email": "sdsdasdsad",
+        "nome": "sadasdsadsa",
+        "cpf": "655656",
+        "telefone": "6565"
+      }
+    ]
+  ],
+  "dadosDeEntrega": [
+    [
+      {
+        "cep": "54455445",
+        "rua": "dsdasdasds",
+        "complemento": "sdadsad"
+      }
+    ],
+    [
+      {
+        "cep": "dfsdfdf",
+        "rua": "dsfsdfd",
+        "complemento": "65656"
+      }
+    ],
+    [
+      {
+        "cep": "fdsfsdfd",
+        "rua": "dsfsdfdsf",
+        "complemento": "5565656"
+      }
+    ],
+    [
+      {
+        "cep": "dsfdsfsdf",
+        "rua": "fdsfdsf",
+        "complemento": "dsfsdfd"
+      }
+    ],
+    [
+      {
+        "cep": "fsdfdsf",
+        "rua": "dsfdsfdsf",
+        "complemento": "dfsdfdsf"
+      }
+    ],
+    [
+      {
+        "cep": "lucas",
+        "rua": "sdsdasd",
+        "complemento": "dsadsad"
       }
     ]
   ]

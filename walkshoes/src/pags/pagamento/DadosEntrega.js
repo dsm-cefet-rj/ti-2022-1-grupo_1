@@ -23,11 +23,13 @@ function DadosEntrega() {
       rua,
       complemento
     });
+    
+    //faltando id do usuario
 
     if (!cep || !rua || !complemento) {
       alert("preencha todos os campos!");
     } else {
-      fetch('http://localhost:3000/entrega', {
+      fetch('http://localhost:3000/dadosDeEntrega', {
         method: 'POST',
         headers: { "Content-Type": "application/json"},
         body: JSON.stringify(entrega)
