@@ -1,23 +1,21 @@
+import React, {state, useState, useEffect} from "react";
 import CardListHome from "./components/card/cardListHome/CardListHome";
 import Chat from "../../componentsGlobal/chat/Chat";
 import HeaderList from "../../componentsGlobal/header/headerList/HeaderList";
 import Menu from "../../componentsGlobal/header/menu/Menu";
 import Footer from "../../componentsGlobal/footer/Footer";
+import { useSelector, useDispatch } from 'react-redux';
+import { selectAllData, fetchData } from '../../store/dataSlice';
 
 const Home = (props) => {
 
-  const [cards, setCards] = useState([]);
+  const cards = useSelector(selectAllData);
+  const dispatch = useDispatch();
 
   // Fetch do bd mockado
   useEffect(() => {
-    fetch('http://localhost:3000/tenis')
-    .then(res=>{
-      return res.json();
-    })
-    .then((data)=>{
-      setCards(data);
-    })
-  }, []);
+    dispatch(fetchData())
+  }, [])
 
     return (
       <>
