@@ -4,12 +4,12 @@ import IdentificProd from '../identificProd/IdentificProd'
 import InfoProd from '../infoProd/InfoProd'
 import './Form.css'
 
-//import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { postData } from '../../../../../store/dataSlice';
 
 export default function Form(props) {
   const [card, setCard] = useState({})
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
 
   function handleUpdatedStatus(e) {
     setCard({ ...card, [e.target.name]: e.target.value })
@@ -21,33 +21,33 @@ export default function Form(props) {
   //   navigate('/')
   // }
 
-  // function handleSubmit (e) {
-  //   e.preventDefault();
-  //   dispatch(createCard({
-  //       id: 0,
-  //       nome: card.title,
-  //       preco: card.value,
-  //       tamanho: 42,
-  //       estado: "usado",
-  //       quantidade: 1,
-  //       img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
-  //   }));
-  //   navigate('/');
-  // }
-
-  function handleSubmit(e) {
-    e.preventDefault()
-
-    fetch('http://localhost:3000/tenis', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json'
-      },
-      body: JSON.stringify(card)
-    })
-
-    navigate('/')
+  function handleSubmit (e) {
+    e.preventDefault();
+    dispatch(postData({
+        id: card.id,
+        nome: card.nome,
+        valor: card.valor,
+        tamanho: 42,
+        estado: "usado",
+        quantidade: 1,
+        img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
+    }));
+    navigate('/');
   }
+
+  // function handleSubmit(e) {
+  //   e.preventDefault()
+
+  //   // fetch('http://localhost:3000/tenis', {
+  //   //   method: 'POST',
+  //   //   headers: {
+  //   //     'Content-Type': 'application/json'
+  //   //   },
+  //   //   body: JSON.stringify(card)
+  //   // })
+
+  //   navigate('/')
+  // }
 
   const navigate = useNavigate()
   return (
