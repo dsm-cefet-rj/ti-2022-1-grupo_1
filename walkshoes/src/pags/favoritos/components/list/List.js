@@ -1,21 +1,23 @@
 // [React]
 import React, { useState, useEffect } from 'react';
 import Card from '../cardFavorito/CardFavorito';
-import { selectCards } from '../../../../store/favSlice.js';
 import { useSelector, useDispatch } from 'react-redux';
 import {
+    fetchData,
     createCardFav,
+    selectAllData,
+    isLoading,
 } from '../../../../store/favSlice.js';
 import './List.css'
 
 const List = () => {
 
     // Redux
-    const favData = useSelector(selectCards);
+    const favData = useSelector(selectAllData);
+    const loading = useSelector(state => state.fav.loading);
     const dispatch = useDispatch();
 
     // States
-    const [ data, setData ] = useState();
     const [ filteredData, setFilteredData ] = useState();
 
     // State para usar como 'pesquisa'
@@ -23,13 +25,9 @@ const List = () => {
 
     // Fetch do bd mockado
     useEffect(() => {
-        fetch('http://localhost:3000/tenis')
-        .then(res=>{
-          return res.json();
-        })
-        .then((data)=>{
-          setData(data);
-        })
+        setTimeout(() => {
+            dispatch(fetchData())
+        }, 1000)
     }, []);
 
     // Funcao de filtro dos itens salvos na store (fav)
@@ -89,20 +87,25 @@ const List = () => {
             </div>
 
             <div className='listy'>
-                {search.length > 0 ? (
-                    filteredData.map(
-                        (item) => <Card
-                            key={item.id}
-                            id={item.id}
-                            item={item}
-                        />)
-                    ) : (
-                        favData.map(
-                            (item) => <Card
-                                key={item.id}
-                                id={item.id}
-                                item={item}
-                            />)
+                {
+                    loading == "done" ? (
+                        search.length > 0 ? (
+                            filteredData.map(
+                                (item) => <Card
+                                    key={item.id}
+                                    id={item.id}
+                                    item={item}
+                                />)
+                            ) : (
+                                favData.map(
+                                    (item) => <Card
+                                        key={item.id}
+                                        id={item.id}
+                                        item={item}
+                                    />)
+                            )
+                        ) : (
+                            <p className='centre'>Carregando...</p>
                     )
                 }
             </div>
