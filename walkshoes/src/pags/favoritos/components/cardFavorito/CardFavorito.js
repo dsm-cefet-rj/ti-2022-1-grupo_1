@@ -1,6 +1,10 @@
 // [React]
 import React, { useEffect, useState } from 'react'
 
+// [Redux]
+import { useDispatch } from 'react-redux';
+import { deleteData } from '../../../../store/favSlice'
+
 // [Assets]
 import icon from "../../../../assets/real-icon.png";
 
@@ -12,6 +16,8 @@ import './CardFavorito.css'
 
 const CardFavorito = (props) => {
 
+    const dispatch = useDispatch();
+
     // Router
     const navigate = useNavigate();
 
@@ -21,7 +27,7 @@ const CardFavorito = (props) => {
     // Propriedades do card
     const img = data.img;
     const nome = data.nome;
-    const price = data.preco;
+    const price = data.valor;
     const situation = data.situation;
 
     // States
@@ -30,6 +36,10 @@ const CardFavorito = (props) => {
     // Funcao que cuida do select usando hooks
     function handleSelect () {
         setSelected(!selected);
+    }
+
+    function handleDelete () {
+        dispatch(deleteData(data));
     }
 
     // (WIP): Funcao que manda o id para /infoProd/:id
@@ -43,7 +53,7 @@ const CardFavorito = (props) => {
     // [HTML]
     return (
         <>
-            <div className="cardHand" onClick={handleRedirect}>
+            <div className="cardHand">
                 <div className="productItem f1">
                     <div className="checkw">
                         <input
@@ -54,14 +64,14 @@ const CardFavorito = (props) => {
                     </div>
 
                     <div className="productContentInfo">
-                        <div className="productContent">
+                        <div className="productContent" onClick={handleRedirect}>
                             <img src={img} />
                         </div>
 
                         <div className="productInfo">
                             <div className="distancee">
                                 <span style={{textTransform: "uppercase", fontWeight: "bold"}}>{nome}</span>
-                                <button disabled>Add Carrinho</button>
+                                <button onClick={() => handleDelete()}>x</button>
                             </div>
                             
                             <div className="middle-h middle-v">
