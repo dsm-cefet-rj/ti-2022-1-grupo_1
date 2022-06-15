@@ -1,4 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
+import { httpDelete, httpGet, httpPut, httpPost} from '../utils'
 
 export const slice = createSlice({
     name: 'fav',
