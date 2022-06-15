@@ -13,23 +13,23 @@ const CardCarrinho = props => {
   //Incrementa counter
   const increase = () => {
     setCounter(counter + 1)
-    modificaQuantidade(counter + 1)
+    // modificaQuantidade(counter + 1)
   }
 
   //Decrementa counter
   const decrease = () => {
     if (counter > 1) {
       setCounter(counter - 1)
-      modificaQuantidade(counter - 1)
+      // modificaQuantidade(counter - 1)
       return
     }
-    modificaQuantidade(counter)
+    // modificaQuantidade(counter)
   }
 
-  function modificaQuantidade(contador) {
-    setShoeValue(contador * props.information.preco)
-    props.handleChangeQty(contador, props.information.nome)
-  }
+  // function modificaQuantidade(contador) {
+  //   setShoeValue(contador * props.information.preco)
+  //   props.handleChangeQty(contador, props.information.nome)
+  // }
 
   return (
     <div className="cardContent">
@@ -37,7 +37,7 @@ const CardCarrinho = props => {
         <img src={lixeira}></img>
       </div>
       <div className="shoeContent">
-        <img src={imagemTenis} />
+        <img src={props.information.img} />
         <span className="shoeTitle">
           {props.information.nome} -{' '}
           <span className="shoeSize"> {props.information.tamanho} </span>
@@ -47,9 +47,7 @@ const CardCarrinho = props => {
         <div className="valor">
           <span className="textoResponsivo">Preço:</span>
           <img src={priceIcon}></img>
-          <span>
-            {shoeValue}
-          </span>
+          <span>{shoeValue}</span>
         </div>
         <div className="quantidade">
           <span className="textoResponsivo">Quantidade:</span>

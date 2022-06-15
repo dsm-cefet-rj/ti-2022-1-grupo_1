@@ -15,15 +15,29 @@ function DadosEntrega() {
   const [complemento, setComplemento] = useState("");
 
   function handleSubmit(event) {
+    const entrega = [];
     event.preventDefault();
+
+    entrega.push({
+      cep,
+      rua,
+      complemento
+    });
+    
+    //faltando id do usuario
 
     if (!cep || !rua || !complemento) {
       alert("preencha todos os campos!");
     } else {
-      handlePagamento();
+      fetch('http://localhost:3000/dadosDeEntrega', {
+        method: 'POST',
+        headers: { "Content-Type": "application/json"},
+        body: JSON.stringify(entrega)
+      }).then(() =>{
+        console.log("Sucess");
+        handlePagamento();
+      })
     }
-
-    console.log(cep);
   }
 
   const navigate = useNavigate();

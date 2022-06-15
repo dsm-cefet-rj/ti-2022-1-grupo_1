@@ -18,17 +18,35 @@ const DadosPessoais = () => {
   const navigate = useNavigate();
 
   function handleSubmit(event) {
+    const pessoais = [];
     event.preventDefault();
+    pessoais.push({
+      email,
+      nome,
+      cpf,
+      telefone
+    });
 
+    //faltando id do usuario
+    console.log(pessoais);
     if (!email || !nome || !cpf || !telefone) {
       alert("preencha todos os campos!");
-    } else {
-      handleEntrega();
+    } else{
+
+      fetch('http://localhost:3000/dadosPessoais', {
+           method: 'POST',
+           headers: { "Content-Type": "application/json"},
+           body: JSON.stringify(pessoais)
+       }).then(() =>{
+            console.log("Sucess");
+            handleEntrega();
+       })
+
     }
   }
 
   function handleEntrega(){
-    navigate("/dadosentrega")
+    navigate("/dadosentrega");
   }
 
   return (
