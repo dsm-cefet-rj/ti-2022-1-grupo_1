@@ -44,6 +44,7 @@ export const slice = createSlice({
 
         [fetchData.pending]: (state, action) => {state.loading = "loading";},
         [fetchData.fulfilled]: (state, action) => {state.loading = "done"; dataAdapter.addMany(state,action.payload);},
+        [fetchData.rejected]: (state, action) => {state.loading = "failed";},
         
         [postData.pending]: (state, action) => {state.loading = "loading";},
         [postData.fulfilled]: (state, action) => {state.loading = "done"; dataAdapter.addOne(state,action.payload);},
