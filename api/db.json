@@ -1,5 +1,4 @@
 {
-  "favoritos": [],
   "tenis": [
     {
       "id": 1,
@@ -292,5 +291,6 @@
         "complemento": "dsadsad"
       }
     ]
-  ]
+  ],
+  "favoritos": []
 }
