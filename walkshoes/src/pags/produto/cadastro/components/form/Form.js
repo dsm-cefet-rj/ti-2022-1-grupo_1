@@ -27,10 +27,10 @@ export default function Form(props) {
         id: card.id,
         nome: card.nome,
         valor: card.valor,
-        tamanho: 42,
-        estado: "usado",
-        quantidade: 1,
-        img: "https://images.lojanike.com.br/1024x1024/produto/tenis-air-jordan-1-low-553558-163-1-11648573707.jpg",
+        tamanho: card.tamanho,
+        estado: card.estado,
+        quantidade: card.quantidade,
+        img: card.img,
     }));
     navigate('/');
   }
