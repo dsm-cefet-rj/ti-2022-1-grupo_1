@@ -15,8 +15,6 @@ import Chat from "../../componentsGlobal/chat/Chat";
 // [HTML]
 const Home = (props) => {
 
-  const here = 'home'; // debug
-
   const cards = useSelector(selectAllData);
   const loading = useSelector(state => state.data.loading);
   const dispatch = useDispatch();
@@ -27,11 +25,15 @@ const Home = (props) => {
     }, []);
 
   // Debug
+    const here = 'home';
+
     useEffect(() => {
-      if(loading == 'failed') console.warn(here, loading);
+      if(loading == 'failed') {
+        console.warn(here, loading);
+        alert('esqueceu do bd irmao');
+      }
       else console.log(here, loading);
 
-      if(loading == 'failed') alert('esqueceu do bd irmao');
     }, [loading]);
 
     useEffect(() => {
