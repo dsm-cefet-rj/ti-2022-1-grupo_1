@@ -7,17 +7,6 @@ const IdentificProd = props => {
 
       <form className="ident_form">
         <div className="ident_content">
-          <label className="ident_label">Título:</label>
-          <input
-            className="ident_input"
-            type="text"
-            name="nome"
-            value={props.card.nome}
-            onChange={props.handleUpdatedStatus}
-          ></input>
-        </div>
-
-        <div className="ident_content">
           <label className="ident_label">Código:</label>
           <input
             className="ident_input"
@@ -29,12 +18,12 @@ const IdentificProd = props => {
         </div>
 
         <div className="ident_content">
-          <label className="ident_label">Marca:</label>
+          <label className="ident_label">Título:</label>
           <input
             className="ident_input"
             type="text"
-            name="brand"
-            value={props.card.brand}
+            name="nome"
+            value={props.card.nome}
             onChange={props.handleUpdatedStatus}
           ></input>
         </div>

@@ -11,6 +11,7 @@ const Home = (props) => {
 
   const cards = useSelector(selectAllData);
   const dispatch = useDispatch();
+  console.log(cards);
 
   // Fetch do bd mockado
   useEffect(() => {
@@ -20,7 +21,7 @@ const Home = (props) => {
     return (
       <>
         <Menu></Menu>
-        <HeaderList></HeaderList>
+        <HeaderList ></HeaderList>
         <CardListHome card={cards}></CardListHome>
         <Footer></Footer>
         <Chat></Chat>
