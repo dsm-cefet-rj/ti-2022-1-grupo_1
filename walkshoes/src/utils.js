@@ -28,18 +28,22 @@ async function client(endpoint, { body, ...customConfig } = {}) {
     }
   }
   
-  export const httpGet = async function (endpoint, customConfig = {}) {
+  export const httpGet = async function (endpoint, timeout = 0, customConfig = {}) {
+    await new Promise(res => setTimeout(res, timeout))
     return client(endpoint, { ...customConfig, method: 'GET' })
   }
   
-  export const httpPost = async function (endpoint, body, customConfig = {}) {
+  export const httpPost = async function (endpoint, body, timeout = 0, customConfig = {}) {
+    await new Promise(res => setTimeout(res, timeout))
     return client(endpoint, {body, ...customConfig, method: 'POST'})
   }
 
-  export const httpPut = async function (endpoint, body, customConfig = {}) {
+  export const httpPut = async function (endpoint, body, timeout = 0, customConfig = {}) {
+    await new Promise(res => setTimeout(res, timeout))
     return client(endpoint, {body, ...customConfig, method: 'PUT'})
   }
 
-  export const httpDelete = async function (endpoint, customConfig = {}) {
+  export const httpDelete = async function (endpoint, timeout = 0, customConfig = {}) {
+    await new Promise(res => setTimeout(res, timeout))
     return client(endpoint, { ...customConfig, method: 'DELETE' })
   }
