@@ -15,39 +15,34 @@ export default function Form(props) {
     setCard({ ...card, [e.target.name]: e.target.value })
   }
 
-  // function handleSubmit(e){
-  //   e.preventDefault();
-  //   props.setCards(props.cards.concat(card));
-  //   navigate('/')
-  // }
+  // Essa funcao setava o forms diretamente nas props
+    // function handleSubmit(e){
+    //   e.preventDefault();
+    //   props.setCards(props.cards.concat(card));
+    //   navigate('/')
+    // }
 
-  function handleSubmit (e) {
-    e.preventDefault();
-    dispatch(postData({
-        id: card.id,
-        nome: card.nome,
-        valor: card.valor,
-        tamanho: card.tamanho,
-        estado: card.estado,
-        quantidade: card.quantidade,
-        img: card.img,
-    }));
-    navigate('/');
-  }
+  //Essa funcao escrevia o forms no bd (que acaba caindo nas props pelo fetch)
+    // function handleSubmit(e) {
+    //   e.preventDefault()
 
-  // function handleSubmit(e) {
-  //   e.preventDefault()
+    //   // fetch('http://localhost:3000/tenis', {
+    //   //   method: 'POST',
+    //   //   headers: {
+    //   //     'Content-Type': 'application/json'
+    //   //   },
+    //   //   body: JSON.stringify(card)
+    //   // })
 
-  //   // fetch('http://localhost:3000/tenis', {
-  //   //   method: 'POST',
-  //   //   headers: {
-  //   //     'Content-Type': 'application/json'
-  //   //   },
-  //   //   body: JSON.stringify(card)
-  //   // })
+    //   navigate('/')
+    // }
 
-  //   navigate('/')
-  // }
+    //Essa seta o forms na store (que escreve no bd (que cai nas props))
+    function handleSubmit (e) {
+      e.preventDefault();
+      dispatch(postData(card));
+      navigate('/');
+    }
 
   const navigate = useNavigate()
   return (

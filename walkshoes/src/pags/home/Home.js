@@ -12,12 +12,11 @@ import HeaderList from "../../componentsGlobal/header/headerList/HeaderList";
 import CardListHome from "./components/card/cardListHome/CardListHome";
 import Chat from "../../componentsGlobal/chat/Chat";
 
-// [HTML]
 const Home = (props) => {
 
-  const cards = useSelector(selectAllData);
-  const loading = useSelector(state => state.data.loading);
-  const dispatch = useDispatch();
+  const cards = useSelector(selectAllData);                   // var - todos os itens no slice
+  const loading = useSelector(state => state.data.loading);   // var - 'loading' ou 'done'
+  const dispatch = useDispatch();                             // func - pra mandar os dispatches
 
   // Fetch do bd mockado
     useEffect(() => {
@@ -25,22 +24,23 @@ const Home = (props) => {
     }, []);
 
   // Debug
-    const here = 'home';
-
+    // se o fetch falhar
     useEffect(() => {
       if(loading == 'failed') {
-        console.warn(here, loading);
+        console.warn(loading);
         alert('esqueceu do bd irmao');
       }
-      else console.log(here, loading);
+      else console.log(loading);
 
     }, [loading]);
 
+    // pra ver as cards
     useEffect(() => {
-      if(cards.length) console.log(here, cards);
-      // else console.log(here,'no cards');
+      if(cards.length) console.log(cards);
+      // else console.log('no cards');
     }, [cards]);
 
+  // HTML
   return (
     <>
       <Menu></Menu>
