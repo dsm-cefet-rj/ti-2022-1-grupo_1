@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react'
 
 // [Redux]
 import { useDispatch } from 'react-redux';
-import { deleteData } from '../../../../store/favSlice'
+import { deleteCard, switchSelect } from '../../../../store/favSlice'
 
 // [Assets]
 import icon from "../../../../assets/real-icon.png";
@@ -29,17 +29,25 @@ const CardFavorito = (props) => {
     const nome = data.nome;
     const price = data.valor;
     const situation = data.situation;
+    const selected = data.selected;
 
-    // States
-    const [ selected, setSelected ] = useState(false);
+    const [ select, setSelect ] = useState(false);
+
+    useEffect(() => {
+        dispatch(switchSelect({id: data.id, selected: select}));
+    }, [select]);
+
+    useEffect(() => {
+        if(select !== selected) setSelect(selected);
+    }, [selected]);
 
     // Funcao que cuida do select usando hooks
     function handleSelect () {
-        setSelected(!selected);
+        setSelect(!select);
     }
 
     function handleDelete () {
-        dispatch(deleteData(data));
+        dispatch(deleteCard(data));
     }
 
     // (WIP): Funcao que manda o id para /infoProd/:id
@@ -58,7 +66,7 @@ const CardFavorito = (props) => {
                     <div className="checkw">
                         <input
                             type="checkbox"
-                            checked={selected}
+                            checked={select}
                             onChange={handleSelect}
                         />
                     </div>
