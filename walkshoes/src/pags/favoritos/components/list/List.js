@@ -1,13 +1,19 @@
 // [React]
 import React, { useState, useEffect } from 'react';
-import Card from '../cardFavorito/CardFavorito';
+
+// [Redux]
 import { useSelector, useDispatch } from 'react-redux';
 import {
     fetchData,
-    createCardFav,
     selectAllData,
-    isLoading,
+    switchSelectMany,
+    deleteCard,
 } from '../../../../store/favSlice.js';
+
+// [Components]
+import Card from '../cardFavorito/CardFavorito';
+
+// [CSS]
 import './List.css'
 
 const List = () => {
