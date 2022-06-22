@@ -6,7 +6,7 @@ const favAdapter = createEntityAdapter();
 export const fetchData = createAsyncThunk(
     'fav/fetchCard',
     async () => {
-        const cards = await httpGet(`http://localhost:3000/favoritos`, 500);
+        const cards = await httpGet(`http://localhost:3000/favoritos`, 250);
         return cards ? (cards.map((item) => ({...item, selected: false}))) : (cards);
     }
 );
@@ -14,7 +14,7 @@ export const fetchData = createAsyncThunk(
 export const postCard = createAsyncThunk(
     'fav/postCard',
     async (item) => {
-        const card = await httpPost(`http://localhost:3000/favoritos`, item, 500);
+        const card = await httpPost(`http://localhost:3000/favoritos`, item, 250);
         return {...card, selected: false};
     }
 );
@@ -22,7 +22,7 @@ export const postCard = createAsyncThunk(
 export const deleteCard = createAsyncThunk(
     'fav/removeCard',
     async (item) => {
-        await httpDelete(`http://localhost:3000/favoritos/${item.id}`, 500);
+        await httpDelete(`http://localhost:3000/favoritos/${item.id}`, 0);
         return item.id;
     }
 );
@@ -67,6 +67,7 @@ export const { switchSelect, switchSelectMany } = slice.actions;
 
 export const {
     selectAll: selectAllData,
+    selectById: selectFavsById,
 } = favAdapter.getSelectors(state => state.fav);
 
 export default slice.reducer;
