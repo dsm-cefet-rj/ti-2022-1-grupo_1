@@ -17,12 +17,12 @@ const Carrinho = () => {
   console.log(carrinhoData)
   const loading = useSelector(state => state.carrinho.loading)
   const fetch = useSelector(state => state.carrinho.fetch)
-  const dispatch = useDispatch()
   const [items, setItems] = useState(carrinhoData)
+  const dispatch = useDispatch(); 
 
   useEffect(() => {
     if (fetch == 'ready') {
-      dispatch(fetchData())
+      dispatch(fetchData());
     }
   }, [fetch])
 
@@ -41,9 +41,9 @@ const Carrinho = () => {
   //   setItems(novoArray)
   // }
 
-  // const sumall = carrinhoData
-  //   .map(item => item.valor)
-  //   .reduce((prev, curr) => prev + curr, 0)
+  const sumall = carrinhoData
+    .map(item => item.valor)
+    .reduce((prev, curr) => prev + curr, 0)
 
   // useEffect(() => {
   //   let valorSomado = 0
@@ -60,7 +60,7 @@ const Carrinho = () => {
         items={items}
         // handleChangeQty={handleChangeQty}
       ></CarrinhoWrapper>
-      <ItemsPrice precoTotalItems={0}></ItemsPrice>
+      <ItemsPrice precoTotalItems={sumall}></ItemsPrice>
       <Button></Button>
     </>
   )

@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 import { postCard } from '../../../../store/favSlice.js'
-import { createCardCar } from '../../../../store/carrinhoSlice'
+import { postCardCarrinho } from '../../../../store/carrinhoSlice'
 import { useSelector } from 'react-redux'
 import { selectFavsById } from '../../../../store/favSlice.js';
 
@@ -32,7 +32,7 @@ export default function ProdInfo(props) {
         // navigate('/favoritos');
         break;
       case 'Car':
-        dispatch(createCardCar(content));
+        dispatch(postCardCarrinho(content));
         alert('Adicionado ao carrinho');
         navigate('/carrinho');
         break;
