@@ -16,26 +16,26 @@ export default function ProdInfo(props) {
   const [ isCar, setIsCar ] = useState(false);
   const [ isFav , setIsFav ] = useState(false);
 
+  // const checkCar = useSelector((state) => selectItemById(state, content.id));  // nome do select é vc que cria
   const checkFav = useSelector((state) => selectFavsById(state, content.id));
 
   useEffect (() => {
+    // if(checkCar) setIsCar(true);
     if(checkFav) setIsFav(true); 
   });
 
   function handleNew(t) {
     switch (t) {
       case 'Fav':
-        dispatch(
-          postCard(content)
-        )
-        // navigate('/favoritos')
-        break
+        dispatch(postCard(content));
+        alert('Adicionado aos favoritos');
+        // navigate('/favoritos');
+        break;
       case 'Car':
-        dispatch(
-          createCardCar(content)
-        )
-        navigate('/carrinho')
-        break
+        dispatch(createCardCar(content));
+        alert('Adicionado ao carrinho');
+        navigate('/carrinho');
+        break;
     }
   }
 
