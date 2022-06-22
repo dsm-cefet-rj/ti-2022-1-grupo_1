@@ -1,62 +1,78 @@
 // [React]
 import React, { useState, useEffect } from 'react';
+
+// [Redux]
+import { useSelector, useDispatch } from 'react-redux';
+import {
+    fetchData,
+    selectAllData,
+    switchSelectMany,
+    deleteCard,
+} from '../../../../store/favSlice.js';
+
+// [Components]
 import Card from '../cardFavorito/CardFavorito';
-import { useDispatch } from 'react-redux';
-import { createCardFav } from '../../../../store/favSlice.js';
-import { useSelector } from 'react-redux';
-import { selectCards } from '../../../../store/favSlice.js';
+
+// [CSS]
 import './List.css'
 
 const List = () => {
 
     // Redux
-    const favData = useSelector(selectCards);
-    const dispatch = useDispatch();
+    const favData = useSelector(selectAllData);                 // var - todos os itens no slice
+    const loading = useSelector(state => state.fav.loading);    // var - 'loading' ou 'done'
+    const fetch = useSelector(state => state.fav.fetch)         // var - 'waiting', 'ready' ou 'up-to-date'
+    const dispatch = useDispatch();                             // func - pra mandar os dispatches
 
     // States
-    const [ data, setData ] = useState();
-    const [ filteredData, setFilteredData ] = useState();
+    const [ search, setSearch ] = useState('');                 // var - string de pesquisa
+    const [ filteredData, setFilteredData ] = useState([]);     // var - dados filtrados pela string
+    const [ select, setSelect ] = useState(false);              // var - checkbox 'todos'
 
-    // State para usar como 'pesquisa'
-    const [ search, setSearch ] = useState('');
+    // Hooks
+        // Fetch do bd mockado
+        useEffect(() => {
+            if(fetch == 'ready') {
+                dispatch(fetchData());
+            }
+        }, [fetch]);
 
-    // Fetch do bd mockado
-    useEffect(() => {
-        fetch('http://localhost:3000/tenis')
-        .then(res=>{
-          return res.json();
-        })
-        .then((data)=>{
-          setData(data);
-        })
-    }, []);
+        // Hook que seleciona os itens do favData
+        useEffect(() => {
+            dispatch(switchSelectMany(favData.map((item) => ({id: item.id, selected: select}))));
+        }, [select]);
 
-    // Funcao de filtro dos itens salvos na store (fav)
-    function toSearch(s) {
-        setSearch(s);
-        if(s !== '') {
-            const fdata = favData.filter((item) => {
-                return Object.values(item.nome).join('').toLowerCase().includes(s.toLowerCase());
+    // Funcoes
+        // Funcao handle que seta o state do checkbox
+        function handleSelect () {
+            setSelect(!select);
+        }
+
+        // Funcao handle que deleta os itens selecionados e seta o state do checkbox
+        function handleDeleteSelect() {
+            favData.filter((item) => {
+                return item.selected == true
+            }).map((item) => {
+                dispatch(deleteCard(item))
             })
-            setFilteredData(fdata);
-            console.log(s, fdata);
+            
+            setSelect(!select);
         }
-        else {
-            setFilteredData(favData);
-        }
-    };
 
-    // Funcao que adiciona novo item na store (fav)
-    function handleNew () {
-        if(favData.length >= data.length) {
-            alert("Limite máximo alcançado");
-        }
-        else {
-            dispatch(createCardFav(
-                data.find((item) => (item.id === favData.length+1))
-            ));
-        }
-    }
+        // Funcao de filtragem dos itens salvos na store (do slice dos favoritos)
+        function toSearch(s) {
+            setSearch(s);
+            if(s !== '') {
+                const fdata = favData.filter((item) => {
+                    return Object.values(item.nome).join('').toLowerCase().includes(s.toLowerCase());
+                })
+                setFilteredData(fdata);
+                console.log(s, fdata);
+            }
+            else {
+                setFilteredData(favData);
+            }
+        };
 
     // HTML
     return (
@@ -70,7 +86,7 @@ const List = () => {
                         placeholder="Pesquisar"
                         onChange={(e) => toSearch(e.target.value)} 
                     />
-                    <button disabled onClick={handleNew}>+</button>
+                    <button disabled>+</button>
                 </div>
             </div>
 
@@ -80,28 +96,35 @@ const List = () => {
                         <input 
                             type="checkbox" 
                             name="select-all"
+                            checked={select}
+                            onChange={handleSelect}
                         />
                         <label htmlFor="select-all" className='f1'>Todos</label>
                     </div>
-                    <button style={{display: "flex", alignSelf: "center", alignItems: "center", height: "25px"}} disabled>Excluir</button>
+                    <button style={{display: "flex", alignSelf: "center", alignItems: "center", height: "25px"}} onClick={handleDeleteSelect}>Excluir</button>
                 </div>
             </div>
 
             <div className='listy'>
-                {search.length > 0 ? (
-                    filteredData.map(
-                        (item) => <Card
-                            key={item.id}
-                            id={item.id}
-                            item={item}
-                        />)
-                    ) : (
-                        favData.map(
-                            (item) => <Card
-                                key={item.id}
-                                id={item.id}
-                                item={item}
-                            />)
+                {
+                    (fetch == 'up-to-date') ? (
+                        search.length > 0 ? (
+                            filteredData.map(
+                                (item) => <Card
+                                    key={item.id}
+                                    id={item.id}
+                                    item={item}
+                                />)
+                            ) : (
+                                favData.map(
+                                    (item) => <Card
+                                        key={item.id}
+                                        id={item.id}
+                                        item={item}
+                                    />)
+                            )
+                        ) : (
+                            <p className='centre'>Carregando...</p>
                     )
                 }
             </div>

@@ -1,15 +1,15 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { loadState } from './localStorage.js';
+import { loadState } from './localStorage';
 
+import dataReducer from './dataSlice';
 import favReducer from './favSlice';
-import formReducer from './formSlice';
-import carrinhoReducer from './carrinhoSlice.js';
+import carrinhoReducer from './carrinhoSlice';
 
 export default configureStore({
     reducer: {
+        data: dataReducer,
         fav: favReducer,
-        form: formReducer,
         carrinho: carrinhoReducer,
     },
-    preloadedState: loadState(),
+    // preloadedState: loadState(),
 });
