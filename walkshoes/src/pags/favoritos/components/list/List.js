@@ -28,6 +28,7 @@ const List = () => {
     const [ search, setSearch ] = useState('');                 // var - string de pesquisa
     const [ filteredData, setFilteredData ] = useState([]);     // var - dados filtrados pela string
     const [ select, setSelect ] = useState(false);              // var - checkbox 'todos'
+    const [ deleteSelected, setDelete ] = useState(false);      // var - checkbox 'todos'
 
     // Hooks
         // Fetch do bd mockado
@@ -42,6 +43,12 @@ const List = () => {
             dispatch(switchSelectMany(favData.map((item) => ({id: item.id, selected: select}))));
         }, [select]);
 
+        // Hook que seleciona os itens do favData
+        useEffect(() => {
+            if(hasSelected()) setDelete(true);
+            else setDelete(false);
+        }, [favData]);
+
     // Funcoes
         // Funcao handle que seta o state do checkbox
         function handleSelect () {
@@ -50,13 +57,26 @@ const List = () => {
 
         // Funcao handle que deleta os itens selecionados e seta o state do checkbox
         function handleDeleteSelect() {
-            favData.filter((item) => {
-                return item.selected == true
-            }).map((item) => {
+            hasSelected('get').map((item) => {
                 dispatch(deleteCard(item))
             })
             
-            setSelect(!select);
+            setSelect(false);
+        }
+
+        // Funcao que verifica se existe card selecionado (tb pode retornar o card)
+        function hasSelected (t = '') {
+            const array = favData.filter((item) => {
+                return item.selected == true
+            });
+
+            switch (t) {
+                case 'get' :
+                    return array;
+
+                default:
+                    return array.length;
+            }
         }
 
         // Funcao de filtragem dos itens salvos na store (do slice dos favoritos)
@@ -101,7 +121,7 @@ const List = () => {
                         />
                         <label htmlFor="select-all" className='f1'>Todos</label>
                     </div>
-                    <button style={{display: "flex", alignSelf: "center", alignItems: "center", height: "25px"}} onClick={handleDeleteSelect}>Excluir</button>
+                    <button style={{display: "flex", alignSelf: "center", alignItems: "center", height: "25px"}} onClick={handleDeleteSelect} disabled={!deleteSelected}>Excluir</button>
                 </div>
             </div>
 

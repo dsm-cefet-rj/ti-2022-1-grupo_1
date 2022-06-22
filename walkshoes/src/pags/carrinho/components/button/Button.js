@@ -4,10 +4,10 @@ import './Button.css'
 const Button = () => {
   return (
     <div className="confirmButton">
-      <a href="/" class="myButton">
+      <a href="/" className="myButton">
         Continuar Comprando
       </a>
-      <a href="/dadospessoais" class="myButton">
+      <a href="/dadospessoais" className="myButton">
         Ir para pagamento
       </a>
     </div>

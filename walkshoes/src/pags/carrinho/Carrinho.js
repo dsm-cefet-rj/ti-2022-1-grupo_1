@@ -4,15 +4,27 @@ import CarrinhoWrapper from './components/carrinhoWrapper/CarrinhoWrapper'
 import Menu from '../../componentsGlobal/header/menu/Menu'
 import Button from './components/button/Button'
 // Redux
-import { useSelector } from 'react-redux'
-import { selectCards } from '../../store/carrinhoSlice.js'
+import { useSelector, useDispatch } from 'react-redux'
+import {
+  fetchData,
+  selectAllData,
+  deleteCard
+} from '../../store/carrinhoSlice.js'
 
 const Carrinho = () => {
-  const [totalValue, setTotalValue] = useState(0)
-  // transformar a lista em um estado para poder alterar o
-  const carrinhoData = useSelector(selectCards)
+  // const [totalValue, setTotalValue] = useState(0)
+  const carrinhoData = useSelector(selectAllData)
   console.log(carrinhoData)
+  const loading = useSelector(state => state.carrinho.loading)
+  const fetch = useSelector(state => state.carrinho.fetch)
+  const dispatch = useDispatch()
   const [items, setItems] = useState(carrinhoData)
+
+  useEffect(() => {
+    if (fetch == 'ready') {
+      dispatch(fetchData())
+    }
+  }, [fetch])
 
   // function handleChangeQty(quantity, name) {
   //   let valorSomado = 0
@@ -29,10 +41,9 @@ const Carrinho = () => {
   //   setItems(novoArray)
   // }
 
-  const sumall = carrinhoData
-    .map(item => item.valor)
-    .reduce((prev, curr) => prev + curr, 0)
-  console.log(sumall)
+  // const sumall = carrinhoData
+  //   .map(item => item.valor)
+  //   .reduce((prev, curr) => prev + curr, 0)
 
   // useEffect(() => {
   //   let valorSomado = 0
@@ -49,7 +60,7 @@ const Carrinho = () => {
         items={items}
         // handleChangeQty={handleChangeQty}
       ></CarrinhoWrapper>
-      <ItemsPrice precoTotalItems={sumall}></ItemsPrice>
+      <ItemsPrice precoTotalItems={0}></ItemsPrice>
       <Button></Button>
     </>
   )

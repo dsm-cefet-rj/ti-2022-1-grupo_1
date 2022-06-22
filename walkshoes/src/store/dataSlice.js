@@ -37,8 +37,6 @@ export const slice = createSlice({
         loading: "idle"
     }),
     reducers: {
-        createCard: dataAdapter.addOne,
-        deleteCard: dataAdapter.removeOne,
     },
     extraReducers: {
 
@@ -62,6 +60,7 @@ export const selectCards = state => state.data;
 
 export const {
     selectAll: selectAllData,
+    selectById: selectCardsById,
 } = dataAdapter.getSelectors(state => state.data);
 
 export default slice.reducer;
