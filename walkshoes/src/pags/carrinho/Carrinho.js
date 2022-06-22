@@ -9,9 +9,7 @@ import { selectCards } from '../../store/carrinhoSlice.js'
 
 const Carrinho = () => {
   const [totalValue, setTotalValue] = useState(0)
-  // transformar a lista em um estado para poder alterar o
   const carrinhoData = useSelector(selectCards)
-  console.log(carrinhoData)
   const [items, setItems] = useState(carrinhoData)
 
   // function handleChangeQty(quantity, name) {
@@ -32,7 +30,6 @@ const Carrinho = () => {
   const sumall = carrinhoData
     .map(item => item.valor)
     .reduce((prev, curr) => prev + curr, 0)
-  console.log(sumall)
 
   // useEffect(() => {
   //   let valorSomado = 0
