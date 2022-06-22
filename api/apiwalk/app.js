@@ -9,14 +9,13 @@ const mongoose = require('mongoose')
 var chatRouter = require('./routes/chat');
 var dadosEntregaRouter = require('./routes/dadosEntrega');
 var dadosPessoaisRouter = require('./routes/dadosPessoais');
+var homeRouter = require('./routes/home');
 
 const url = "mongodb+srv://lucasgjorge:abc123456lucasRodrigo@cluster0.lnkn79s.mongodb.net/?retryWrites=true&w=majority"
 const connect = mongoose.connect(url) 
 
 connect.then( db => console.log("Mongo conectado"))
 .catch( err => console.log(err))
-
-
 
 
 var app = express();
@@ -32,5 +31,6 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/chat', chatRouter);
 app.use('/dadosEntrega',dadosEntregaRouter);
 app.use('/dadosPessoais',dadosPessoaisRouter);
+app.use('/home', homeRouter);
 
 module.exports = app;
