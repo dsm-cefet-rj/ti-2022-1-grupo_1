@@ -10,6 +10,7 @@ var chatRouter = require('./routes/chat');
 var dadosEntregaRouter = require('./routes/dadosEntrega');
 var dadosPessoaisRouter = require('./routes/dadosPessoais');
 var homeRouter = require('./routes/home');
+var infoProdutoRouter = require('./routes/infoProduto');
 
 const url = "mongodb+srv://lucasgjorge:abc123456lucasRodrigo@cluster0.lnkn79s.mongodb.net/?retryWrites=true&w=majority"
 const connect = mongoose.connect(url) 
@@ -32,5 +33,7 @@ app.use('/chat', chatRouter);
 app.use('/dadosEntrega',dadosEntregaRouter);
 app.use('/dadosPessoais',dadosPessoaisRouter);
 app.use('/home', homeRouter);
+app.use('/infoProduto', infoProdutoRouter);
+
 
 module.exports = app;
