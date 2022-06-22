@@ -65,7 +65,7 @@ function App() {
           <Route path="/carrinho" element={<Carrinho />} />
           <Route path="/favoritos" element={<Favoritos />}/>
           <Route path="/cadastroprod" element={<CadastroProd cards={cards} setCards={setCards}/>}/>
-          <Route path="/infoprod" element={<InfoProd/>}/>
+          <Route path="/infoprod/:id" element={<InfoProd/>}/>
           {/* <Footer></Footer> */}
         </Routes>
       </Router>
