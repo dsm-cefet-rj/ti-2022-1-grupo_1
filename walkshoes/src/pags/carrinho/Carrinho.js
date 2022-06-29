@@ -14,7 +14,6 @@ import {
 const Carrinho = () => {
   // const [totalValue, setTotalValue] = useState(0)
   const carrinhoData = useSelector(selectAllData)
-  console.log(carrinhoData)
   const loading = useSelector(state => state.carrinho.loading)
   const fetch = useSelector(state => state.carrinho.fetch)
   const [items, setItems] = useState(carrinhoData)
@@ -22,7 +21,10 @@ const Carrinho = () => {
 
   useEffect(() => {
     if (loading == 'done') {
+      console.log(carrinhoData)
       setItems(carrinhoData)
+    } else if(loading == 'idle') {
+      console.log(carrinhoData)
     }
   }, [loading])
 
