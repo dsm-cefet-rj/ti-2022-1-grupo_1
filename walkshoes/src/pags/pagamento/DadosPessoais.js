@@ -8,42 +8,74 @@ import Chat from "../../componentsGlobal/chat/Chat";
 import Menu from "../../componentsGlobal/header/menu/Menu";
 import Footer from "../../componentsGlobal/footer/Footer";
 import "./styles.css";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import axios from 'axios';
+
+
+const schema = yup.object().shape({
+  email: yup.string().required(),
+  nome: yup.string().required(),
+  cpf: yup.string().required(),
+  telefone: yup.string().required(),
+})
 
 const DadosPessoais = () => {
-  const [email, setEmail] = useState();
-  const [nome, setNome] = useState();
-  const [cpf, setCpf] = useState();
-  const [telefone, setTelefone] = useState();
+  // const [email, setEmail] = useState();
+  // const [nome, setNome] = useState();
+  // const [cpf, setCpf] = useState();
+  // const [telefone, setTelefone] = useState();
+
+
+const { register, handleSubmit, formState: {errors} } = useForm({
+    resolver: yupResolver(schema)
+  })
 
   const navigate = useNavigate();
 
-  function handleSubmit(event) {
-    const pessoais = [];
-    event.preventDefault();
-    pessoais.push({
-      email,
-      nome,
-      cpf,
-      telefone
-    });
+  const onSubmit = (data) => axios.post("http://localhost:3000/dadosPessoais",{
+    email: data.email,
+    nome: data.nome,
+    cpf: data.cpf,
+    telefone: data.telefone
+  }).then((res) =>{
+    debugger;
+    console.log("entrou");
+    handleEntrega();
+  }) 
 
-    //faltando id do usuario
-    console.log(pessoais);
-    if (!email || !nome || !cpf || !telefone) {
-      alert("preencha todos os campos!");
-    } else{
+  // function handleSubmit(event) {
+  //   const pessoais = [];
+  //   event.preventDefault();
+  //   pessoais.push({
+  //     email,
+  //     nome,
+  //     cpf,
+  //     telefone
+  //   });
 
-      fetch('http://localhost:3000/dadosPessoais', {
-           method: 'POST',
-           headers: { "Content-Type": "application/json"},
-           body: JSON.stringify(pessoais)
-       }).then(() =>{
-            console.log("Sucess");
-            handleEntrega();
-       })
+  //   //faltando id do usuario
+  //   console.log(pessoais);
+  //   if (!email || !nome || !cpf || !telefone) {
+  //     alert("preencha todos os campos!");
+  //   } else{
 
-    }
-  }
+  //     axios.post("http://localhost:3000/dadosPessoais"),{
+
+  //     }
+
+    //   fetch('http://localhost:3000/dadosPessoais', {
+    //        method: 'POST',
+    //        headers: { "Content-Type": "application/json"},
+    //        body: JSON.stringify(pessoais)
+    //    }).then(() =>{
+    //         console.log("Sucess");
+    //         handleEntrega();
+    //    })
+
+  //   }
+  // }
 
   function handleEntrega(){
     navigate("/dadosentrega");
@@ -56,7 +88,7 @@ const DadosPessoais = () => {
         <h2> FINALIZAR COMPRA</h2>
         <div className="content-wr">
           <div>
-            <form className="dados" onSubmit={handleSubmit}>
+            <form className="dados" onSubmit={handleSubmit(onSubmit)}>
               <div className="div-etapa-pessoal">
                 <span> <BsFillPersonFill/> DADOS PESSOAIS</span>
               </div>
@@ -66,7 +98,8 @@ const DadosPessoais = () => {
                   type="text"
                   placeholder="Digite seu Email"
                   name="email"
-                  onChange={(event) => setEmail(event.target.value)}
+                  {...register("email")}
+                  // onChange={(event) => setEmail(event.target.value)}
                 />
 
                 <label> Nome </label>
@@ -74,15 +107,17 @@ const DadosPessoais = () => {
                   type="text"
                   placeholder="Digite seu nome"
                   name="nome"
-                  onChange={(event) => setNome(event.target.value)}
+                  {...register("nome")}
+                  //onChange={(event) => setNome(event.target.value)}
                 />
 
                 <label> CPF </label>
                 <input
                   type="number"
                   placeholder="Digite seu CPF"
-                  name="CPF"
-                  onChange={(event) => setCpf(event.target.value)}
+                  name="cpf"
+                  {...register("cpf")}
+                  //onChange={(event) => setCpf(event.target.value)}
                 />
 
                 <label> Telefone </label>
@@ -90,7 +125,8 @@ const DadosPessoais = () => {
                   type="number"
                   placeholder="Digite seu telefone"
                   name="telefone"
-                  onChange={(event) => setTelefone(event.target.value)}
+                  {...register("telefone")}
+                  //onChange={(event) => setTelefone(event.target.value)}
                 />
 
                 <button className="btn-proxima" type="submit" value="entrega">

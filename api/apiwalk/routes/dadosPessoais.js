@@ -9,4 +9,23 @@ router.get('/', async function(req, res, next) {
     res.send(dadosPessoais);
   });
 
+// router.post('/dadosPessoais', async (req, res, next) => {
+//     await Usuario.create(req.body);
+//     res.status(201).send('Usuário foi cadastrado');
+// });
+
+
+router.post('/dadosPessoais', async (req, res, next) => {
+  const {email, nome, cpf, telefone} = req.body
+
+  const postPessoal = {email, nome, cpf, telefone}
+
+    try{
+      await dadosPessoaisModel.create(postPessoal);
+      res.status(201).send('Dados pessoais cadastrados');
+    } catch {
+      res.status(500).json({ erro: error })
+    }
+});
+
 module.exports = router;
