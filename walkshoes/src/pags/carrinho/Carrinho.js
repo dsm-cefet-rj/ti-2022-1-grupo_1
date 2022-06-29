@@ -21,7 +21,6 @@ const Carrinho = () => {
 
   useEffect(() => {
     if (loading == 'done') {
-      console.log(carrinhoData)
       setItems(carrinhoData)
     } else if(loading == 'idle') {
       console.log(carrinhoData)
@@ -35,9 +34,10 @@ const Carrinho = () => {
   }, [fetch])
 
   function handleDelete(id) {
-    console.log(id)
     carrinhoData.map(item => {
-      dispatch(deleteCard(item))
+      if( item.id == id){
+        dispatch(deleteCard(item))
+      }
     })
   }
 
