@@ -11,7 +11,7 @@ var dadosEntregaRouter = require('./routes/dadosEntrega');
 var dadosPessoaisRouter = require('./routes/dadosPessoais');
 var homeRouter = require('./routes/home');
 var carrinhoRouter = require('./routes/carrinho');
-var favoritosRouter = require('./routes/carrinho');
+var favoritosRouter = require('./routes/favoritos');
 var infoProdutoRouter = require('./routes/infoProduto');
 
 const url = "mongodb+srv://lucasgjorge:abc123456lucasRodrigo@cluster0.lnkn79s.mongodb.net/?retryWrites=true&w=majority"
