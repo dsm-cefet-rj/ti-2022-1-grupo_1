@@ -26,6 +26,7 @@ const CardFavorito = (props) => {
 
     // Propriedades do card
     const img = data.img;
+    const id = data.id;
     const nome = data.nome;
     const price = data.valor;
     const situation = data.situation;
@@ -55,7 +56,7 @@ const CardFavorito = (props) => {
 
         // (Todo): Redirecionar os dados pra pagina
 
-        navigate("/infoprod"); // <-- isso n
+        navigate(`/infoprod/${id}`); // <-- isso n
     }
 
     // [HTML]

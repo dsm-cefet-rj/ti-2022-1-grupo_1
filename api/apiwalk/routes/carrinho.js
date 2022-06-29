@@ -26,30 +26,28 @@ let carrinhoData = [
 ]
 
 /* GET users listing. */
-router.get('/', function (req, res, next) {
-  // Carrinho.find({})
-  //   .then(
-  //     carrinhoBanco => {
-  //       res.statusCode = 200
-  //       res.setHeader('Content-Type', 'application/json')
-  //       res.json(carrinhoBanco)
-  //     },
-  //     err => next(err)
-  //   )
-  //   .catch(err => next(err))
+router.get('/', async function(req, res, next) {
 
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'application/json')
+  res.statusCode = 200;
+  res.setHeader('Content-Type', 'application/json');
   res.json(carrinhoData)
-})
+});
 
-router.route('/:id').delete((req, res, next) => {
-  carrinhoData = carrinhoData.filter(function (value, index, arr) {
-    return value.id != req.params.id
-  })
+router.post('/add', async function(req, res, next){
+  let card = req.body
 
-  res.statusCode = 200
-  res.setHeader('Content-Type', 'application/json')
-  res.json(req.params.id)
-})
-module.exports = router
+  card = {...card, id: carrinhoData.length+1}
+  carrinhoData.push(card);
+
+  res.setHeader('Content-Type', 'application/json');
+  res.send(card)
+});
+
+router.delete('/delete/:id', async function(req, res, next){
+  let id = req.params.id
+  carrinhoData = carrinhoData.filter((item) => {item.id != id})
+
+  res.statusCode = 200;
+  res.send(id)
+});
+module.exports = router;

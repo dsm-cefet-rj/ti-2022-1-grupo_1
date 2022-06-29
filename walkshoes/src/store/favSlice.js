@@ -6,7 +6,7 @@ const favAdapter = createEntityAdapter();
 export const fetchData = createAsyncThunk(
     'fav/fetchCard',
     async () => {
-        const cards = await httpGet(`http://localhost:3000/favoritos`, 250);
+        let cards = await httpGet(`http://localhost:3000/favoritos/`);
         return cards ? (cards.map((item) => ({...item, selected: false}))) : (cards);
     }
 );
@@ -14,7 +14,7 @@ export const fetchData = createAsyncThunk(
 export const postCard = createAsyncThunk(
     'fav/postCard',
     async (item) => {
-        const card = await httpPost(`http://localhost:3000/favoritos`, item, 250);
+        let card = await httpPost(`http://localhost:3000/favoritos/add/`, item);
         return {...card, selected: false};
     }
 );
@@ -22,8 +22,8 @@ export const postCard = createAsyncThunk(
 export const deleteCard = createAsyncThunk(
     'fav/removeCard',
     async (item) => {
-        await httpDelete(`http://localhost:3000/favoritos/${item.id}`, 0);
-        return item.id;
+        let id = await httpDelete(`http://localhost:3000/favoritos/delete/${item.id}`);
+        return id;
     }
 );
 

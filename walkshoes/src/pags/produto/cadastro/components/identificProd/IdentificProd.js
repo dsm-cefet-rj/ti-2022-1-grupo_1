@@ -1,3 +1,4 @@
+import React from "react";
 import './IdentificProd.css'
 
 const IdentificProd = props => {

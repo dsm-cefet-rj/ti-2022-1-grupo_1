@@ -6,28 +6,28 @@ const dataAdapter = createEntityAdapter();
 export const fetchData = createAsyncThunk(
     'data/fetchData',
     async () => {
-        return await httpGet(`http://localhost:3000/tenis`);
+        return await httpGet(`http://localhost:3000/home/`);
     }
 )
 
 export const postData = createAsyncThunk(
     'data/postData',
     async (card) => {
-        return await httpPost(`http://localhost:3000/tenis`, card);
+        return await httpPost(`http://localhost:3000/home/`, card);
     }
 )
 
 export const deleteData = createAsyncThunk(
     'data/removeData',
     async (card) => {
-        return await httpDelete(`http://localhost:3000/tenis/${card.id}`);
+        return await httpDelete(`http://localhost:3000/home/${card.id}`);
     }
 );
 
 export const updateData = createAsyncThunk(
     'data/removeData',
     async (card) => {
-        return await httpPut(`http://localhost:3000/tenis/${card.id}`, card);
+        return await httpPut(`http://localhost:3000/home/${card.id}`, card);
     }
 )
 

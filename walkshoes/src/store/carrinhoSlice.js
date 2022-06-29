@@ -6,7 +6,7 @@ const carAdapter = createEntityAdapter();
 export const fetchData = createAsyncThunk(
     'car/fetchCard',
     async () => {
-        const cards = await httpGet(`http://localhost:3000/carrinho`);
+        const cards = await httpGet(`http://localhost:3000/carrinho/`);
         return {...cards};
     }
 );
@@ -14,7 +14,7 @@ export const fetchData = createAsyncThunk(
 export const postCard = createAsyncThunk(
     'car/postCardCarrinho',
     async (item) => {
-        const cards = await httpPost(`http://localhost:3000/carrinho`, item, 250);
+        const cards = await httpPost(`http://localhost:3000/carrinho/add`, item);
         return cards
     }
 );
@@ -22,7 +22,7 @@ export const postCard = createAsyncThunk(
 export const deleteCard = createAsyncThunk(
     'car/removeCard',
     async (item) => {
-        await httpDelete(`http://localhost:3000/carrinho/${item.id}`, 0);
+        await httpDelete(`http://localhost:3000/carrinho/delete/${item.id}`);
         console.log("deleteCard", item.id)
         return item.id;
     }

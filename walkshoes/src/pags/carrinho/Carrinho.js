@@ -17,6 +17,7 @@ const Carrinho = () => {
   const loading = useSelector(state => state.carrinho.loading)
   const fetch = useSelector(state => state.carrinho.fetch)
   const [items, setItems] = useState(carrinhoData)
+  
   const dispatch = useDispatch()
 
   useEffect(() => {
