@@ -11,7 +11,7 @@ export const fetchData = createAsyncThunk(
     }
 );
 
-export const postCardCarrinho = createAsyncThunk(
+export const postCard = createAsyncThunk(
     'car/postCardCarrinho',
     async (item) => {
         const cards = await httpPost(`http://localhost:3000/carrinho`, item, 250);
@@ -28,6 +28,13 @@ export const deleteCard = createAsyncThunk(
     }
 );
 
+// export const updateCard = createAsyncThunk(
+//     'fav/removeData',
+//     async (card) => {
+//         return await httpPut(`http://localhost:3000/favoritos/${card.id}`, card, 500);
+//     }
+// )
+
 export const slice = createSlice({
     name: 'carrinho',
     initialState: carAdapter.getInitialState({
@@ -40,9 +47,9 @@ export const slice = createSlice({
         [fetchData.fulfilled]: (state, action) => {state.loading = "done"; state.fetch = "up-to-date"; carAdapter.addMany(state,action.payload);},
         [fetchData.rejected]: (state, action) => {state.loading = "failed"; state.fetch = "ready";},
 
-        [postCardCarrinho.pending]: (state, action) => {state.loading = "loading"; state.fetch = "waiting";},
-        [postCardCarrinho.fulfilled]: (state, action) => {state.loading = "done"; state.fetch = "ready"; carAdapter.addOne(state,action.payload);},
-        [postCardCarrinho.rejected]: (state, action) => {state.loading = "failed"; state.fetch = "up-to-date";},
+        [postCard.pending]: (state, action) => {state.loading = "loading"; state.fetch = "waiting";},
+        [postCard.fulfilled]: (state, action) => {state.loading = "done"; state.fetch = "ready"; carAdapter.addOne(state,action.payload);},
+        [postCard.rejected]: (state, action) => {state.loading = "failed"; state.fetch = "up-to-date";},
         
         [deleteCard.pending]: (state, action) => {state.loading = "loading"; state.fetch = "waiting";},
         [deleteCard.fulfilled]: (state, action) => {state.loading = "done"; state.fetch = "ready"; carAdapter.removeOne(state,action.payload);},
