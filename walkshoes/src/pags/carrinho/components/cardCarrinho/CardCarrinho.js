@@ -34,7 +34,7 @@ const CardCarrinho = props => {
   return (
     <div className="cardContent">
       <div className="lixeiraLabel">
-        <img src={lixeira}></img>
+        <img src={lixeira} onClick={() => props.handleDelete(props.information.id)}></img>
       </div>
       <div className="shoeContent">
         <img src={props.information.img} />

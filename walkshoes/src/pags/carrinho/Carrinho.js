@@ -18,13 +18,26 @@ const Carrinho = () => {
   const loading = useSelector(state => state.carrinho.loading)
   const fetch = useSelector(state => state.carrinho.fetch)
   const [items, setItems] = useState(carrinhoData)
-  const dispatch = useDispatch(); 
+  const dispatch = useDispatch()
+
+  useEffect(() => {
+    if (loading == 'done') {
+      setItems(carrinhoData)
+    }
+  }, [loading])
 
   useEffect(() => {
     if (fetch == 'ready') {
-      dispatch(fetchData());
+      dispatch(fetchData())
     }
   }, [fetch])
+
+  function handleDelete(id) {
+    console.log(id)
+    carrinhoData.map(item => {
+      dispatch(deleteCard(item))
+    })
+  }
 
   // function handleChangeQty(quantity, name) {
   //   let valorSomado = 0
@@ -58,6 +71,7 @@ const Carrinho = () => {
       <Menu name="Home"></Menu>
       <CarrinhoWrapper
         items={items}
+        handleDelete={handleDelete}
         // handleChangeQty={handleChangeQty}
       ></CarrinhoWrapper>
       <ItemsPrice precoTotalItems={sumall}></ItemsPrice>

@@ -33,7 +33,6 @@ export default function ProdInfo(props) {
         break;
       case 'Car':
         dispatch(postCardCarrinho(content));
-        alert('Adicionado ao carrinho');
         navigate('/carrinho');
         break;
     }
