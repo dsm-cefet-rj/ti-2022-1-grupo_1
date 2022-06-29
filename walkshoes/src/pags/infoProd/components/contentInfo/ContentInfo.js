@@ -1,8 +1,8 @@
-import { useEffect } from 'react';
+import React, { useEffect } from 'react';
 import ProdImg from "../prodImg/ProdImg";
 import ProdInfo from "../prodInfo/ProdInfo";
 import { fetchData, selectCardsById } from '../../../../store/dataSlice.js';
-// import { fetchData as fetchCar } from '../../../../store/carrinhoSlice.js';
+import { fetchData as fetchCar } from '../../../../store/carrinhoSlice.js';
 import { fetchData as fetchFav } from '../../../../store/favSlice.js';
 import { useSelector, useDispatch } from 'react-redux'
 import { useParams } from 'react-router-dom'
@@ -10,7 +10,7 @@ import './ContentInfo.css';
 
 
 export default function ContentInfo() {
-  
+
   let { id } = useParams();
   const content = useSelector((state) => selectCardsById(state, id));
   const data = useSelector(state => state.data.loading);
@@ -19,7 +19,7 @@ export default function ContentInfo() {
 
   const dispatch = useDispatch();
   useEffect(() => {
-    if(data !== 'done') {
+    if(data == 'idle') {
       dispatch(fetchData());
     }
 
@@ -27,7 +27,7 @@ export default function ContentInfo() {
     //   dispatch(fetchCar());
     // }
 
-    if(fav !== 'done') {
+    if(fav == 'idle') {
       dispatch(fetchFav());
     }
   }, [])

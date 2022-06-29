@@ -65,11 +65,11 @@ let produtos =[
     ]
 
 /* GET users listing. */
-router.get('/', function(req, res, next) {
+router.get('/', async function(req, res, next) {
 
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.json([ produtos ])
+  res.send(produtos)
 });
 
 module.exports = router;

@@ -6,7 +6,7 @@ const favAdapter = createEntityAdapter();
 export const fetchData = createAsyncThunk(
     'fav/fetchCard',
     async () => {
-        const cards = await httpGet(`http://localhost:3000/favoritos`, 250);
+        let cards = await httpGet(`http://localhost:3000/favoritos/`);
         return cards ? (cards.map((item) => ({...item, selected: false}))) : (cards);
     }
 );
