@@ -6,20 +6,6 @@ var cors = require('cors');
 const mongoose = require('mongoose')
 
 
-var chatRouter = require('./routes/chat');
-var dadosEntregaRouter = require('./routes/dadosEntrega');
-var dadosPessoaisRouter = require('./routes/dadosPessoais');
-var homeRouter = require('./routes/home');
-var carrinhoRouter = require('./routes/carrinho');
-var favoritosRouter = require('./routes/favoritos');
-var infoProdutoRouter = require('./routes/infoProduto');
-
-const url = "mongodb+srv://lucasgjorge:abc123456lucasRodrigo@cluster0.lnkn79s.mongodb.net/?retryWrites=true&w=majority"
-const connect = mongoose.connect(url) 
-
-connect.then( db => console.log("Mongo conectado"))
-.catch( err => console.log(err))
-
 
 var app = express();
 app.use(cors());
@@ -30,6 +16,19 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+var chatRouter = require('./routes/chat');
+var dadosEntregaRouter = require('./routes/dadosEntrega');
+var dadosPessoaisRouter = require('./routes/dadosPessoais');
+var homeRouter = require('./routes/home');
+var carrinhoRouter = require('./routes/carrinho');
+var favoritosRouter = require('./routes/favoritos');
+var infoProdutoRouter = require('./routes/infoProduto');
+
+const url = "mongodb+srv://grupo1psw:a123456bc@cluster0.qtazj.mongodb.net/?retryWrites=true&w=majority" 
+const connect = mongoose.connect(url) 
+
+connect.then( db => console.log("Mongo conectado"))
+.catch( err => console.log(err))
 
 app.use('/chat', chatRouter);
 app.use('/dadosEntrega',dadosEntregaRouter);
