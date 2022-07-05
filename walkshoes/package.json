@@ -11,11 +11,8 @@
     "@testing-library/jest-dom": "^5.16.4",
     "@testing-library/react": "^13.2.0",
     "@testing-library/user-event": "^13.5.0",
-<<<<<<< HEAD
     "axios": "^0.27.2",
-=======
     "express": "^4.18.1",
->>>>>>> ae81b673cab6dec7a563a828f9197b10755dd39f
     "react": "^18.1.0",
     "react-dom": "^18.1.0",
     "react-hook-form": "^7.33.0",
