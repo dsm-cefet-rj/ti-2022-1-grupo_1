@@ -30,24 +30,40 @@ router.use(bodyParser.json())
 
 /* GET users listing. */
 router.get('/', async function (req, res, next) {
-  Carrinho.find({}).then(carrinho => {
+  try {
+    const carrinhoBanco = await Carrinho.find({}).maxTime(5000)
     res.statusCode = 200
     res.setHeader('Content-Type', 'application/json')
-    res.json(carrinho)
-  }, err => next(err)).catch(err => next(err))
+    res.json(carrinhoBanco)
+  } catch (err) {
+    next(err)
+  }
+
   // res.statusCode = 200
   // res.setHeader('Content-Type', 'application/json')
   // res.json(carrinhoData)
 })
 
 router.post('/add', async function (req, res, next) {
-  let card = req.body
+  Carrinho.create(req.body)
+    .then(
+      carrinho => {
+        console.log('carrinho criado', carrinho)
+        res.statusCode = 200
+        res.setHeader('Content-Type', 'application/json')
+        res.json(carrinho)
+      },
+      err => next(err)
+    )
+    .catch(err => next(err))
 
-  card = { ...card, id: carrinhoData.length + 1 }
-  carrinhoData.push(card)
+  // let card = req.body
 
-  res.setHeader('Content-Type', 'application/json')
-  res.send(card)
+  // card = { ...card, id: carrinhoData.length + 1 }
+  // carrinhoData.push(card)
+
+  // res.setHeader('Content-Type', 'application/json')
+  // res.send(card)
 })
 
 router.delete('/delete/:id', async function (req, res, next) {
