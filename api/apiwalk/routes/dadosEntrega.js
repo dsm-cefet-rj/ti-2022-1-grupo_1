@@ -9,4 +9,17 @@ router.get('/', async function(req, res, next) {
     res.send(dadosEntrega);
 });
 
+router.post('/', async (req, res, next) => {
+  const {cep, rua, complemento} = req.body
+
+  const postEntrega = {cep, rua, complemento}
+
+  try{
+    await dadosEntregaModel.create(postEntrega);
+    res.status(201).send('Dados entrega cadastrados!');
+  } catch {
+    res.status(500).json({erro: error})
+  }
+});
+
 module.exports = router;

@@ -31,8 +31,8 @@ connect.then( db => console.log("Mongo conectado"))
 .catch( err => console.log(err))
 
 app.use('/chat', chatRouter);
-app.use('/dadosEntrega',dadosEntregaRouter);
-app.use('/dadosPessoais',dadosPessoaisRouter);
+app.use('/postEntrega',dadosEntregaRouter);
+app.use('/postPessoal',dadosPessoaisRouter);
 app.use('/home', homeRouter);
 app.use('/carrinho', carrinhoRouter);
 app.use('/favoritos', favoritosRouter);
