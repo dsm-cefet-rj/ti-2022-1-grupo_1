@@ -1,31 +1,38 @@
+var favoritos = require('../models/favoritosModel');
 var express = require('express');
+const { isObjectIdOrHexString } = require('mongoose');
 var router = express.Router();
-
-let favoritos = []
 
 /* GET users listing. */
 router.get('/', async function(req, res, next) {
+  let data = await favoritos.find({});
 
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.send(favoritos)
+  res.send(data);
 });
 
 router.post('/add', async function(req, res, next){
-  let card = req.body
-
-  favoritos.push(card);
+  let card = req.body;
+  
+  favoritos.create(card, (err, res) => {
+    if(err) return res.send(500, err);
+    console.log('Criou');
+  });
 
   res.setHeader('Content-Type', 'application/json');
-  res.send(card)
+  res.send(card);
 });
 
 router.delete('/delete/:id', async function(req, res, next){
   let id = req.params.id
-  favoritos = favoritos.filter((item) => {item.id != id})
+  favoritos.deleteOne({id: id}, (err, res) => {
+    if(err) return res.send(500, err);
+    console.log('Sumiu');
+  })
 
   res.statusCode = 200;
-  res.send(id)
+  res.send(id);
 });
 
 module.exports = router;
