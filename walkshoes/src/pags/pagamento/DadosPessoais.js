@@ -3,7 +3,6 @@ import { useNavigate } from "react-router-dom";
 import {BsFillPersonFill} from "react-icons/bs";
 import {AiFillCreditCard, AiOutlineBarcode} from "react-icons/ai"
 import {IoHomeSharp} from "react-icons/io5";
-import {FaMoneyCheckAlt, FaEdit} from "react-icons/fa"
 import Chat from "../../componentsGlobal/chat/Chat";
 import Menu from "../../componentsGlobal/header/menu/Menu";
 import Footer from "../../componentsGlobal/footer/Footer";
@@ -34,14 +33,14 @@ const { register, handleSubmit, formState: {errors} } = useForm({
 
   const navigate = useNavigate();
 
-  const onSubmit = (data) => axios.post("http://localhost:3000/dadosPessoais",{
+  const onSubmit = (data) => axios.post("http://localhost:8080/postPessoal",{
     email: data.email,
     nome: data.nome,
     cpf: data.cpf,
     telefone: data.telefone
   }).then((res) =>{
-    debugger;
-    console.log("entrou");
+    // debugger;
+    // console.log("entrou");
     handleEntrega();
   }) 
 

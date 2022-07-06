@@ -2,43 +2,58 @@ import React, { useState } from "react";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import {BsFillPersonFill} from "react-icons/bs";
-import {AiFillCreditCard, AiOutlineBarcode} from "react-icons/ai"
+import {AiFillCreditCard} from "react-icons/ai"
 import {IoHomeSharp} from "react-icons/io5";
-import {FaMoneyCheckAlt, FaEdit} from "react-icons/fa"
+import { FaEdit} from "react-icons/fa"
 import Menu from "../../componentsGlobal/header/menu/Menu";
 import Footer from "../../componentsGlobal/footer/Footer";
+import { useForm } from 'react-hook-form';
+import { yupResolver } from '@hookform/resolvers/yup';
+import * as yup from "yup";
+import axios from 'axios';
 
-function DadosEntrega() {
+const schema = yup.object().shape({
+  cep: yup.string().required(),
+  rua: yup.string().required(),
+  complemento: yup.string().required(),
+})
+
+
+const DadosEntrega = () => {
   // gerenciamento de dados
-  const [cep, setCep] = useState("");
-  const [rua, setRua] = useState("");
-  const [complemento, setComplemento] = useState("");
+  // const [cep, setCep] = useState("");
+  // const [rua, setRua] = useState("");
+  // const [complemento, setComplemento] = useState("");
 
-  function handleSubmit(event) {
-    const entrega = [];
-    event.preventDefault();
+  // function handleSubmit(event) {
+  //   const entrega = [];
+  //   event.preventDefault();
 
-    entrega.push({
-      cep,
-      rua,
-      complemento
-    });
+  //   entrega.push({
+  //     cep,
+  //     rua,
+  //     complemento
+  //   });
     
-    //faltando id do usuario
+  //   //faltando id do usuario
 
-    if (!cep || !rua || !complemento) {
-      alert("preencha todos os campos!");
-    } else {
-      fetch('http://localhost:3000/dadosDeEntrega', {
-        method: 'POST',
-        headers: { "Content-Type": "application/json"},
-        body: JSON.stringify(entrega)
-      }).then(() =>{
-        console.log("Sucess");
-        handlePagamento();
-      })
-    }
-  }
+  //   if (!cep || !rua || !complemento) {
+  //     alert("preencha todos os campos!");
+  //   } else {
+  //     fetch('http://localhost:3000/dadosDeEntrega', {
+  //       method: 'POST',
+  //       headers: { "Content-Type": "application/json"},
+  //       body: JSON.stringify(entrega)
+  //     }).then(() =>{
+  //       console.log("Sucess");
+  //       handlePagamento();
+  //     })
+  //   }
+  // }
+
+  const { register, handleSubmit, formState: {errors} } = useForm({
+    resolver: yupResolver(schema)
+  })
 
   const navigate = useNavigate();
 
@@ -50,6 +65,14 @@ function DadosEntrega() {
     navigate("/tipopagamento");
   }
 
+  const onSubmit = (data) => axios.post("http://localhost:8080/postEntrega",{ 
+    cep: data.cep,
+    rua: data.rua,
+    complemento: data.complemento,
+  }).then((res) =>{
+    handlePagamento();
+  }) 
+
   return (
     <>
       <Menu name="Carrinho"></Menu>
@@ -57,7 +80,7 @@ function DadosEntrega() {
       <h2> FINALIZAR COMPRA</h2>
       <div className="content-wr">
           <div>
-            <form className="dados" onSubmit={handleSubmit}>
+            <form className="dados" onSubmit={handleSubmit(onSubmit)}>
               <div className="div-etapa-entrega">
                 <span> <IoHomeSharp/> ENTREGA</span>
               </div>
@@ -67,7 +90,8 @@ function DadosEntrega() {
                   type="text"
                   placeholder="Digite seu CEP"
                   name="cep"
-                  onChange={(event) => setCep(event.target.value)}
+                  {...register("cep")}
+                  //onChange={(event) => setCep(event.target.value)}
                 />
 
                 <label> Rua </label>
@@ -75,15 +99,17 @@ function DadosEntrega() {
                   type="text"
                   placeholder="Digite sua Rua"
                   name="rua"
-                  onChange={(event) => setRua(event.target.value)}
+                  {...register("rua")}
+                  //onChange={(event) => setRua(event.target.value)}
                 />
 
                 <label> Complemento </label>
                 <input
                   type="text"
                   placeholder="Digite o Complemento"
-                  name="Complemento"
-                  onChange={(event) => setComplemento(event.target.value)}
+                  name="complemento"
+                  {...register("complemento")}
+                  //onChange={(event) => setComplemento(event.target.value)}
                 />
 
                 <button className="btn-proxima" type="submit" value="pagamento">
