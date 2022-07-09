@@ -4,7 +4,7 @@ const schema = new mongoose.Schema({
     id: String,
     img: String,
     nome: String,
-    price: Number,
+    valor: Number,
     situation: String
 });
 

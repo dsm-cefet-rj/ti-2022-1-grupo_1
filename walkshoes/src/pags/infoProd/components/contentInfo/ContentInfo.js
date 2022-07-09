@@ -19,6 +19,7 @@ export default function ContentInfo() {
 
   const dispatch = useDispatch();
   useEffect(() => {
+
     if(data == 'idle') {
       dispatch(fetchData());
     }
@@ -31,10 +32,12 @@ export default function ContentInfo() {
       dispatch(fetchFav());
     }
   }, [])
+
+
   
   return (
     <div className="contentinfo">
-      {(fetch && fav == 'done') ? (
+      {(data && fav == 'done') ? (
         <>
           <ProdImg className="prodimg" content={content}></ProdImg>
           <ProdInfo className="prodinfo" content={content}></ProdInfo>
