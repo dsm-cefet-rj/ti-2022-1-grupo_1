@@ -9,17 +9,14 @@ import { deleteCard, switchSelect } from '../../../../store/favSlice'
 import icon from "../../../../assets/real-icon.png";
 
 // [Router]
-import { useNavigate } from 'react-router-dom'
+import { useMatch, Link } from 'react-router-dom'
 
 // [CSS]
-import './CardFavorito.css'
+import './Card.css'
 
-const CardFavorito = (props) => {
+const Card = (props) => {
 
     const dispatch = useDispatch();
-
-    // Router
-    const navigate = useNavigate();
 
     // Dados
     const data = props.item;
@@ -51,14 +48,6 @@ const CardFavorito = (props) => {
         dispatch(deleteCard(data));
     }
 
-    // (WIP): Funcao que manda o id para /infoProd/:id
-    function handleRedirect () {
-
-        // (Todo): Redirecionar os dados pra pagina
-
-        navigate(`/infoprod/${id}`); // <-- isso n
-    }
-
     // [HTML]
     return (
         <>
@@ -73,9 +62,11 @@ const CardFavorito = (props) => {
                     </div>
 
                     <div className="productContentInfo">
-                        <div className="productContent" onClick={handleRedirect}>
-                            <img src={img} />
-                        </div>
+                        <Link to={`/infoprod/${id}`}>
+                            <div className="productContent">
+                                <img src={img} />
+                            </div>
+                        </Link>
 
                         <div className="productInfo">
                             <div className="distancee">
@@ -101,4 +92,4 @@ const CardFavorito = (props) => {
     )
 }
 
-export default CardFavorito
+export default Card

@@ -1,5 +1,5 @@
 import React from 'react'
-import Wrapper from './components/favoritosWrapper/FavoritosWrapper'
+import Wrapper from './components/wrapper/Wrapper'
 import Menu from '../../componentsGlobal/header/menu/Menu'
 import Footer from '../../componentsGlobal/footer/Footer'
 

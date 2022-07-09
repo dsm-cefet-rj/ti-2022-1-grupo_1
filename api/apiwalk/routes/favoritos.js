@@ -17,7 +17,6 @@ router.post('/add', async function(req, res, next){
   
   favoritos.create(card, (err, res) => {
     if(err) return res.send(500, err);
-    console.log('Criou');
   });
 
   res.setHeader('Content-Type', 'application/json');
@@ -28,7 +27,6 @@ router.delete('/delete/:id', async function(req, res, next){
   let id = req.params.id
   favoritos.deleteOne({id: id}, (err, res) => {
     if(err) return res.send(500, err);
-    console.log('Sumiu');
   })
 
   res.statusCode = 200;
