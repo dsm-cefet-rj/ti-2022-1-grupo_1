@@ -14,7 +14,7 @@ export default function ContentInfo() {
   let { id } = useParams();
   const content = useSelector((state) => selectCardsById(state, id));
   const data = useSelector(state => state.data.loading);
-  // const car = useSelector(state => state.car.loading);
+  const car = useSelector(state => state.carrinho.loading);
   const fav = useSelector(state => state.fav.loading);
 
   const dispatch = useDispatch();
@@ -23,9 +23,9 @@ export default function ContentInfo() {
       dispatch(fetchData());
     }
 
-    // if(car !== 'done') {
-    //   dispatch(fetchCar());
-    // }
+    if(car == 'idle') {
+      dispatch(fetchCar());
+    }
 
     if(fav == 'idle') {
       dispatch(fetchFav());
