@@ -48,17 +48,50 @@ export const slice = createSlice({
     },
     extraReducers: {
         
-        [fetchData.pending]: (state, action) => {state.loading = "loading"; state.fetch = "waiting";},
-        [fetchData.fulfilled]: (state, action) => {state.loading = "done"; state.fetch = "up-to-date"; favAdapter.addMany(state,action.payload);},
-        [fetchData.rejected]: (state, action) => {state.loading = "failed"; state.fetch = "ready";},
+        // Fetch
+        [fetchData.pending]: (state, action) => {
+            state.loading = "loading";
+            state.fetch = "waiting";
+        },
+        [fetchData.fulfilled]: (state, action) => {
+            state.loading = "done";
+            state.fetch = "up-to-date";
+            favAdapter.addMany(state,action.payload);
+        },
+        [fetchData.rejected]: (state, action) => {
+            state.loading = "failed";
+            state.fetch = "ready";
+        },
 
-        [postCard.pending]: (state, action) => {state.loading = "loading"; state.fetch = "waiting";},
-        [postCard.fulfilled]: (state, action) => {state.loading = "done"; state.fetch = "ready"; favAdapter.addOne(state,action.payload);},
-        [postCard.rejected]: (state, action) => {state.loading = "failed"; state.fetch = "up-to-date";},
+        // Post
+        [postCard.pending]: (state, action) => {
+            state.loading = "loading";
+            state.fetch = "waiting";
+        },
+        [postCard.fulfilled]: (state, action) => {
+            state.loading = "done";
+            state.fetch = "ready";
+            favAdapter.addOne(state,action.payload);
+        },
+        [postCard.rejected]: (state, action) => {
+            state.loading = "failed"; 
+            state.fetch = "up-to-date";
+        },
         
-        [deleteCard.pending]: (state, action) => {state.loading = "loading"; state.fetch = "waiting";},
-        [deleteCard.fulfilled]: (state, action) => {state.loading = "done"; state.fetch = "ready"; favAdapter.removeOne(state,action.payload);},
-        [deleteCard.rejected]: (state, action) => {state.loading = "failed"; state.fetch = "up-to-date";},
+        // Delete
+        [deleteCard.pending]: (state, action) => {
+            state.loading = "loading"; 
+            state.fetch = "waiting";
+        },
+        [deleteCard.fulfilled]: (state, action) => {
+            state.loading = "done";
+            state.fetch = "ready";
+            favAdapter.removeOne(state,action.payload);
+        },
+        [deleteCard.rejected]: (state, action) => {
+            state.loading = "failed";
+            state.fetch = "up-to-date";
+        },
 
     }
 })

@@ -28,7 +28,7 @@ const Home = (props) => {
     useEffect(() => {
       if(loading == 'failed') {
         console.warn(loading);
-        alert('esqueceu do bd irmao');
+        alert('BD não conectado');
       }
       else console.log(loading);
 

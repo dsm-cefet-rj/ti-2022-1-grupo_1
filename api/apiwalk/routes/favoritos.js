@@ -1,4 +1,6 @@
+var favoritos = require('../models/favoritosModel');
 var express = require('express');
+const { isObjectIdOrHexString } = require('mongoose');
 var router = express.Router();
 
 const user = 'user';
@@ -16,7 +18,7 @@ router.get('/', async function(req, res, next) {
 
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.send(favoritos)
+  res.send(data);
 });
 
 router.post('/add', async function(req, res, next){
@@ -37,7 +39,7 @@ router.post('/add', async function(req, res, next){
 
   res.statusCode = 200;
   res.setHeader('Content-Type', 'application/json');
-  res.send(card)
+  res.send(card);
 });
 
 router.delete('/delete/:id', async function(req, res, next){
@@ -57,7 +59,7 @@ router.delete('/delete/:id', async function(req, res, next){
   );
 
   res.statusCode = 200;
-  res.send(id)
+  res.send(id);
 });
 
 module.exports = router;

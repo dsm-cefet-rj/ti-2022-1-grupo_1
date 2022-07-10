@@ -29,7 +29,9 @@ export default function Menu() {
             <Link to="/favoritos">Favoritos</Link>
           </li>
         <hr/>
-          <li>Login</li>
+          <li>
+          <Link to="/login">Login</Link>
+          </li>
         </ul>
       </div>
     </header>

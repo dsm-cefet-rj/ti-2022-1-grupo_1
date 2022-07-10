@@ -21,6 +21,7 @@ import Carrinho from "./pags/carrinho/Carrinho";
 import Favoritos from "./pags/favoritos/Favoritos";
 import CadastroProd from "./pags/produto/cadastro/CadastroProd";
 import InfoProd from "./pags/infoProd/InfoProd";
+import Login from "./pags/login/login"
 
 // [Redux]: store e implementacao do LocalStorage
 import { saveState } from './store/localStorage.js';
@@ -66,6 +67,7 @@ function App() {
           <Route path="/favoritos" element={<Favoritos />}/>
           <Route path="/cadastroprod" element={<CadastroProd cards={cards} setCards={setCards}/>}/>
           <Route path="/infoprod/:id" element={<InfoProd/>}/>
+          <Route path="/login" element={<Login/>} />
           {/* <Footer></Footer> */}
         </Routes>
       </Router>
