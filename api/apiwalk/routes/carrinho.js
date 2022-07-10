@@ -45,7 +45,9 @@ router.post('/add', async function(req, res, next){
 
 router.delete('/delete/:id', async function(req, res, next){
   let id = req.params.id
-  carrinhoData = carrinhoData.filter((item) => {item.id != id})
+  Carrinho.deleteOne({id: id}, (err, res) => {
+    if(err) return res.send(500, err);
+  })
 
   res.statusCode = 200;
   res.send(id)
