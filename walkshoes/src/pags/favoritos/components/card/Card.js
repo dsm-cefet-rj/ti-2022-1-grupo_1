@@ -9,7 +9,7 @@ import { deleteCard, switchSelect } from '../../../../store/favSlice'
 import icon from "../../../../assets/real-icon.png";
 
 // [Router]
-import { useMatch, Link } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // [CSS]
 import './Card.css'
@@ -32,20 +32,16 @@ const Card = (props) => {
     const [ select, setSelect ] = useState(false);
 
     useEffect(() => {
-        dispatch(switchSelect({id: data.id, selected: select}));
-    }, [select]);
-
-    useEffect(() => {
-        if(select !== selected) setSelect(selected);
+        if(select != selected) setSelect(selected);
     }, [selected]);
 
     // Funcao que cuida do select usando hooks
     function handleSelect () {
-        setSelect(!select);
+        dispatch(switchSelect({id: data.id, selected: !select}));
     }
 
     function handleDelete () {
-        dispatch(deleteCard(data));
+        dispatch(deleteCard([data]));
     }
 
     // [HTML]

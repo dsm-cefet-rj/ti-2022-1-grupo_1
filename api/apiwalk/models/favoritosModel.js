@@ -2,7 +2,7 @@ const mongoose = require('mongoose')
 
 const schema = new mongoose.Schema({
     user: String,
-    data: [{}]
+    ids: [{}]
 });
 
 const favoritosModel = mongoose.model('favoritos',schema);

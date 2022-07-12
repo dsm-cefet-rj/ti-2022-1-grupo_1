@@ -1,5 +1,5 @@
 import './prodInfo.css'
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useDispatch } from 'react-redux'
 import { useNavigate } from 'react-router-dom'
 
@@ -15,16 +15,11 @@ export default function ProdInfo(props) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
 
-  const [ isCar, setIsCar ] = useState(false);
-  const [ isFav , setIsFav ] = useState(false);
-
   const checkCar = useSelector((state) => selectCardsById(state, content.id));
   const checkFav = useSelector((state) => selectFavsById(state, content.id));
 
-  useEffect (() => {
-    if(checkCar) setIsCar(true);
-    if(checkFav) setIsFav(true); 
-  });
+  const [ isCar, setIsCar ] = useState(checkCar);
+  const [ isFav , setIsFav ] = useState(checkFav);
 
   function handleNew(t) {
     switch (t) {

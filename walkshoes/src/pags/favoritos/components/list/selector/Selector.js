@@ -14,15 +14,15 @@ import '../List.css'
 const Selector = (props) => {
 
     // Redux
-    const data = props.data;                 // var - todos os itens no slice
+    const data = props.data;                                    // var - todos os itens no slice
     const dispatch = useDispatch();                             // func - pra mandar os dispatches
 
     // States
     const [ select, setSelect ] = useState(false);              // var - checkbox 'todos'
-    const [ dselect, setDelete ] = useState(false);      // var - checkbox 'todos'
+    const [ dselect, setDelete ] = useState(false);             // var - checkbox 'todos'
 
     // Hooks
-        // Hook que seleciona os itens do favData
+        // Hook que seleciona todos os itens de data
         useEffect(() => {
             dispatch(switchSelectMany(data.map((item) => ({id: item.id, selected: select}))));
         }, [select]);
@@ -56,10 +56,7 @@ const Selector = (props) => {
 
         // Funcao handle que deleta os itens selecionados e seta o state do checkbox
         function h_dselect() {
-            hasSelected('get').map((item) => {
-                dispatch(deleteCard(item))
-            })
-            
+            dispatch(deleteCard(hasSelected('get')));
             setSelect(false);
         }
 
