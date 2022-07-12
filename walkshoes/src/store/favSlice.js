@@ -6,7 +6,11 @@ const favAdapter = createEntityAdapter();
 export const fetchData = createAsyncThunk(
     'fav/fetchCard',
     async () => {
-        let cards = await httpGet(`http://localhost:3000/favoritos/`);
+        let endpoint = `http://localhost:3000/favoritos/`;
+        let cards = await httpGet(endpoint);
+
+        console.log('FETCH', endpoint);
+
         return cards ? (cards.map((item) => ({...item, selected: false}))) : (cards);
     }
 );
@@ -14,16 +18,25 @@ export const fetchData = createAsyncThunk(
 export const postCard = createAsyncThunk(
     'fav/postCard',
     async (item) => {
-        let card = await httpPost(`http://localhost:3000/favoritos/add/`, item);
-        return {...card, selected: false};
+        let endpoint = `http://localhost:3000/favoritos/add/`;
+        let card = { ...(await httpPost(endpoint, item)), selected: false};
+
+        console.log('POSTCARD', endpoint);
+
+        return card;
     }
 );
 
 export const deleteCard = createAsyncThunk(
     'fav/removeCard',
-    async (item) => {
-        let id = await httpDelete(`http://localhost:3000/favoritos/delete/${item.id}`);
-        return id;
+    async (arr) => {
+        let str = arr.map((item) => item.id).join('&');
+        let endpoint = `http://localhost:3000/favoritos/delete/${str}`;
+        let ids = await httpDelete(endpoint);
+
+        console.log('DELETE', endpoint);
+
+        return ids;
     }
 );
 
@@ -54,9 +67,9 @@ export const slice = createSlice({
             state.fetch = "waiting";
         },
         [fetchData.fulfilled]: (state, action) => {
+            favAdapter.addMany(state,action.payload);
             state.loading = "done";
             state.fetch = "up-to-date";
-            favAdapter.addMany(state,action.payload);
         },
         [fetchData.rejected]: (state, action) => {
             state.loading = "failed";
@@ -69,24 +82,24 @@ export const slice = createSlice({
             state.fetch = "waiting";
         },
         [postCard.fulfilled]: (state, action) => {
+            favAdapter.addOne(state,action.payload);
             state.loading = "done";
             state.fetch = "ready";
-            favAdapter.addOne(state,action.payload);
         },
         [postCard.rejected]: (state, action) => {
             state.loading = "failed"; 
             state.fetch = "up-to-date";
         },
-        
+
         // Delete
         [deleteCard.pending]: (state, action) => {
             state.loading = "loading"; 
             state.fetch = "waiting";
         },
         [deleteCard.fulfilled]: (state, action) => {
+            favAdapter.removeMany(state,action.payload);
             state.loading = "done";
             state.fetch = "ready";
-            favAdapter.removeOne(state,action.payload);
         },
         [deleteCard.rejected]: (state, action) => {
             state.loading = "failed";
