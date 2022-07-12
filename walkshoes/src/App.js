@@ -30,6 +30,7 @@ import store from './store/store.js';
 
 // [CSS]
 import "./App.css";
+import "./assets/css/spinner.css"
 
 function App() {
 

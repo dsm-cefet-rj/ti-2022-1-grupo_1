@@ -4,6 +4,7 @@ import React, {state, useState, useEffect} from "react";
 // [Redux]
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllData, fetchData } from '../../store/dataSlice';
+import { fetchData as fetchFav } from '../../store/favSlice';
 
 // [Components]
 import Menu from "../../componentsGlobal/header/menu/Menu";
@@ -21,6 +22,7 @@ const Home = (props) => {
   // Fetch do bd mockado
     useEffect(() => {
       dispatch(fetchData());
+      dispatch(fetchFav());
     }, []);
 
   // Debug
@@ -30,7 +32,7 @@ const Home = (props) => {
         console.warn(loading);
         alert('BD não conectado');
       }
-      else console.log(loading);
+      // else console.log(loading);
 
     }, [loading]);
 
@@ -45,7 +47,15 @@ const Home = (props) => {
     <>
       <Menu></Menu>
       <HeaderList ></HeaderList>
-      <CardListHome card={cards}></CardListHome>
+      {loading == 'done' ? 
+        <CardListHome card={cards}></CardListHome>
+      : (
+        <div className="load-content-home">
+          <div className="spinner-container">
+            <div className="loading-spinner" />
+          </div>
+        </div>
+      )}
       <Footer></Footer>
       <Chat></Chat>
     </>

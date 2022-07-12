@@ -1,12 +1,11 @@
-.list {
-  display: grid;
-  grid-template: auto / repeat(auto-fill, minmax(239px, 1fr)) ;
-  gap: 10px;
+.liste {
+  display: grid; 
+  grid-template: auto / repeat(auto-fill, 300px);
+  gap: 10px 10px; 
   justify-content: center;
-  margin: 0 20px;
 }
 
-.contentlist{
+.contentliste{
   display: flex;
   flex-direction: column;
 }
@@ -18,15 +17,8 @@
   font-size: 43px;
 }
 
-
 @media(min-width:1280px){
-  .list{
-  grid-template-columns: repeat(4, 1fr);
-}
-}
-
-@media(min-width:1440px){
-  .list{
-  grid-template-columns: repeat(4, 0fr);
-}
+  .liste {
+    grid-template-columns: repeat(4, 0fr);
+  }
 }

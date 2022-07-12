@@ -11,14 +11,12 @@ export default function CardListHome(props) {
   const url = '/infoprod';
   
   return (
-    <div className="contentlist">
+    <div className="contentliste">
       <Search></Search>
-      <div className="list">
-        {data.slice(0).reverse().map((shoe) => (
-          <Link to={`${url}/${shoe.id}`}>
-            <CardHome key={shoe.id} card={shoe}></CardHome>
-          </Link>
-        ))}
+      <div className="liste">
+        {data.map((item) => 
+          <CardHome key={item.id} card={item} url={url}></CardHome>
+        )}
       </div>
     </div>
   );
