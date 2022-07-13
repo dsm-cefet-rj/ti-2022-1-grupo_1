@@ -2,12 +2,13 @@ import { createEntityAdapter, createAsyncThunk, createSlice } from '@reduxjs/too
 import { httpDelete, httpGet, httpPut, httpPost} from '../utils'
 
 const favAdapter = createEntityAdapter();
+const timeout = new Promise((res, rej) => setTimeout(rej, 20000));
 
 export const fetchData = createAsyncThunk(
     'fav/fetchCard',
     async () => {
         let endpoint = `http://localhost:3000/favoritos/`;
-        let cards = await httpGet(endpoint);
+        let cards = await Promise.race([httpGet(endpoint), timeout]);;
 
         console.log('FETCH', endpoint);
 
@@ -19,7 +20,7 @@ export const postCard = createAsyncThunk(
     'fav/postCard',
     async (item) => {
         let endpoint = `http://localhost:3000/favoritos/add/`;
-        let card = { ...(await httpPost(endpoint, item)), selected: false};
+        let card = { ...(await Promise.race([httpPost(endpoint), timeout])), selected: false};
 
         console.log('POSTCARD', endpoint);
 
@@ -32,7 +33,7 @@ export const deleteCard = createAsyncThunk(
     async (arr) => {
         let str = arr.map((item) => item.id).join('&');
         let endpoint = `http://localhost:3000/favoritos/delete/${str}`;
-        let ids = await httpDelete(endpoint);
+        let ids = await Promise.race([httpDelete(endpoint), timeout]);
 
         console.log('DELETE', endpoint);
 
