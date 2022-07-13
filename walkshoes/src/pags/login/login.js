@@ -5,18 +5,22 @@ import "./login.css"
 
 
 const Login = () => {
-    const [conta, setConta] = useState({})
+    const [conta, setConta] = useState({
+      email: "",
+      password: "",
+    })
     const dispatch = useDispatch();
   
     function handleUpdatedStatus(e) {
-        setConta({ ...conta,[e.target.name]: e.target.value })
+        let updated = { ...conta,[e.target.name]: e.target.value }
+        setConta(updated);
+        console.log(updated);
     }
-
 
   return (
     <>
      <Form handleUpdatedStatus={handleUpdatedStatus} conta={conta}></Form>
-     </>
+    </>
   );
 };
 
