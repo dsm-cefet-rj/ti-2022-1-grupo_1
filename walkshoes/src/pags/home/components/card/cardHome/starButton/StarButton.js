@@ -15,7 +15,7 @@ function StarButton (props) {
   function handleNew() {
     dispatch(postCard(data));
     setIsFav(true);
-    alert('Adicionado aos favoritos');
+    // alert('Adicionado aos favoritos');
     // navigate('/favoritos');
   }
 

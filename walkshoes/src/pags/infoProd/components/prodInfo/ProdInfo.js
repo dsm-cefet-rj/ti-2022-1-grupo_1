@@ -26,7 +26,7 @@ export default function ProdInfo(props) {
       case 'Fav':
         dispatch(postF(content));
         setIsFav(true);
-        alert('Adicionado aos favoritos');
+        // alert('Adicionado aos favoritos');
         // navigate('/favoritos');
         break;
       case 'Car':
