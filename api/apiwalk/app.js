@@ -38,7 +38,7 @@ app.use('/postEntrega', dadosEntregaRouter);
 app.use('/postPessoal', dadosPessoaisRouter);
 app.use('/home', homeRouter);
 app.use('/carrinho', passport.authenticate('jwt', { session: false }), carrinhoRouter);
-app.use('/favoritos', favoritosRouter);
+app.use('/favoritos', passport.authenticate('jwt', { session: false }), favoritosRouter);
 app.use('/infoProduto', infoProdutoRouter);
 app.use('/api/users',userRouter);
 
