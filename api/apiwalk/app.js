@@ -1,11 +1,11 @@
-var express = require('express');
-var path = require('path');
-const passport = require('passport');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
+const path = require('path');
+const express = require('express');
 const mongoose = require('mongoose')
-require('./controllers/UserController');
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+
 require("dotenv").config();
 
 
@@ -37,8 +37,8 @@ app.use('/chat', chatRouter);
 app.use('/postEntrega', dadosEntregaRouter);
 app.use('/postPessoal', dadosPessoaisRouter);
 app.use('/home', homeRouter);
-app.use('/carrinho', passport.authenticate('jwt', { session: false }), carrinhoRouter);
-app.use('/favoritos', passport.authenticate('jwt', { session: false }), favoritosRouter);
+app.use('/carrinho', carrinhoRouter);
+app.use('/favoritos', favoritosRouter);
 app.use('/infoProduto', infoProdutoRouter);
 app.use('/api/users',userRouter);
 

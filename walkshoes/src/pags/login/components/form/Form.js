@@ -10,12 +10,15 @@ export default function Form(props) {
   
   async function post() {
     let endpoint = `http://localhost:3000/api/users/login`;
-    await httpPost(endpoint, conta);
+    let token = await httpPost(endpoint, conta);
+
+    localStorage.setItem("token", token);
   }
 
   async function handleSubmit (e) {
     e.preventDefault();
-    await post().then(navigate('/'));
+    await post();
+    navigate('/');
   }
 
   return (

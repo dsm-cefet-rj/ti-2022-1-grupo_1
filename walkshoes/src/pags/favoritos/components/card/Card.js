@@ -41,7 +41,8 @@ const Card = (props) => {
     }
 
     function handleDelete () {
-        dispatch(deleteCard([data]));
+        let token = localStorage.getItem("token");
+        dispatch(deleteCard([data],token));
     }
 
     // [HTML]

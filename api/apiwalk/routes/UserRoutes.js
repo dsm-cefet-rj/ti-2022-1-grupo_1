@@ -1,3 +1,4 @@
+const User = require("../models/User");
 const express = require("express");
 const passport = require('passport');
 const router = express.Router();
@@ -24,27 +25,45 @@ const authGuard = require("../middlewares/authGuard");
 router.post(
   "/register", userCreateValidation(),
 
-  passport.authenticate('register', { session: false }),
   async (req, res, next) => {
-    res.json({
-      user: req.user,
-      message: "Sucesso!",
-    });
+    passport.authenticate('register', async (err, passwordHash, info) => {
+        try {
+          if(err || !passwordHash) {
+            const error = new Error('Falhou.');   
+            return next(error);
+          }
+
+          const body = req.body;
+
+          // Create user             
+          const user = await User.create({
+            name: body.name,
+            email: body.email,
+            password: passwordHash,
+          });
+  
+          return res.json({
+            user: req.user,
+            message: "Sucesso!",
+          });
+        } catch (error) {
+          return next(error);
+        }
+      }
+    )(req, res, next);
   }
 );
+
 router.get("/profile", authGuard, getCurrentUser);
 
 router.post(
-  "/login", loginValidation(),
-
-  async (req, res, next) => {
+  "/login", loginValidation(), async (req, res, next) => {
     passport.authenticate(
       'login',
       async (err, user, info) => { // [NEW] handleValidations (validate)
         try {
           if(err || !user) {
-            const error = new Error('Falhou.');
-      
+            const error = new Error('Falhou.');      
             return next(error);
           }
       
@@ -55,11 +74,11 @@ router.post(
               if(error) return next(error);
               
               const token = generateToken(user._id);
-      
-              return res.json({ token });
+
+              return res.json(token);
             }
           )
-        } catch {
+        } catch (error) {
           return next(error);
         }
       }

@@ -1,12 +1,11 @@
 const User = require("../models/User");
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
 const passport = require('passport');
-
 const strategy = require('passport-local').Strategy;
-
-const JWTstrategy = require('passport-jwt').Strategy;
-const ExtractJWT = require('passport-jwt').ExtractJwt;
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
 
 const { default: mongoose } = require("mongoose");
 
@@ -14,10 +13,26 @@ const jwtSecret = process.env.JWT_SECRET;
 
 // Generate user token
 const generateToken = (id) => {
-  return jwt.sign({ id: id }, 'thisisoursecret', {
+  return jwt.sign({ id: id }, jwtSecret, {
     expiresIn: "7d",
   });
 };
+
+passport.use(
+  new JwtStrategy(
+    {
+      secretOrKey: jwtSecret,
+      jwtFromRequest: ExtractJwt.fromUrlQueryParameter('token')
+    },
+    async (token, done) => {
+      try {
+        return done(null, token.id);
+      } catch (error) {
+        done(error, false);
+      }
+    }
+  )
+);
 
 // [NEW] Register user
 passport.use(
@@ -31,26 +46,15 @@ passport.use(
       // check if user exists
       const user = await User.findOne({ email });
 
-      if (user) {
-        res.status(422).json({ errors: ["Por favor, utilize outro e-mail."] });
-        return;
+      if (user) {;
+        done(null, false, { message: "Por favor, utilize outro e-mail." });
       }
 
       // Generate password hash
       const salt = await bcrypt.genSalt();
       const passwordHash = await bcrypt.hash(password, salt);
 
-      // Create user
-      try {
-        const user = await User.create({
-          email,
-          password: passwordHash,
-        });
-
-        return done(null, user);
-      } catch (error) {
-        done(error, { message: "Houve um erro, por favor tente novamente mais tarde." });
-      }
+      done(null, passwordHash, { message: "Sucesso!" });
     }
   )
 );
@@ -113,8 +117,7 @@ passport.use(
 
         // Check if user exists
         if (!user) {
-          res.status(404).json({ errors: ["Usuário não encontrado!"] });
-          return;
+          return done(null, user, { message: "Usuário não encontrado!" })
         }
 
         const validate = await bcrypt.compare(password, user.password);
@@ -175,23 +178,6 @@ passport.use(
 //     token: generateToken(user._id),
 //   });
 // };
-
-passport.use(
-  new JWTstrategy(
-    {
-      secretOrKey: 'thisisoursecret',
-      jwtFromRequest: ExtractJWT.fromUrlQueryParameter('token')
-    },
-    async (token, done) => {
-      try {
-        return done(null, token.id);
-      } catch (error) {
-        console.log('AQUI');
-        done(error);
-      }
-    }
-  )
-);
 
 // Update user
 const update = async (req, res) => {

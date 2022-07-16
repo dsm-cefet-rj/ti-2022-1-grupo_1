@@ -37,7 +37,7 @@ export default function ContentInfo() {
   
   return (
     <div className="contentinfo">
-      {(data && fav == 'done') ? (
+      {(data == 'done') ? (
         <>
           <ProdImg className="prodimg" content={content}></ProdImg>
           <ProdInfo className="prodinfo" content={content}></ProdInfo>
