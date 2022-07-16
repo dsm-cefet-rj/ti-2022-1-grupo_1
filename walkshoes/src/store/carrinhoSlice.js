@@ -6,7 +6,8 @@ const carAdapter = createEntityAdapter();
 export const fetchData = createAsyncThunk(
     'car/fetchCard',
     async () => {
-        const cards = await httpGet(`http://localhost:3000/carrinho/`);
+        let timeout = new Promise((res, rej) => setTimeout(rej, 20000));
+        const cards = await Promise.race([httpGet(`http://localhost:3000/carrinho/`), timeout]);
         return {...cards};
     }
 );
@@ -14,7 +15,8 @@ export const fetchData = createAsyncThunk(
 export const postCard = createAsyncThunk(
     'car/postCardCarrinho',
     async (item) => {
-        const cards = await httpPost(`http://localhost:3000/carrinho/add`, item);
+        let timeout = new Promise((res, rej) => setTimeout(rej, 20000));
+        const cards = await Promise.race([httpPost(`http://localhost:3000/carrinho/add`, item), timeout]);
         return cards
     }
 );
@@ -22,8 +24,9 @@ export const postCard = createAsyncThunk(
 export const deleteCard = createAsyncThunk(
     'car/removeCard',
     async (item) => {
-        await httpDelete(`http://localhost:3000/carrinho/delete/${item.id}`);
-        console.log("deleteCard", item.id)
+        let timeout = new Promise((res, rej) => setTimeout(rej, 20000));
+        const id = await Promise.race([httpDelete(`http://localhost:3000/carrinho/delete/${item.id}`), timeout]);
+        console.log("deleteCard", id)
         return item.id;
     }
 );
@@ -60,7 +63,8 @@ export const slice = createSlice({
 
 export const {
     selectAll: selectAllData,
-    selectById: selectCardsById,
+    selectById,
+    selectTotal: selectTotalCards,
 } = carAdapter.getSelectors(state => state.carrinho);
 
 export default slice.reducer;

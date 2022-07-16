@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import "../CardHome.css";
 import { useSelector, useDispatch } from 'react-redux'
-import { selectFavsById, postCard } from '../../../../../../store/favSlice.js';
+import { selectById as selectFavsById, postCard } from '../../../../../../store/favSlice.js';
 import { AiFillStar } from "react-icons/ai";
 
 function StarButton (props) {
