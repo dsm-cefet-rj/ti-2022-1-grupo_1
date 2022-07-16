@@ -46,17 +46,21 @@ export default function Menu() {
             ) : (
               <></>
             )}
-          <li>
-            <Link to="/cadastro">Inscrever-se</Link>
-          </li>
-        <hr/>
-          <li>
             {loadingCar && loadingFav == 'done' ? (
-              <Link to="/" onClick={() => { localStorage.clear(); window.location.reload(); }}>Sair</Link>
+              <li>
+                <Link to="/" onClick={() => { localStorage.clear(); window.location.reload(); }}>Sair</Link>
+              </li>
             ) : (
-              <Link to="/login">Entrar</Link>
+              <>
+                <li>
+                <Link to="/login">Entrar</Link>
+              </li>
+            <hr/>
+              <li>
+                <Link to="/cadastro">Inscrever-se</Link>
+              </li>
+              </>
             )}
-          </li>
         </ul>
       </div>
     </header>
