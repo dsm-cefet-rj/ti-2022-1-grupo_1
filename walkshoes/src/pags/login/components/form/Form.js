@@ -7,7 +7,9 @@ export default function Form(props) {
 
   const navigate = useNavigate()
   const conta = props.conta;
-  
+  function redirecionarParaCadastro(){
+    navigate("/cadastro");
+  };
   async function post() {
     let endpoint = `http://localhost:3000/api/users/login`;
     let token = await httpPost(endpoint, conta);
@@ -48,6 +50,9 @@ export default function Form(props) {
         <div className="button">
           <button className="input_submit" type="submit">
             Entrar
+          </button>
+          <button className="input_submit" style = {{margin: "0px 0px 0px 5px"}} onClick={redirecionarParaCadastro}>
+            Não possui cadastro? Clique para se cadastrar
           </button>
         </div>
       </form>

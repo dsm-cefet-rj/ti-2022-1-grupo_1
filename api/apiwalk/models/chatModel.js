@@ -2,11 +2,10 @@
 const mongoose = require('mongoose')
 
 const chatSchema = mongoose.Schema({
-    destinatarioID: String,
-    remetenteID: String,
-    msg: String,
-    hora: String,
-    img: String
+    email: String,
+    nome: String,
+    text: String,
+    horaFormatada: String,
 })
 
 

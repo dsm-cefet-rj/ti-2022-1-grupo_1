@@ -10,7 +10,17 @@ import { selectById as selectTotalCars } from '../../../../store/carrinhoSlice'
 import { selectById as selectTotalFavs } from '../../../../store/favSlice.js';
 
 export default function ProdInfo(props) {
+  var token = localStorage.getItem("token");
+  const [isLogged, setLogged] = useState(false);
 
+  useEffect(() => {
+    if(token != undefined || null)
+        setLogged(true);
+  }, []);
+
+  function redirecionarParaLogin(){
+    navigate("/login");
+  };
   const content = props.content;
   const navigate = useNavigate();
   const dispatch = useDispatch();
@@ -45,9 +55,12 @@ export default function ProdInfo(props) {
         <p className="descriptionproduct">Sem Descrição</p>
       </div>
       <div className="buttonprodct">
-        <button className="productbutton" onClick={() => handleNew("Car")} disabled={isCar}>
+        {isLogged && <button className="productbutton" onClick={() => handleNew("Car")}disabled={isCar}>
           Adicionar ao carrinho
-        </button>
+        </button>}
+        {!isLogged && <button className="productbutton" onClick={() => redirecionarParaLogin()} >
+          Adicionar ao carrinho
+        </button>}
         <button className="productbutton" onClick={() => handleNew("Fav")} disabled={isFav}>
           {isFav ? <>Favoritado</> : <>Favoritar</>}
         </button>
