@@ -1,6 +1,8 @@
 
+// [React]
+import React, { useEffect, useState } from "react";
+
 import { useSelector } from "react-redux";
-import React, { useState } from "react";
 
 // [Router]
 import { Link, useNavigate, uses } from "react-router-dom";
@@ -11,11 +13,39 @@ import logo from "./../../../assets/logo.png";
 // [CSS]
 import "./Menu.css";
 
+import { httpGet } from '../../../utils'
+
 export default function Menu() {
+
   const loadingCar = useSelector(state => state.carrinho.loading);
   const loadingFav = useSelector(state => state.fav.loading);
   var token = localStorage.getItem("token");
   const [isLogged, setLogged] = useState(false);
+
+  const auth = localStorage.getItem("isAuthenticated");
+  const [ username, setUsername ] = useState(null);
+
+  const getName = async () => {
+    try { 
+      let token = localStorage.getItem("token");
+      let url = `http://localhost:3000/api/users/profile`;
+      let endpoint = `${url}${(token ? `/?token=${token}` : '')}`;
+      let user = await httpGet(endpoint);
+      setUsername(user.name);
+    } catch { 
+      // :C
+    }
+  }
+
+  useEffect(() => {
+    getName();
+  }, [auth])
+
+  function Reload() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
 
   // [HTML]
   return (
@@ -27,30 +57,28 @@ export default function Menu() {
       </div>
       <div className="options">
         <ul>
-          
-            {loadingCar == 'done' ? (
-              <>
-                  <li>
-                    <Link to="/carrinho">Carrinho</Link>
-                  </li>
-                <hr/>
-              </>
-            ) : (
-              <></>
-            )}
-            {loadingFav == 'done' ? (
-              <>
-                  <li>
-                    <Link to="/favoritos">Favoritos</Link>
-                  </li>
-                <hr/>
-              </>
-            ) : (
-              <></>
-            )}
-            {loadingCar && loadingFav == 'done' ? (
+          {auth ? (
+            <>
+              {username != null ? (
+                <>
+                    <li className="menu-welcome">
+                      <p>Bem-vindo(a) {username}</p>
+                      <hr/>
+                    </li>
+                </>
+              ) : (
+                <></>
+              )}
               <li>
-                <Link to="/" onClick={() => { localStorage.clear(); window.location.reload(); }}>Sair</Link>
+                <Link to="/carrinho">Carrinho</Link>
+                <hr/>
+              </li>
+              <li>
+                <Link to="/favoritos">Favoritos</Link>
+                <hr/>
+              </li>
+              <li>
+                <Link to="/" onClick={() => {Reload()}}>Sair</Link> {/* <-- ruim */}
               </li>
             ) : (
               <>
@@ -59,15 +87,14 @@ export default function Menu() {
                     <Link to="/login">Entrar</Link>
                   }
               </li>
-            <hr/>
               <li>
                 {
                   isLogged &&
                   <Link to="/cadastro">Inscrever-se</Link>
                 }
               </li>
-              </>
-            )}
+            </>
+          )}
         </ul>
       </div>
     </header>

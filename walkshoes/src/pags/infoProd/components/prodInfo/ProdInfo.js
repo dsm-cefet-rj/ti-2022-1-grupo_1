@@ -28,6 +28,8 @@ export default function ProdInfo(props) {
   const isCar = useSelector((state) => selectTotalCars(state, content.id));
   const isFav = useSelector((state) => selectTotalFavs(state, content.id));
 
+  const auth = localStorage.getItem("isAuthenticated");
+
   function handleNew(t) {
     switch (t) {
       case 'Fav':
@@ -61,9 +63,13 @@ export default function ProdInfo(props) {
         {!isLogged && <button className="productbutton" onClick={() => redirecionarParaLogin()} >
           Adicionar ao carrinho
         </button>}
-        <button className="productbutton" onClick={() => handleNew("Fav")} disabled={isFav}>
-          {isFav ? <>Favoritado</> : <>Favoritar</>}
-        </button>
+        {auth ? (
+          <button className="productbutton" onClick={() => handleNew("Fav")} disabled={isFav}>
+            {isFav ? <>Favoritado</> : <>Favoritar</>}
+          </button>
+        ) : (
+          <></>
+        )}
       </div>
     </div>
   )
