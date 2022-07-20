@@ -11,6 +11,13 @@ import logo from "./../../../assets/logo.png";
 import "./Menu.css";
 
 export default function Menu() {
+  const auth = localStorage.getItem("isAuthenticated");
+
+  function Reload() {
+    localStorage.clear();
+    window.location.reload();
+  }
+
   // [HTML]
   return (
     <header>
@@ -21,15 +28,31 @@ export default function Menu() {
       </div>
       <div className="options">
         <ul>
-          <li>
-            <Link to="/carrinho">Carrinho</Link>
-          </li>
-        <hr/>
-          <li>
-            <Link to="/favoritos">Favoritos</Link>
-          </li>
-        <hr/>
-          <li>Login</li>
+          {auth ? (
+            <>
+              <li>
+                <Link to="/carrinho">Carrinho</Link>
+              </li>
+            <hr/>
+              <li>
+                <Link to="/favoritos">Favoritos</Link>
+              </li>
+            <hr/>
+              <li>
+                <Link to="/" onClick={() => {Reload}}>Sair</Link> {/* <-- ruim */}
+              </li>
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">Entrar</Link>
+              </li>
+            <hr/>
+              <li>
+                <Link to="/cadastro">Inscrever-se</Link>
+              </li>
+            </>
+          )}
         </ul>
       </div>
     </header>
