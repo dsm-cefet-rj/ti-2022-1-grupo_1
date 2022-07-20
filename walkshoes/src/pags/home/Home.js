@@ -63,7 +63,9 @@ const Home = (props) => {
       {loading == 'done' ? 
         <CardListHome card={cards}></CardListHome>
       : (
-        <div className="loading-spinner size-spinner" />
+        <div className="content-spinner">
+          <div className="loading-spinner size-spinner" />
+        </div>
       )}
       <Footer></Footer>
       <Chat></Chat>
