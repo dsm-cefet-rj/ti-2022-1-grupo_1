@@ -40,7 +40,7 @@ export default function Menu() {
               </li>
             <hr/>
               <li>
-                <Link to="/" onClick={() => {Reload}}>Sair</Link> {/* <-- ruim */}
+                <Link to="/" onClick={() => {Reload()}}>Sair</Link> {/* <-- ruim */}
               </li>
             </>
           ) : (
