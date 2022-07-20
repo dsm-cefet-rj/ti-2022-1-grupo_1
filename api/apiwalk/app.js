@@ -23,7 +23,8 @@ var homeRouter = require('./routes/home');
 var carrinhoRouter = require('./routes/carrinho');
 var favoritosRouter = require('./routes/favoritos');
 var infoProdutoRouter = require('./routes/infoProduto');
-var userRouter = require('./routes/UserRoutes')
+var userRouter = require('./routes/UserRoutes');
+var cadastroProdutoRouter = require('./routes/cadastroProd');
 
 const url = "mongodb+srv://grupo1psw:a123456bc@cluster0.qtazj.mongodb.net/?retryWrites=true&w=majority"
 const connect = mongoose.connect(url)
@@ -32,6 +33,7 @@ connect.then(db => console.log("Mongo conectado"))
     .catch(err => console.log(err))
 
 app.use('/chat', chatRouter);
+app.use('/postCadastro',cadastroProdutoRouter);
 app.use('/postEntrega', dadosEntregaRouter);
 app.use('/postPessoal', dadosPessoaisRouter);
 app.use('/home', homeRouter);
@@ -39,6 +41,5 @@ app.use('/carrinho', carrinhoRouter);
 app.use('/favoritos', favoritosRouter);
 app.use('/infoProduto', infoProdutoRouter);
 app.use('/api/users',userRouter);
-
 
 module.exports = app;
