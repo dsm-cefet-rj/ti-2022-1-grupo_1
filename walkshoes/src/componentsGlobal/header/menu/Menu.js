@@ -1,11 +1,9 @@
-
 // [React]
 import React, { useEffect, useState } from "react";
-
 import { useSelector } from "react-redux";
 
 // [Router]
-import { Link, useNavigate, uses } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 // [Assets]
 import logo from "./../../../assets/logo.png";
@@ -16,12 +14,6 @@ import "./Menu.css";
 import { httpGet } from '../../../utils'
 
 export default function Menu() {
-
-  const loadingCar = useSelector(state => state.carrinho.loading);
-  const loadingFav = useSelector(state => state.fav.loading);
-  var token = localStorage.getItem("token");
-  const [isLogged, setLogged] = useState(false);
-
   const auth = localStorage.getItem("isAuthenticated");
   const [ username, setUsername ] = useState(null);
 
@@ -45,7 +37,6 @@ export default function Menu() {
     localStorage.clear();
     window.location.reload();
   }
-
 
   // [HTML]
   return (
@@ -80,18 +71,16 @@ export default function Menu() {
               <li>
                 <Link to="/" onClick={() => {Reload()}}>Sair</Link> {/* <-- ruim */}
               </li>
-            ) : (
-              <>
-                <li>
-                  { isLogged &&
-                    <Link to="/login">Entrar</Link>
-                  }
+            </>
+          ) : (
+            <>
+              <li>
+                <Link to="/login">Entrar</Link>
+                <hr/>
               </li>
               <li>
-                {
-                  isLogged &&
-                  <Link to="/cadastro">Inscrever-se</Link>
-                }
+                <Link to="/cadastro">Inscrever-se</Link>
+                <hr/>
               </li>
             </>
           )}
