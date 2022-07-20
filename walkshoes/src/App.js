@@ -49,26 +49,27 @@ function App() {
 
   // [HTML]
   return (
-    <Provider store={store}>
-      <BrowserRouter>
-        <Routes>
-          <Route path="" exact  element={<Home cards={cards}/>}/>
-          <Route path="infoprod/:id" element={<InfoProd />}/>
-          <Route path="login" element={<Login/>} />
-          <Route path="cadastro" element={<Cadastro/>} />
-          <Route path="" element={<AuthGate />}>
-            <Route path="dadospessoais" element={<DadosPessoais />} />
-            <Route path="dadosentrega" element={<DadosEntrega />} />
-            <Route path="tipopagamento" element={<TipoPagamento />} />
-            <Route path="pagamento" element={<Pagamento/>} />
-            <Route path="carrinho" element={<Carrinho />} />
-            <Route path="favoritos" element={<Favoritos />}/>
-            <Route path="cadastroprod" element={<CadastroProd cards={cards} setCards={setCards} />}/>
-          </Route>
-          {/* <Footer></Footer> */}
-        </Routes>
-      </BrowserRouter>
-    </Provider>
+    <div style={{paddingBottom: "100px"}}>
+      <Provider store={store}>
+        <BrowserRouter>
+          <Routes>
+            <Route path="" exact  element={<Home cards={cards}/>}/>
+            <Route path="infoprod/:id" element={<InfoProd />}/>
+            <Route path="login" element={<Login/>} />
+            <Route path="cadastro" element={<Cadastro/>} />
+            <Route path="" element={<AuthGate />}>
+              <Route path="dadospessoais" element={<DadosPessoais />} />
+              <Route path="dadosentrega" element={<DadosEntrega />} />
+              <Route path="tipopagamento" element={<TipoPagamento />} />
+              <Route path="pagamento" element={<Pagamento/>} />
+              <Route path="carrinho" element={<Carrinho />} />
+              <Route path="favoritos" element={<Favoritos />}/>
+              <Route path="cadastroprod" element={<CadastroProd cards={cards} setCards={setCards} />}/>
+            </Route>
+          </Routes>
+        </BrowserRouter>
+      </Provider>
+    </div>
   );
 }
 
