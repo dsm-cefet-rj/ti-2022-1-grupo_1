@@ -33,7 +33,7 @@ const connect = mongoose.connect(url)
 connect.then(db => console.log("Mongo conectado"))
     .catch(err => console.log(err))
 
-app.use('/chat', chatRouter);
+app.use('/postChat', chatRouter);
 app.use('/postEntrega', dadosEntregaRouter);
 app.use('/postPessoal', dadosPessoaisRouter);
 app.use('/home', homeRouter);
