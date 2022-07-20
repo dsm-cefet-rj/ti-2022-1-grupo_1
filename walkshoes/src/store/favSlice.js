@@ -1,5 +1,5 @@
 import { createEntityAdapter, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { httpDelete, httpGet, httpPut, httpPost} from '../utils'
+import { httpDelete, httpGet, httpPut, httpPost } from '../utils'
 
 const favAdapter = createEntityAdapter();
 
