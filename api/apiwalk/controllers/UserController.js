@@ -98,9 +98,10 @@ passport.use(
 
 // Get logged in user
 const getCurrentUser = async (req, res) => {
-  const user = req.user;
-
-  res.status(200).json(user);
+  const id = req.user;
+  console.log(id)
+  const user = await User.findOne({ _id: id });
+  res.send(user);
 };
 
 // [NEW] Sign user in

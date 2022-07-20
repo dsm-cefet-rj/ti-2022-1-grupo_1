@@ -54,7 +54,7 @@ router.post(
   }
 );
 
-router.get("/profile", authGuard, getCurrentUser);
+router.get("/profile", passport.authenticate('jwt', { session: false }), getCurrentUser);
 
 router.post(
   "/login", loginValidation(), async (req, res, next) => {

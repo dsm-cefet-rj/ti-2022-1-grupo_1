@@ -48,11 +48,15 @@ const Home = (props) => {
     }, [cards]);
 
     const getAuth = async () => {
-      let url = `http://localhost:3000/auth`;
-      let token = localStorage.getItem("token");
-      let endpoint = `${url}${(token ? `/?token=${token}` : '')}`;
-      let auth = await httpPost(endpoint);
-      localStorage.setItem("isAuthenticated", auth);
+      try {
+        let url = `http://localhost:3000/auth`;
+        let token = localStorage.getItem("token");
+        let endpoint = `${url}${(token ? `/?token=${token}` : '')}`;
+        let auth = await httpPost(endpoint);
+        localStorage.setItem("isAuthenticated", auth);
+      } catch {
+        // :C
+      }
     }
 
   // HTML
