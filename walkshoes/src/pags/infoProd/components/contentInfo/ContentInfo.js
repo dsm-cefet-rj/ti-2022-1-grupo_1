@@ -14,27 +14,30 @@ export default function ContentInfo() {
   let { id } = useParams();
   const content = useSelector((state) => selectCardsById(state, id));
   const data = useSelector(state => state.data.loading);
-  // const car = useSelector(state => state.car.loading);
+  const car = useSelector(state => state.carrinho.loading);
   const fav = useSelector(state => state.fav.loading);
 
   const dispatch = useDispatch();
   useEffect(() => {
+
     if(data == 'idle') {
       dispatch(fetchData());
     }
 
-    // if(car !== 'done') {
-    //   dispatch(fetchCar());
-    // }
+    if(car == 'idle') {
+      dispatch(fetchCar());
+    }
 
     if(fav == 'idle') {
       dispatch(fetchFav());
     }
   }, [])
+
+
   
   return (
     <div className="contentinfo">
-      {(fetch && fav == 'done') ? (
+      {(data == 'done') ? (
         <>
           <ProdImg className="prodimg" content={content}></ProdImg>
           <ProdInfo className="prodinfo" content={content}></ProdInfo>

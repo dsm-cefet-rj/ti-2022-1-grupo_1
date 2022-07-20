@@ -9,17 +9,14 @@ import { deleteCard, switchSelect } from '../../../../store/favSlice'
 import icon from "../../../../assets/real-icon.png";
 
 // [Router]
-import { useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 // [CSS]
-import './CardFavorito.css'
+import './Card.css'
 
-const CardFavorito = (props) => {
+const Card = (props) => {
 
     const dispatch = useDispatch();
-
-    // Router
-    const navigate = useNavigate();
 
     // Dados
     const data = props.item;
@@ -35,28 +32,17 @@ const CardFavorito = (props) => {
     const [ select, setSelect ] = useState(false);
 
     useEffect(() => {
-        dispatch(switchSelect({id: data.id, selected: select}));
-    }, [select]);
-
-    useEffect(() => {
-        if(select !== selected) setSelect(selected);
+        if(select != selected) setSelect(selected);
     }, [selected]);
 
     // Funcao que cuida do select usando hooks
     function handleSelect () {
-        setSelect(!select);
+        dispatch(switchSelect({id: data.id, selected: !select}));
     }
 
     function handleDelete () {
-        dispatch(deleteCard(data));
-    }
-
-    // (WIP): Funcao que manda o id para /infoProd/:id
-    function handleRedirect () {
-
-        // (Todo): Redirecionar os dados pra pagina
-
-        navigate(`/infoprod/${id}`); // <-- isso n
+        let token = localStorage.getItem("token");
+        dispatch(deleteCard([data],token));
     }
 
     // [HTML]
@@ -73,9 +59,11 @@ const CardFavorito = (props) => {
                     </div>
 
                     <div className="productContentInfo">
-                        <div className="productContent" onClick={handleRedirect}>
-                            <img src={img} />
-                        </div>
+                        <Link to={`/infoprod/${id}`}>
+                            <div className="productContent">
+                                <img src={img} />
+                            </div>
+                        </Link>
 
                         <div className="productInfo">
                             <div className="distancee">
@@ -101,4 +89,4 @@ const CardFavorito = (props) => {
     )
 }
 
-export default CardFavorito
+export default Card

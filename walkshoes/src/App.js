@@ -16,6 +16,8 @@ import Carrinho from "./pags/carrinho/Carrinho";
 import Favoritos from "./pags/favoritos/Favoritos";
 import CadastroProd from "./pags/produto/cadastro/CadastroProd";
 import InfoProd from "./pags/infoProd/InfoProd";
+import Login from "./pags/login/login"
+import Cadastro from "./pags/cadastro/cadastro"
 
 // [Redux]: store e implementacao do LocalStorage
 import { saveState } from './store/localStorage.js';
@@ -24,6 +26,7 @@ import store from './store/store.js';
 
 // [CSS]
 import "./App.css";
+import "./assets/css/spinner.css"
 
 function App() {
 

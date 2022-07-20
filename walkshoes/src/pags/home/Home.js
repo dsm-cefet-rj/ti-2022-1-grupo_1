@@ -4,6 +4,7 @@ import React, {state, useState, useEffect} from "react";
 // [Redux]
 import { useSelector, useDispatch } from 'react-redux';
 import { selectAllData, fetchData } from '../../store/dataSlice';
+import { fetchData as fetchFav } from '../../store/favSlice';
 
 // [Components]
 import Menu from "../../componentsGlobal/header/menu/Menu";
@@ -23,6 +24,7 @@ const Home = (props) => {
   // Fetch do bd mockado
     useEffect(() => {
       dispatch(fetchData());
+      dispatch(fetchFav());
     }, []);
   
     useEffect(() => {
@@ -35,7 +37,7 @@ const Home = (props) => {
       if(loading == 'failed') {
         console.warn(loading);
       }
-      else console.log(loading);
+      // else console.log(loading);
 
     }, [loading]);
 
@@ -61,9 +63,7 @@ const Home = (props) => {
       {loading == 'done' ? 
         <CardListHome card={cards}></CardListHome>
       : (
-        <div className="load-content-home">
-          <div className="loading-spinner size-spinner" />
-        </div>
+        <div className="loading-spinner size-spinner" />
       )}
       <Footer></Footer>
       <Chat></Chat>

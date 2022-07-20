@@ -1,6 +1,7 @@
 var Favoritos = require('../models/favoritosModel');
+var Tenis = require('../models/tenisModel');
 var express = require('express');
-const { isObjectIdOrHexString } = require('mongoose');
+const passport = require('passport');
 var router = express.Router();
 
 router.get('/', async function(req, res, next) {

@@ -1,7 +1,10 @@
 import React from "react";
 import "./CardHome.css";
-import OfferHome from "./../../offer/OfferHome"
- 
+import { useSelector } from 'react-redux'
+import { useMatch, Link } from 'react-router-dom';
+import StarButton from "./starButton/StarButton";
+import money from "../../../../../assets/real-icon.png";
+
 function CardHome (props) {
   const loading = useSelector(state => state.fav.loading);
   const data = props.card;
