@@ -66,7 +66,7 @@ function App() {
           <Route path="/pagamento" element={<Pagamento/>} />
           <Route path="/carrinho" element={<Carrinho />} />
           <Route path="/favoritos" element={<Favoritos />}/>
-          <Route path="/cadastroprod" element={<CadastroProd cards={cards} setCards={setCards}/>}/>
+          <Route path="/cadastroprod" element={<CadastroProd />}/>
           <Route path="/infoprod/:id" element={<InfoProd/>}/>
           <Route path="/login" element={<Login/>} />
           {/* <Footer></Footer> */}

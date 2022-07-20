@@ -1,7 +1,7 @@
 import React from "react";
 import './IdentificProd.css'
 
-const IdentificProd = props => {
+const IdentificProd = (props) => {
   return (
     <div className="ident">
       <h3 className="ident_title">Identificação do produto</h3>

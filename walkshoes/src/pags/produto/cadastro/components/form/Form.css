@@ -27,6 +27,87 @@
   justify-content: center;
 }
 
+.info {
+  padding: 0 10px 10px 10px;
+  border: 1px solid #6666;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.info_categoria{
+  display: flex;
+}
+
+.info_title {
+  display: flex;
+  margin: 12px 0 10px 0;
+  font-family: system-ui;
+  font-weight: 200;
+  font-size: 25px;
+}
+
+.info_img {
+  display: flex;
+}
+
+.info_categoria {
+  display: flex;
+}
+
+.info_quantidade{
+  display: flex;
+}
+
+.info_estado{
+  display: flex;
+}
+
+.info_tamanho {
+  display: flex;
+}
+
+label {
+  font-family: system-ui;
+  font-size: 15px;
+}
+
+.ident{
+  padding: 0 10px 10px 10px;
+  border: 1px solid #6666;
+  margin-bottom: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ident_title{
+  display: flex;
+  margin: 12px 0 10px 0;
+  font-family: system-ui;
+  font-weight: 200;
+  font-size: 25px;
+}
+
+.ident_content{
+  display: flex;
+}
+
+.info_value{
+  display: flex;
+}
+
+.ident_label{
+  width: 86px;
+  font-family: system-ui;
+  font-size: 15px;
+}
+
+.ident_input{
+  width: 490px;
+  margin-bottom: 3px;
+}
+
 @media (min-width: 1024px) {
   .form_title {
     font-size: 30px;
@@ -39,5 +120,19 @@
   .input_submit {
     width: 230px;
     height: 35px;
+  }
+}
+
+@media (max-width: 600px) {
+  .info{
+    align-items: initial;
+  }
+
+  .ident{
+    align-items: initial;
+  }
+
+  .ident_input{
+    width: 250px;
   }
 }

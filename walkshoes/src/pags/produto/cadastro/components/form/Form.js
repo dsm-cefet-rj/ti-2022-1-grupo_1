@@ -1,62 +1,134 @@
-import React, { useState } from 'react'
-import { Link, useNavigate } from 'react-router-dom'
-import IdentificProd from '../identificProd/IdentificProd'
-import InfoProd from '../infoProd/InfoProd'
-import './Form.css'
+import React from "react";
+import { useForm } from "react-hook-form";
+import "./Form.css";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import axios from "axios";
 
-import { useDispatch } from 'react-redux';
-import { postData } from '../../../../../store/dataSlice';
+const schema = yup.object().shape({
+  id: yup.number().required(),
+  nome: yup.string().required(),
+  valor: yup.number().required(),
+  tamanho: yup.number().required(),
+  estado: yup.string().required(),
+  categoria: yup.string().required(),
+  quantidade: yup.number().required(),
+  img: yup.string().required(),
+});
 
-export default function Form(props) {
-  const [card, setCard] = useState({})
-  const dispatch = useDispatch();
+const Form = () => {
+  const {
+    register,
+    handleSubmit,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
 
-  function handleUpdatedStatus(e) {
-    setCard({ ...card, [e.target.name]: e.target.value })
-  }
+  const onSubmit = (data) =>
+    axios.post("http://localhost:8080/postCadastro", {
+      id: data.id,
+      nome: data.nome,
+      valor: data.valor,
+      tamanho: data.tamanho,
+      estado: data.estado,
+      categoria: data.categoria,
+      quantidade: data.quantidade,
+      img: data.img,
+    });
 
-  // Essa funcao setava o forms diretamente nas props
-    // function handleSubmit(e){
-    //   e.preventDefault();
-    //   props.setCards(props.cards.concat(card));
-    //   navigate('/')
-    // }
-
-  //Essa funcao escrevia o forms no bd (que acaba caindo nas props pelo fetch)
-    // function handleSubmit(e) {
-    //   e.preventDefault()
-
-    //   // fetch('http://localhost:3000/tenis', {
-    //   //   method: 'POST',
-    //   //   headers: {
-    //   //     'Content-Type': 'application/json'
-    //   //   },
-    //   //   body: JSON.stringify(card)
-    //   // })
-
-    //   navigate('/')
-    // }
-
-    //Essa seta o forms na store (que escreve no bd (que cai nas props))
-    function handleSubmit (e) {
-      e.preventDefault();
-      dispatch(postData(card));
-      navigate('/');
-    }
-
-  const navigate = useNavigate()
   return (
     <div className="formgeral">
       <h3 className="form_title">Cadastro de Produto</h3>
-      <form onSubmit={handleSubmit}>
-        <IdentificProd
-          card={card}
-          handleUpdatedStatus={handleUpdatedStatus}
-        ></IdentificProd>
-        <InfoProd
-          card={card}
-          handleUpdatedStatus={handleUpdatedStatus}
-        ></InfoProd>
+
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="ident">
+          <h3 className="ident_title">Identificação do produto</h3>
+
+          <div className="ident_content">
+            <label className="ident_label">Código:</label>
+            <input
+              className="ident_input"
+              type="number"
+              name="id"
+              {...register("id")}
+            />
+          </div>
+
+          <div className="ident_content">
+            <label className="ident_label">Título:</label>
+            <input
+              className="ident_input"
+              type="text"
+              name="nome"
+              {...register("nome")}
+            ></input>
+          </div>
+
+        </div>
+        <div className="info">
+          <h3 className="info_title">Informações do produto</h3>
+
+          <div className="info_img">
+            <label className="ident_label">Imagem:</label>
+            <input
+              className="ident_input"
+              type="text"
+              name="img"
+              {...register("img")}
+            ></input>
+          </div>
+
+          <div className="info_categoria">
+            <label className="ident_label">Categoria:</label>
+            <input
+              className="ident_input"
+              type="text"
+              name="categoria"
+              {...register("categoria")}
+            />
+          </div>
+
+          <div className="info_quantidade">
+            <label className="ident_label">Quantidade:</label>
+            <input
+              className="ident_input"
+              type="number"
+              name="quantidade"
+              {...register("quantidade")}
+            ></input>
+          </div>
+
+          <div className="info_tamanho">
+            <label className="ident_label">Tamanho:</label>
+            <input
+              className="ident_input"
+              type="number"
+              name="tamanho"
+              {...register("tamanho")}
+            ></input>
+          </div>
+
+          <div className="info_estado">
+            <label className="ident_label">Estado:</label>
+            <input
+              className="ident_input"
+              type="text"
+              name="estado"
+              {...register("estado")}
+            ></input>
+          </div>
+
+          <div className="info_value">
+            <label className="ident_label">Preço Venda:</label>
+              <input
+                className="ident_input"
+                type="number"
+                name="valor"
+                {...register("valor")}
+              ></input>
+          </div>
+        </div>
         <div className="button">
           <button className="input_submit" type="submit">
             Enviar
@@ -64,5 +136,7 @@ export default function Form(props) {
         </div>
       </form>
     </div>
-  )
-}
+  );
+};
+
+export default Form;
