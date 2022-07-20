@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import "./styles.css";
 import { useNavigate } from "react-router-dom";
 import {BsFillPersonFill} from "react-icons/bs";
@@ -20,36 +20,20 @@ const schema = yup.object().shape({
 
 
 const DadosEntrega = () => {
-  // gerenciamento de dados
-  // const [cep, setCep] = useState("");
-  // const [rua, setRua] = useState("");
-  // const [complemento, setComplemento] = useState("");
+  var token = localStorage.getItem("token");
+  const [isLogged, setLogged] = useState(false);
 
-  // function handleSubmit(event) {
-  //   const entrega = [];
-  //   event.preventDefault();
 
-  //   entrega.push({
-  //     cep,
-  //     rua,
-  //     complemento
-  //   });
-    
-  //   //faltando id do usuario
+  useEffect(() => {
+    if(token != undefined || null)
+        setLogged(true);
+    else
+      redirecionarParaLogin();
+  }, []);
 
-  //   if (!cep || !rua || !complemento) {
-  //     alert("preencha todos os campos!");
-  //   } else {
-  //     fetch('http://localhost:3000/dadosDeEntrega', {
-  //       method: 'POST',
-  //       headers: { "Content-Type": "application/json"},
-  //       body: JSON.stringify(entrega)
-  //     }).then(() =>{
-  //       console.log("Sucess");
-  //       handlePagamento();
-  //     })
-  //   }
-  // }
+  function redirecionarParaLogin(){
+    navigate("/login");
+  };
 
   const { register, handleSubmit, formState: {errors} } = useForm({
     resolver: yupResolver(schema)

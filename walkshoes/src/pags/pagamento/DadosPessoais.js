@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 import {BsFillPersonFill} from "react-icons/bs";
 import {AiFillCreditCard, AiOutlineBarcode} from "react-icons/ai"
@@ -21,11 +21,17 @@ const schema = yup.object().shape({
 })
 
 const DadosPessoais = () => {
-  // const [email, setEmail] = useState();
-  // const [nome, setNome] = useState();
-  // const [cpf, setCpf] = useState();
-  // const [telefone, setTelefone] = useState();
+     
+  var token = localStorage.getItem("token");
+  const [isLogged, setLogged] = useState(false);
 
+
+  useEffect(() => {
+    if(token != undefined || null)
+        setLogged(true);
+    else
+      redirecionarParaLogin();
+  }, []);
 
 const { register, handleSubmit, formState: {errors} } = useForm({
     resolver: yupResolver(schema)
@@ -39,42 +45,12 @@ const { register, handleSubmit, formState: {errors} } = useForm({
     cpf: data.cpf,
     telefone: data.telefone
   }).then((res) =>{
-    // debugger;
-    // console.log("entrou");
     handleEntrega();
   }) 
 
-  // function handleSubmit(event) {
-  //   const pessoais = [];
-  //   event.preventDefault();
-  //   pessoais.push({
-  //     email,
-  //     nome,
-  //     cpf,
-  //     telefone
-  //   });
-
-  //   //faltando id do usuario
-  //   console.log(pessoais);
-  //   if (!email || !nome || !cpf || !telefone) {
-  //     alert("preencha todos os campos!");
-  //   } else{
-
-  //     axios.post("http://localhost:3000/dadosPessoais"),{
-
-  //     }
-
-    //   fetch('http://localhost:3000/dadosPessoais', {
-    //        method: 'POST',
-    //        headers: { "Content-Type": "application/json"},
-    //        body: JSON.stringify(pessoais)
-    //    }).then(() =>{
-    //         console.log("Sucess");
-    //         handleEntrega();
-    //    })
-
-  //   }
-  // }
+  function redirecionarParaLogin(){
+    navigate("/login");
+  };
 
   function handleEntrega(){
     navigate("/dadosentrega");
@@ -82,6 +58,7 @@ const { register, handleSubmit, formState: {errors} } = useForm({
 
   return (
     <>
+    { isLogged && <div>
       <Menu name="Carrinho"></Menu>
       <div className="div-pagamento">
         <h2> FINALIZAR COMPRA</h2>
@@ -146,6 +123,7 @@ const { register, handleSubmit, formState: {errors} } = useForm({
       </div>
       <Chat/>
       <Footer />
+    </div>}
     </>
   );
 };
