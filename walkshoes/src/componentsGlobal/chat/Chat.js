@@ -15,6 +15,8 @@ const schema = yup.object().shape({
 const Chat = () => {
 
     const [isPending, setIsPending] = useState(false);
+    const [wasSent, setMessage] = useState(false);
+
 
     const horaFormatada = new Date( Date.now() ).toLocaleTimeString("pt-br", { hour12: false })
     
@@ -27,8 +29,10 @@ const Chat = () => {
         email: data.email,
         text: data.text,
         DataEnvio: horaFormatada,
-    });
-    
+    })
+    function mensagemEnviada (){
+        setMessage(true);
+    };
     const scrollUp = () =>{
         window.scrollTo({
             top: 0,
@@ -36,27 +40,6 @@ const Chat = () => {
         })
     };
     
-//    const handleSubmit = (e) => {
-//        const chat = [];
-//        e.preventDefault();
-//         setIsPending(true);
-//         chat.push({
-//             "nome": e.target.form[0].value,
-//             "email": e.target.form[1].value,
-//             "text": e.target.form[2].value,
-//             "id": 1,
-//             "idUsuario": 1
-//            }) ;
-       
-//        fetch('http://localhost:8080/postChat', {
-//            method: 'POST',
-//            headers: { "Content-Type": "application/json"},
-//            body: JSON.stringify(chat)
-//        }).then(() =>{
-//             console.log("Sucess");
-//             setIsPending(false);
-//        })
-//    }
 
   return (
     <>
@@ -66,9 +49,23 @@ const Chat = () => {
                   <i className="fas fa-times"></i>
               </label>
             <div className="wrapper">
+                { wasSent &&
+                     <div className="head-text">
+                     Em instantes entraremos em contato com você.
+                 </div>
+                }
+                { !wasSent &&
                 <div className="head-text">
                     Tem um tenis para vender e está em boas condições? Chama nós!
                 </div>
+                }
+                    { wasSent &&
+                    <div>
+                        <h1> Mensagem Enviada </h1>
+                    </div>
+                    }
+                    { !wasSent &&
+
                 <div className="chat-box">
                     <div className="desc-text">
                     Preencha seus Dados abaixo
@@ -84,11 +81,12 @@ const Chat = () => {
                             <textarea cols="20" rows="10" placeholder="Conta mais sobre o tênis" name="text" {...register("text")}></textarea>
                         </div>
                         <div className="field">
-                            { !isPending && <button  type="submit">Enviar</button>}
+                            { !isPending && <button  onClick={mensagemEnviada}type="submit">Enviar</button>}
                             { isPending && <button type="submit">Enviando Chat ...</button>}
                         </div>
                     </form>
                 </div>
+                    }
             </div>
         </>
     );
