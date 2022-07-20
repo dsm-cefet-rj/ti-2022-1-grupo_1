@@ -13,6 +13,8 @@ import HeaderList from "../../componentsGlobal/header/headerList/HeaderList";
 import CardListHome from "./components/card/cardListHome/CardListHome";
 import Chat from "../../componentsGlobal/chat/Chat";
 
+import { httpPost } from '../../utils'
+
 const Home = (props) => {
 
   const cards = useSelector(selectAllData);                   // var - todos os itens no slice
@@ -24,13 +26,16 @@ const Home = (props) => {
       dispatch(fetchData());
       dispatch(fetchFav());
     }, []);
+  
+    useEffect(() => {
+      getAuth();
+    }, [])
 
   // Debug
     // se o fetch falhar
     useEffect(() => {
       if(loading == 'failed') {
         console.warn(loading);
-        alert('BD não conectado');
       }
       // else console.log(loading);
 
@@ -42,6 +47,18 @@ const Home = (props) => {
       // else console.log('no cards');
     }, [cards]);
 
+    const getAuth = async () => {
+      try {
+        let url = `http://localhost:3000/auth`;
+        let token = localStorage.getItem("token");
+        let endpoint = `${url}${(token ? `/?token=${token}` : '')}`;
+        let auth = await httpPost(endpoint);
+        localStorage.setItem("isAuthenticated", auth);
+      } catch {
+        // :C
+      }
+    }
+
   // HTML
   return (
     <>
@@ -50,10 +67,8 @@ const Home = (props) => {
       {loading == 'done' ? 
         <CardListHome card={cards}></CardListHome>
       : (
-        <div className="load-content-home">
-          <div className="spinner-container">
-            <div className="loading-spinner" />
-          </div>
+        <div className="content-spinner">
+          <div className="loading-spinner size-spinner" />
         </div>
       )}
       <Footer></Footer>

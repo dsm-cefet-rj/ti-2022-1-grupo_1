@@ -35,7 +35,8 @@ const Form = () => {
       categoria: data.categoria,
       quantidade: data.quantidade,
       img: data.img,
-    });
+    },
+    alert('Produto Cadastrado'));
 
   return (
     <div className="formgeral">
@@ -123,7 +124,7 @@ const Form = () => {
             <label className="ident_label">Preço Venda:</label>
               <input
                 className="ident_input"
-                type="number"
+                type="string"
                 name="valor"
                 {...register("valor")}
               ></input>

@@ -1,13 +1,14 @@
+const User = require("../models/User");
 const express = require("express");
+const passport = require('passport');
 const router = express.Router();
 
 // Controller
 const {
-  register,
   getCurrentUser,
-  login,
   update,
   getUserById,
+  generateToken,
 } = require("../controllers/UserController");
 
 // Middlewares
@@ -21,9 +22,70 @@ const authGuard = require("../middlewares/authGuard");
 
 
 // Routes
-router.post("/register", userCreateValidation(), validate, register);
-router.get("/profile", authGuard, getCurrentUser);
-router.post("/login", loginValidation(), validate, login);
+router.post(
+  "/register", userCreateValidation(),
+
+  async (req, res, next) => {
+    passport.authenticate('register', async (err, passwordHash, info) => {
+        try {
+          if(err || !passwordHash) {
+            const error = new Error('Falhou.');   
+            return next(error);
+          }
+
+          const body = req.body;
+
+          // Create user             
+          const user = await User.create({
+            name: body.name,
+            email: body.email,
+            password: passwordHash,
+          });
+  
+          return res.json({
+            user: req.user,
+            message: "Sucesso!",
+          });
+        } catch (error) {
+          return next(error);
+        }
+      }
+    )(req, res, next);
+  }
+);
+
+router.get("/profile", passport.authenticate('jwt', { session: false }), getCurrentUser);
+
+router.post(
+  "/login", loginValidation(), async (req, res, next) => {
+    passport.authenticate(
+      'login',
+      async (err, user, info) => { // [NEW] handleValidations (validate)
+        try {
+          if(err || !user) {
+            const error = new Error('Falhou.');      
+            return next(error);
+          }
+      
+          req.login(
+            user,
+            { session: false },
+            async (error) => {
+              if(error) return next(error);
+              
+              const token = generateToken(user._id);
+
+              return res.json(token);
+            }
+          )
+        } catch (error) {
+          return next(error);
+        }
+      }
+    )(req, res, next);
+  }
+);
+
 router.put(
   "/",
   authGuard,

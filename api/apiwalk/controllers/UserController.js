@@ -1,87 +1,184 @@
 const User = require("../models/User");
-
 const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
+
+const passport = require('passport');
+const strategy = require('passport-local').Strategy;
+const JwtStrategy = require('passport-jwt').Strategy;
+const ExtractJwt = require('passport-jwt').ExtractJwt;
+
 const { default: mongoose } = require("mongoose");
 
 const jwtSecret = process.env.JWT_SECRET;
 
 // Generate user token
 const generateToken = (id) => {
-  return jwt.sign({ id }, jwtSecret, {
+  return jwt.sign({ id: id }, jwtSecret, {
     expiresIn: "7d",
   });
 };
 
-// Register user and sign in
-const register = async (req, res) => {
-  const { name, email, password } = req.body;
+passport.use(
+  new JwtStrategy(
+    {
+      secretOrKey: jwtSecret,
+      jwtFromRequest: ExtractJwt.fromUrlQueryParameter('token')
+    },
+    async (token, done) => {
+      try {
+        return done(null, token.id);
+      } catch (error) {
+        done(error, false);
+      }
+    }
+  )
+);
 
-  // check if user exists
-  const user = await User.findOne({ email });
+// [NEW] Register user
+passport.use(
+  'register',
+  new strategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password',
+    },
+    async (email, password, done) => {
+      // check if user exists
+      const user = await User.findOne({ email });
 
-  if (user) {
-    res.status(422).json({ errors: ["Por favor, utilize outro e-mail."] });
-    return;
-  }
+      if (user) {;
+        done(null, false, { message: "Por favor, utilize outro e-mail." });
+      }
 
-  // Generate password hash
-  const salt = await bcrypt.genSalt();
-  const passwordHash = await bcrypt.hash(password, salt);
+      // Generate password hash
+      const salt = await bcrypt.genSalt();
+      const passwordHash = await bcrypt.hash(password, salt);
 
-  // Create user
-  const newUser = await User.create({
-    name,
-    email,
-    password: passwordHash,
-  });
+      done(null, passwordHash, { message: "Sucesso!" });
+    }
+  )
+);
 
-  // If user was created sucessfully, return the token
-  if (!newUser) {
-    res.status(422).json({
-      errors: ["Houve um erro, por favor tente novamente mais tarde."],
-    });
-    return;
-  }
+// // Register user and sign in
+// const register = async (req, res) => {
+//   const { name, email, password } = req.body;
 
-  res.status(201).json({
-    _id: newUser._id,
-    token: generateToken(newUser._id),
-  });
-};
+//   // check if user exists
+//   const user = await User.findOne({ email });
+
+//   if (user) {
+//     res.status(422).json({ errors: ["Por favor, utilize outro e-mail."] });
+//     return;
+//   }
+
+//   // Generate password hash
+//   const salt = await bcrypt.genSalt();
+//   const passwordHash = await bcrypt.hash(password, salt);
+
+//   // Create user
+//   const newUser = await User.create({
+//     name,
+//     email,
+//     password: passwordHash,
+//   });
+
+//   // If user was created sucessfully, return the token
+//   if (!newUser) {
+//     res.status(422).json({
+//       errors: ["Houve um erro, por favor tente novamente mais tarde."],
+//     });
+//     return;
+//   }
+
+//   res.status(201).json({
+//     _id: newUser._id,
+//     token: generateToken(newUser._id),
+//   });
+// };
 
 // Get logged in user
 const getCurrentUser = async (req, res) => {
-  const user = req.user;
-
-  res.status(200).json(user);
+  const id = req.user;
+  console.log(id)
+  const user = await User.findOne({ _id: id });
+  res.send(user);
 };
 
-// Sign user in
-const login = async (req, res) => {
-  const { email, password } = req.body;
+// [NEW] Sign user in
+passport.use(
+  'login',
+  new strategy(
+    {
+      usernameField: 'email',
+      passwordField: 'password'
+    },
+    async (email, password, done) => {
+      try {
+        const user = await User.findOne({ email });
 
-  const user = await User.findOne({ email });
+        // Check if user exists
+        if (!user) {
+          return done(null, user, { message: "Usuário não encontrado!" })
+        }
 
-  // Check if user exists
-  if (!user) {
-    res.status(404).json({ errors: ["Usuário não encontrado!"] });
-    return;
-  }
+        const validate = await bcrypt.compare(password, user.password);
 
-  // Check if password matches
-  if (!(await bcrypt.compare(password, user.password))) {
-    res.status(422).json({ errors: ["Senha inválida!"] });
-    return;
-  }
+        // Check if password matches
+        if (!validate) {
+          return done(null, false, { message: "Senha inválida!" });
+        }
 
-  // Return user with token
-  res.status(200).json({
-    _id: user._id,
-    profileImage: user.profileImage,
-    token: generateToken(user._id),
-  });
-};
+        // Return user with token
+        return done(null, user, { message: "Sucesso!" })
+
+      } catch (error) {
+        return done(error);
+      }
+    }
+  )
+);
+
+// passport.use(
+//   new JWTstrategy(
+//     {
+//       secretOrKey: jwtSecret,
+//       jwtFromRequest: ExtractJWT.fromUrlQueryParameter('token')
+//     },
+//     async (token, done) => {
+//       try {
+//         return done(null, token.user);
+//       } catch (error) {
+//         done(error);
+//       }
+//     }
+//   )
+// );
+
+// // Sign user in
+// const login = async (req, res) => {
+//   const { email, password } = req.body;
+
+//   const user = await User.findOne({ email });
+
+//   // Check if user exists
+//   if (!user) {
+//     res.status(404).json({ errors: ["Usuário não encontrado!"] });
+//     return;
+//   }
+
+//   // Check if password matches
+//   if (!(await bcrypt.compare(password, user.password))) {
+//     res.status(422).json({ errors: ["Senha inválida!"] });
+//     return;
+//   }
+
+//   // Return user with token
+//   res.status(200).json({
+//     _id: user._id,
+//     profileImage: user.profileImage,
+//     token: generateToken(user._id),
+//   });
+// };
 
 // Update user
 const update = async (req, res) => {
@@ -140,9 +237,8 @@ const getUserById = async (req, res) => {
 };
 
 module.exports = {
-  register,
   getCurrentUser,
-  login,
   update,
   getUserById,
+  generateToken,
 };

@@ -1,13 +1,16 @@
 import { createEntityAdapter, createAsyncThunk, createSlice } from '@reduxjs/toolkit';
-import { httpDelete, httpGet, httpPut, httpPost} from '../utils'
+import { httpDelete, httpGet, httpPut, httpPost } from '../utils'
 
 const favAdapter = createEntityAdapter();
+const url = `http://localhost:3000/favoritos`;
 
 export const fetchData = createAsyncThunk(
     'fav/fetchCard',
     async () => {
-        let endpoint = `http://localhost:3000/favoritos/`;
-        let cards = await httpGet(endpoint);
+        let timeout = new Promise((res, rej) => setTimeout(rej, 20000));
+        let token = localStorage.getItem("token");
+        let endpoint = `${url}${(token ? `/?token=${token}` : '')}`;
+        let cards = await Promise.race([httpGet(endpoint), timeout]);
 
         console.log('FETCH', endpoint);
 
@@ -18,8 +21,10 @@ export const fetchData = createAsyncThunk(
 export const postCard = createAsyncThunk(
     'fav/postCard',
     async (item) => {
-        let endpoint = `http://localhost:3000/favoritos/add/`;
-        let card = { ...(await httpPost(endpoint, item)), selected: false};
+        let timeout = new Promise((res, rej) => setTimeout(rej, 20000));
+        let token = localStorage.getItem("token");
+        let endpoint = `${url}/add/${(token ? `/?token=${token}` : '')}`;
+        let card = { ...(await Promise.race([httpPost(endpoint, item), timeout])), selected: false};
 
         console.log('POSTCARD', endpoint);
 
@@ -30,9 +35,11 @@ export const postCard = createAsyncThunk(
 export const deleteCard = createAsyncThunk(
     'fav/removeCard',
     async (arr) => {
+        let timeout = new Promise((res, rej) => setTimeout(rej, 20000));
+        let token = localStorage.getItem("token");
         let str = arr.map((item) => item.id).join('&');
-        let endpoint = `http://localhost:3000/favoritos/delete/${str}`;
-        let ids = await httpDelete(endpoint);
+        let endpoint = `${url}/delete/${str}${(token ? `/?token=${token}` : '')}`;
+        let ids = await Promise.race([httpDelete(endpoint), timeout]);
 
         console.log('DELETE', endpoint);
 
@@ -53,7 +60,7 @@ export const slice = createSlice({
     name: 'fav',
     initialState: favAdapter.getInitialState({
         loading: 'idle',
-        fetch: 'ready'
+        fetch: 'ready',
     }),
     reducers: {
         switchSelect: favAdapter.upsertOne,
@@ -112,8 +119,9 @@ export const slice = createSlice({
 export const { switchSelect, switchSelectMany } = slice.actions;
 
 export const {
-    selectAll: selectAllData,
-    selectById: selectFavsById,
+    selectAll,
+    selectById,
+    selectTotal,
 } = favAdapter.getSelectors(state => state.fav);
 
 export default slice.reducer;

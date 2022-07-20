@@ -1,7 +1,7 @@
 .search {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   background-color: antiquewhite;
   margin-bottom: 20px;
   height: 95px;
@@ -15,44 +15,16 @@
   margin: 0 0 0 20px;
 }
 
-.inputsearch {
-  width: 400px;
-  height: 38px;
-  border-radius: 16px;
-  margin-right: 20px;
-}
-
 @media (max-width: 1024px) {
-  .search {
-    height: 75px;
-  }
 
   .titlelist {
     font-size: 35px;
   }
-
-  .inputsearch {
-    width: 349px;
-    height: 33px;
-  }
 }
 
 @media (max-width: 768px) {
-    .search {
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      height: 100px;
-    }
-  
     .titlelist {
       font-size: 30px;
       margin: 0;
-    }
-  
-    .inputsearch {
-      width: 280px;
-      height: 30px;
-      margin-right: 0;
     }
   }

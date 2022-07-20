@@ -16,7 +16,7 @@ router.post('/', async (req, res, next) => {
 
   try{
     await infotenis.create(postCadastro);
-    res.status(201).send('Dados entrega cadastrados!');
+    res.status(201).send('Dados cadastrados!');
   } catch {
     res.status(500).json({erro: error})
   }

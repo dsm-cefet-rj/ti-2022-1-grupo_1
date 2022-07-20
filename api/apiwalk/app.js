@@ -1,9 +1,11 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var logger = require('morgan');
-var cors = require('cors');
+const path = require('path');
+const express = require('express');
 const mongoose = require('mongoose')
+const passport = require('passport');
+const cookieParser = require('cookie-parser');
+const logger = require('morgan');
+const cors = require('cors');
+
 require("dotenv").config();
 
 
@@ -23,8 +25,9 @@ var homeRouter = require('./routes/home');
 var carrinhoRouter = require('./routes/carrinho');
 var favoritosRouter = require('./routes/favoritos');
 var infoProdutoRouter = require('./routes/infoProduto');
-var userRouter = require('./routes/UserRoutes');
 var cadastroProdutoRouter = require('./routes/cadastroProd');
+var userRouter = require('./routes/UserRoutes')
+var authRouter = require('./routes/auth')
 
 const url = "mongodb+srv://grupo1psw:a123456bc@cluster0.qtazj.mongodb.net/?retryWrites=true&w=majority"
 const connect = mongoose.connect(url)
@@ -34,12 +37,14 @@ connect.then(db => console.log("Mongo conectado"))
 
 app.use('/chat', chatRouter);
 app.use('/postCadastro',cadastroProdutoRouter);
+app.use('/auth', passport.authenticate('jwt', { session: false }), authRouter)
+app.use('/postChat', chatRouter);
 app.use('/postEntrega', dadosEntregaRouter);
 app.use('/postPessoal', dadosPessoaisRouter);
 app.use('/home', homeRouter);
 app.use('/carrinho', carrinhoRouter);
-app.use('/favoritos', favoritosRouter);
+app.use('/favoritos', passport.authenticate('jwt', { session: false }), favoritosRouter);
 app.use('/infoProduto', infoProdutoRouter);
-app.use('/api/users',userRouter);
+app.use('/api/users', userRouter);
 
 module.exports = app;

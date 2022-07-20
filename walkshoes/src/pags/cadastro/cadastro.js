@@ -1,20 +1,21 @@
 import React, { useState } from 'react'
 import Form from "./components/form/Form";
 import { useDispatch } from 'react-redux';
-import "./login.css"
+import "./cadastro.css"
 
 
-const Login = () => {
+const Cadastro = () => {
     const [conta, setConta] = useState({
+      name: "",
       email: "",
       password: "",
+      confirmPassword: "",
     })
     const dispatch = useDispatch();
   
     function handleUpdatedStatus(e) {
         let updated = { ...conta,[e.target.name]: e.target.value }
         setConta(updated);
-        console.log(updated);
     }
 
   return (
@@ -24,4 +25,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Cadastro;
