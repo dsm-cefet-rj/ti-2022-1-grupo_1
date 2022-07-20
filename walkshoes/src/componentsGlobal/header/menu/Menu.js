@@ -1,9 +1,9 @@
-// [React]
-import React from "react";
+
 import { useSelector } from "react-redux";
+import React, { useState } from "react";
 
 // [Router]
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useNavigate, uses } from "react-router-dom";
 
 // [Assets]
 import logo from "./../../../assets/logo.png";
@@ -14,6 +14,8 @@ import "./Menu.css";
 export default function Menu() {
   const loadingCar = useSelector(state => state.carrinho.loading);
   const loadingFav = useSelector(state => state.fav.loading);
+  var token = localStorage.getItem("token");
+  const [isLogged, setLogged] = useState(false);
 
   // [HTML]
   return (
@@ -53,11 +55,16 @@ export default function Menu() {
             ) : (
               <>
                 <li>
-                <Link to="/login">Entrar</Link>
+                  { isLogged &&
+                    <Link to="/login">Entrar</Link>
+                  }
               </li>
             <hr/>
               <li>
-                <Link to="/cadastro">Inscrever-se</Link>
+                {
+                  isLogged &&
+                  <Link to="/cadastro">Inscrever-se</Link>
+                }
               </li>
               </>
             )}

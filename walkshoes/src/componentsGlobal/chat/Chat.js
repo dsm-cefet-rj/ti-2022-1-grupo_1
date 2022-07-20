@@ -61,7 +61,7 @@ const Chat = () => {
                 }
                     { wasSent &&
                     <div>
-                        <h1> Mensagem Enviada </h1>
+                        <h1 className="desc-text"> Mensagem Enviada com Sucesso! </h1>
                     </div>
                     }
                     { !wasSent &&

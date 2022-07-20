@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import { useNavigate } from "react-router-dom";
 import "./styles.css";
 import {BsFillPersonFill} from "react-icons/bs";
@@ -7,6 +7,7 @@ import {IoHomeSharp} from "react-icons/io5";
 import {FaMoneyCheckAlt, FaEdit} from "react-icons/fa"
 import Menu from "../../componentsGlobal/header/menu/Menu";
 import Footer from "../../componentsGlobal/footer/Footer";
+import Modal from "../../componentsGlobal/modal/Modal";
 
 
 function TipoPagamento() {
@@ -23,6 +24,7 @@ function TipoPagamento() {
   function handleEntrega(){
     navigate("/dadosentrega")
   }
+  const [modalOpen, setModalOpen] = useState(false);
 
   return (
     <>
@@ -36,7 +38,8 @@ function TipoPagamento() {
             </div>
             <label>Selecione a forma de pagamento</label>
             <button className="boleto"><AiOutlineBarcode/>  Boleto Bancário</button>
-            <button className="pix"> <FaMoneyCheckAlt/> Pix</button>
+            <button  onClick={() => {setModalOpen(true);}} className="pix"> <FaMoneyCheckAlt/> Pix</button>
+            {modalOpen && <Modal setOpenModal={setModalOpen} />}
             <button className="cartao"> <AiFillCreditCard/>Cartão de crédito</button>
           </div>
           <div className="card-entrega">
