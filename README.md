@@ -1,7 +1,5 @@
 # Grupo 1: Walkshoes - site de venda de calçados
 
-**Tecnologias utilizadas:**
-
 [![tech-html](https://skills.thijs.gg/icons?i=html)](https://developer.mozilla.org/docs/Web/HTML)
 [![tech-css](https://skills.thijs.gg/icons?i=css)](https://developer.mozilla.org/docs/Web/CSS)
 [![tech-js](https://skills.thijs.gg/icons?i=js)](https://developer.mozilla.org/docs/Web/JavaScript)
